@@ -16,12 +16,26 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <limits.h>
 
+typedef struct s_node
+{
+	int				value;
+	int				idx;
+	struct s_node	*next;
+}	t_node;
+
+void	check_args(int ac, char **av, t_node **lst);
 char	**safe_split(char *str, char c);
 void	print_err(void);
 int		count_args(char *s);
 int		is_num_or_space(char c);
+int		fill_arr(char **arr, char *str, char c);
+int		safe_malloc(char **arr, int pos, size_t len);
+size_t	ft_strlcpy(char *dst, char *src, size_t size);
 int		safe_atoi(char *s);
-int		count_digits(char *s);
+void	lst_addback(t_node **lst, t_node *new);
+t_node	*lst_new(int num);
+void	fill_lst(t_node **lst, char **arr);
 
 #endif

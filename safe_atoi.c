@@ -12,40 +12,22 @@
 
 #include "push_swap.h"
 
-int	count_digits(char *s)
-{
-	int	digits;
-	int	i;
-
-	digits = 0;
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == '-' && s[i + 1] == '\0')
-			return (0);
-		if (s[i] == '-')
-			digits++;
-		digits++;
-		i++;
-	}
-	return (digits);
-}
-
 int	safe_atoi(char *s)
 {
-	long	n;
-	int		digits;
+	int		n;
 	int		i;
 	int		negative;
 
 	n = 0;
 	i = 0;
 	negative = 0;
-	digits = count_digits(s);
-	if (digits == 0)
-		print_err();
 	while (s[i] != '\0')
 	{
+		if (s[i] == '-')
+		{
+			negative = 1;
+			i++;
+		}
 		if (!(s[i] >= '0' && s[i] <= '9'))
 			print_err();
 		n *= 10;
