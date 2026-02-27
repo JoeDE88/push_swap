@@ -36,6 +36,7 @@ void	print_err(void);
 void	check_str(char *str);
 void	check_args(char **av, int ac);
 int		check_repeated(t_node **lst);
+
 // utils
 size_t	ft_strlcpy(char *dst, char *src, size_t size);
 int		ft_atoi(char *s);
@@ -47,8 +48,11 @@ void	fill_list_from_arr(t_node **lst, char **arr);
 
 // free
 void	free_arr(char **arr);
+void	free_lst(t_node **lst);
 
 // push swap
 void	fill_args(int ac, char **av, t_node **lst);
+void	push_swap(t_node **lst, int strategy);
+int		select_strategy(char *s);
 
 #endif

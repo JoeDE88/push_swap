@@ -17,6 +17,7 @@ void	print_err(void)
 	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
+
 void	check_str(char *str)
 {
 	int	i;
@@ -52,7 +53,7 @@ int	check_repeated(t_node **lst)
 	while (i_node->next != NULL)
 	{
 		j_node = i_node->next;
-		while (j_node!= NULL)
+		while (j_node != NULL)
 		{
 			if (j_node->value == i_node->value)
 				return (1);

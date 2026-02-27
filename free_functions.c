@@ -24,3 +24,15 @@ void	free_arr(char **arr)
 	}
 	free(arr);
 }
+
+void	free_lst(t_node **lst)
+{
+	t_node	*node;
+
+	while (*lst)
+	{
+		node = *lst;
+		*lst = (*lst)->next;
+		free(node);
+	}
+}
