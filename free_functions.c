@@ -1,42 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   safe_atoi.c                                        :+:      :+:    :+:   */
+/*   free_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdiaz-ec <jdiaz-ec@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/25 17:24:00 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/02/25 17:24:01 by jdiaz-ec         ###   ########.fr       */
+/*   Created: 2026/02/27 11:03:29 by jdiaz-ec          #+#    #+#             */
+/*   Updated: 2026/02/27 11:03:39 by jdiaz-ec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	safe_atoi(char *s)
+void	free_arr(char **arr)
 {
-	long	n;
-	int		i;
-	int		negative;
+	int	i;
 
-	n = 0;
 	i = 0;
-	negative = 0;
-	while (s[i] != '\0')
+	while (arr[i])
 	{
-		if (s[i] == '-')
-		{
-			negative = 1;
-			i++;
-		}
-		if (!(s[i] >= '0' && s[i] <= '9'))
-			print_err();
-		n *= 10;
-		n += (s[i] - 48);
+		free(arr[i]);
 		i++;
 	}
-	if (negative)
-		n *= -1;
-	if (n > INT_MAX || n < INT_MIN)
-		print_err();
-	return (n);
+	free(arr);
 }

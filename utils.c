@@ -12,19 +12,6 @@
 
 #include "push_swap.h"
 
-void	free_arr(char **arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}
-
 size_t	ft_strlcpy(char *dst, char *src, size_t size)
 {
 	size_t	i;
@@ -45,44 +32,29 @@ size_t	ft_strlcpy(char *dst, char *src, size_t size)
 	return (len);
 }
 
-t_node	*lst_new(int num)
+int	ft_atoi(char *s)
 {
-	t_node	*node;
+	long	n;
+	int		i;
+	int		negative;
 
-	node = malloc(sizeof(t_node));
-	if (node == NULL)
-		print_err();
-	node->value = num;
-	node->next = NULL;
-	return (node);
-}
-
-void	lst_addback(t_node **lst, t_node *new)
-{
-	t_node	*last;
-
-	last = *lst;
-	if (*lst == NULL)
-	{
-		*lst = new;
-		return ;
-	}
-	if (lst && new)
-	{
-		while (last->next != NULL)
-			last = last->next;
-		last->next = new;
-	}
-}
-
-void	fill_list(t_node **lst, char **arr)
-{
-	int	i;
-
+	n = 0;
 	i = 0;
-	while (arr[i])
+	negative = 0;
+	while (s[i] != '\0')
 	{
-		lst_addback(lst, lst_new(safe_atoi(arr[i])));
+		if (s[i] == '-')
+		{
+			negative = 1;
+			i++;
+		}
+		n *= 10;
+		n += (s[i] - 48);
 		i++;
 	}
+	if (negative)
+		n *= -1;
+	if (n > INT_MAX || n < INT_MIN)
+		print_err();
+	return (n);
 }

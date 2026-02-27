@@ -19,20 +19,20 @@ void	fill_args(int ac, char **av, t_node **lst)
 	int		i;
 
 	num = 0;
-	i = 0;
-	if (ac == 1)
-		return ;
+	i = 1;
 	if (ac == 2)
 	{
-		arr = safe_split(*(av + 1), ' ');
-		fill_list(lst, arr);
+		check_str(*(av + 1));
+		arr = ft_split(*(av + 1), ' ');
+		fill_list_from_arr(lst, arr);
 		free_arr(arr);
 	}
 	else
 	{
-		while (i + 1 < ac)
+		check_args(av, ac);
+		while (i < ac)
 		{
-			num = safe_atoi(av[i + 1]);
+			num = ft_atoi(av[i]);
 			lst_addback(lst, lst_new(num));
 			i++;
 		}
@@ -42,14 +42,13 @@ void	fill_args(int ac, char **av, t_node **lst)
 int	main(int ac, char *av[])
 {
 	t_node	*args_lst;
-	t_node	*head;
 
 	args_lst = NULL;
+	if (ac == 1)
+		return (1);
 	fill_args(ac, av, &args_lst);
-	/* check for REPEATED NUMS and if so, FREE LIST*/
-	
-	/*  */
-	head = args_lst;
+	if (check_repeated(&args_lst))
+		/* FREE LIST AND PRINT ERROR */
 	if (args_lst)
 	{
 		while (args_lst != NULL)

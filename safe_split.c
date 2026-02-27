@@ -23,9 +23,9 @@ int	count_args(char *s)
 	while (s[i] != '\0')
 	{
 		is_arg = 0;
-		while (s[i] == ' ')
+		while (s[i] == ' ' && s[i] != '\0')
 			i++;
-		while (s[i] == '-' || (s[i] >= '0' && s[i] <= '9'))
+		while (s[i] != ' ' && s[i] != '\0')
 		{
 			if (!is_arg)
 			{
@@ -83,7 +83,7 @@ int	safe_malloc(char **arr, int pos, size_t len)
 	return (0);
 }
 
-char	**safe_split(char *str, char c)
+char	**ft_split(char *str, char c)
 {
 	char	**arr;
 	int		words;
