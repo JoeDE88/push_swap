@@ -12,11 +12,17 @@
 
 #include "push_swap.h"
 
-int	is_num_or_space(char c)
+void	free_arr(char **arr)
 {
-	if (!(c >= '0' && c <= '9') && c != ' ')
-		return (0);
-	return (1);
+	int	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }
 
 size_t	ft_strlcpy(char *dst, char *src, size_t size)
@@ -69,7 +75,7 @@ void	lst_addback(t_node **lst, t_node *new)
 	}
 }
 
-void	fill_lst(t_node **lst, char **arr)
+void	fill_list(t_node **lst, char **arr)
 {
 	int	i;
 

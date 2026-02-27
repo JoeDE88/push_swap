@@ -87,9 +87,7 @@ char	**safe_split(char *str, char c)
 {
 	char	**arr;
 	int		words;
-	int		i;
 
-	i = 0;
 	words = count_args(str);
 	arr = malloc((words + 1) * sizeof(char *));
 	if (arr == NULL)

@@ -12,28 +12,27 @@
 
 #include "push_swap.h"
 
-void	check_args(int ac, char **av, t_node **lst)
+void	fill_args(int ac, char **av, t_node **lst)
 {
-	int		i;
-	int		num;
 	char	**arr;
+	int		num;
+	int		i;
 
-	i = 0;
 	num = 0;
+	i = 0;
 	if (ac == 1)
 		return ;
 	if (ac == 2)
 	{
 		arr = safe_split(*(av + 1), ' ');
-		fill_lst(lst, arr);
+		fill_list(lst, arr);
+		free_arr(arr);
 	}
 	else
 	{
 		while (i + 1 < ac)
 		{
 			num = safe_atoi(av[i + 1]);
-			if (num > INT_MAX || num < INT_MIN)
-				print_err();
 			lst_addback(lst, lst_new(num));
 			i++;
 		}
@@ -43,13 +42,14 @@ void	check_args(int ac, char **av, t_node **lst)
 int	main(int ac, char *av[])
 {
 	t_node	*args_lst;
-	int		i;
-	int		num;
+	t_node	*head;
 
-	i = 0;
-	num = 0;
 	args_lst = NULL;
-	check_args(ac, av, &args_lst);
+	fill_args(ac, av, &args_lst);
+	/* check for REPEATED NUMS and if so, FREE LIST*/
+	
+	/*  */
+	head = args_lst;
 	if (args_lst)
 	{
 		while (args_lst != NULL)

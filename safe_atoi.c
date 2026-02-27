@@ -14,7 +14,7 @@
 
 int	safe_atoi(char *s)
 {
-	int		n;
+	long	n;
 	int		i;
 	int		negative;
 
@@ -35,6 +35,8 @@ int	safe_atoi(char *s)
 		i++;
 	}
 	if (negative)
-		return (-n);
+		n *= -1;
+	if (n > INT_MAX || n < INT_MIN)
+		print_err();
 	return (n);
 }
