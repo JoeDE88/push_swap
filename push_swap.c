@@ -12,86 +12,53 @@
 
 #include "push_swap.h"
 
-void	fill_args(int ac, char **av, t_node **lst)
-{
-	char	**arr;
-	int		num;
-	int		i;
-
-	i = 1;
-	if (ac == 2)
-	{
-		check_str(*(av + 1));
-		arr = ft_split(*(av + 1), ' ');
-		fill_list_from_arr(lst, arr);
-		free_arr(arr);
-	}
-	else
-	{
-		check_args(av, ac);
-		while (i < ac)
-		{
-			num = ft_atoi(av[i]);
-			lst_addback(lst, lst_new(num));
-			i++;
-		}
-	}
-}
- 
 int	select_strategy(char *s)
 {
 	int	i;
 
 	i = 2;
-	if (s[i] == 's')
+	if (!ft_strncmp(s+i, "simple", 6))
 		return (1);
-	if (s[i] == 'm')
+	if (!ft_strncmp(s+i, "medium", 6))
 		return (2);
-	if (s[i] == 'c')
+	if (!ft_strncmp(s+i, "complex", 7))
 		return (3);
-	if (s[i] == 'a')
+	if (!ft_strncmp(s+i, "adaptive", 8))
 		return (0);
 	else
 		print_err();
 	return (0);
 }
 
-
+/* 	PUSH_SWAP
 void	push_swap(t_node **lst, int strategy)
 {
-	/* 	PUSH_SWAP*/
 };
+*/
 
 int	main(int ac, char *av[])
 {
 	t_node	*stack_a;
-	int		args_count;
+	int		bench;
 	int		strategy;
 
-	strategy = 0;
 	stack_a = NULL;
+	bench = 0;
 	if (ac == 1)
 		return (1);
-	if (av[1][0] == '-' && av[1][1] == '-')
+	strategy = check_params(av, &bench);
+	if ((bench && !strategy) || (!bench && strategy))
+		fill_args(ac - 1, av + 2, &stack_a);
+	if (bench && strategy)
+		fill_args(ac - 2, av + 3, &stack_a);
+	if (check_repeated_or_unique(&stack_a))
 	{
-		strategy = select_strategy(av[1]);
-		args_count = ac - 1;
-		av = av + 1;
-	}
-	else
-		args_count = ac;
-	fill_args(args_count, av, &stack_a);
-	if (check_repeated(&stack_a))
 		free_lst(&stack_a);
+		print_err();
+	}
 	/* else
 		push_swap(&stack_a); */
-/* 	if (stack_a)
-	{
-		while (stack_a)
-		{
-			printf("ARG: %d\n", stack_a->value);
-			stack_a = stack_a->next;
-		}	
-	} */
+	if (stack_a)
+		printf("OK");
 	return (0);
 }
