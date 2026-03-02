@@ -50,13 +50,15 @@ int		ft_strncmp(char *s1, char *s2, int n);
 void	lst_addback(t_node **lst, t_node *new);
 t_node	*lst_new(int num);
 void	fill_list_from_arr(t_node **lst, char **arr);
+int	count_occurences(t_node **lst);
 
 // free
 void	free_arr(char **arr);
 void	free_lst(t_node **lst);
 
 // push swap
-void	push_swap(t_node **lst, int strategy);
+void	push_swap(t_node **lst, int bench, int strategy);
 int		select_strategy(char *s);
+double	compute_disorder(t_node **stack);
 
 #endif

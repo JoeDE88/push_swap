@@ -30,11 +30,31 @@ int	select_strategy(char *s)
 	return (0);
 }
 
-/* 	PUSH_SWAP
-void	push_swap(t_node **lst, int strategy)
+/* double	compute_disorder(t_node **stack)
 {
+	double	mistakes;
+	double	total_pairs;
+	t_node	*i_node;
+	t_node	*j_node;
+	int		i;
+	int		occ;
+
+	i_node = *stack;
+	mistakes = 0;
+	total_pairs = 0;
+	i = 0;
+	occ = count_occurences(stack);
+	
+	return (mistakes / total_pairs);
+} */
+
+void	push_swap(t_node **lst, int bench, int strategy)
+{
+	double	disorder;
+
+	disorder = compute_disorder(lst);
+	printf("disorder: %.1f, bench: %d, strategy: %d\n", disorder, bench, strategy);
 };
-*/
 
 int	main(int ac, char *av[])
 {
@@ -53,10 +73,6 @@ int	main(int ac, char *av[])
 	else
 		fill_args(ac - bench, av + bench + 1, &stack_a);
 	check_repeated_or_unique(&stack_a);
-	if (stack_a)
-	{
-		printf("ok");
-		//push_swap(&stack_a);
-	}
+	push_swap(&stack_a, bench, strategy);
 	return (0);
 }

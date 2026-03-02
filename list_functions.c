@@ -53,3 +53,18 @@ void	fill_list_from_arr(t_node **lst, char **arr)
 		i++;
 	}
 }
+
+int	count_occurences(t_node **lst)
+{
+	t_node	*node;
+	int		occ;
+
+	node = *lst;
+	occ = 0;
+	while (node)
+	{
+		occ++;
+		node = node->next;
+	}
+	return (occ);
+}
