@@ -50,10 +50,10 @@ int	check_params(char **av, int *bench)
 		if (!ft_strncmp(av[i], "--bench", 7))
 		{
 			*bench = 1;
-			i +=1;
+			i += 1;
 		}
 		if (!ft_strncmp(av[i], "--", 2))
-			strategy = select_strategy(av[i]);		
+			strategy = select_strategy(av[i]);
 	}
 	return (strategy);
 }

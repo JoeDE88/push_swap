@@ -17,17 +17,17 @@ int	select_strategy(char *s)
 	int	i;
 
 	i = 2;
-	if (!ft_strncmp(s+i, "simple", 6))
-		return (1);
-	if (!ft_strncmp(s+i, "medium", 6))
+	if (!ft_strncmp(s + i, "simple", 6))
 		return (2);
-	if (!ft_strncmp(s+i, "complex", 7))
+	if (!ft_strncmp(s + i, "medium", 6))
 		return (3);
-	if (!ft_strncmp(s+i, "adaptive", 8))
-		return (0);
+	if (!ft_strncmp(s + i, "complex", 7))
+		return (4);
+	if (!ft_strncmp(s + i, "adaptive", 8))
+		return (1);
 	else
 		print_err();
-	return (0);
+	return (1);
 }
 
 /* 	PUSH_SWAP
@@ -51,6 +51,8 @@ int	main(int ac, char *av[])
 		fill_args(ac - 1, av + 2, &stack_a);
 	if (bench && strategy)
 		fill_args(ac - 2, av + 3, &stack_a);
+	if (!bench && !strategy)
+		fill_args(ac, av, &stack_a);
 	if (check_repeated_or_unique(&stack_a))
 	{
 		free_lst(&stack_a);

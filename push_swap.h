@@ -15,8 +15,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <limits.h>
+# include <stdio.h>
 
 typedef struct s_node
 {
@@ -28,7 +28,6 @@ typedef struct s_node
 // parse args
 void	fill_args(int ac, char **av, t_node **lst);
 int		check_params(char **av, int *bench);
-// int		parse_args(int ac, char **av, int *bench, int *args_count, int *strategy);
 
 // safe split
 int		fill_arr(char **arr, char *str, char c);
