@@ -27,7 +27,7 @@ typedef struct s_node
 
 // parse args
 void	fill_args(int ac, char **av, t_node **lst);
-int		check_params(char **av, int *bench);
+void	check_params(char **av, int *bench, int *strategy);
 
 // safe split
 int		fill_arr(char **arr, char *str, char c);
@@ -39,7 +39,7 @@ char	**ft_split(char *str, char c);
 void	print_err(void);
 void	check_args(char **av, int ac);
 void	check_str(char *str);
-int		check_repeated_or_unique(t_node **lst);
+void	check_repeated_or_unique(t_node **lst);
 
 // utils
 size_t	ft_strlcpy(char *dst, char *src, size_t size);

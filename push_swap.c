@@ -41,25 +41,22 @@ int	main(int ac, char *av[])
 	t_node	*stack_a;
 	int		bench;
 	int		strategy;
-	int		not_valid;
 
 	stack_a = NULL;
 	bench = 0;
+	strategy = 0;
 	if (ac == 1)
-		return (1);
-	strategy = check_params(av, &bench);
+		return (0);
+	check_params(av, &bench, &strategy);
 	if (strategy)
 		fill_args(ac - bench - 1, av + bench + 2, &stack_a);
 	else
 		fill_args(ac - bench, av + bench + 1, &stack_a);
-	if ((not_valid = check_repeated_or_unique(&stack_a)) != 0)
+	check_repeated_or_unique(&stack_a);
+	if (stack_a)
 	{
-		free_lst(&stack_a);
-		if (not_valid == 2)
-			print_err();
-		return (1);
+		printf("ok");
+		//push_swap(&stack_a);
 	}
-	/* else
-		push_swap(&stack_a); */
 	return (0);
 }
