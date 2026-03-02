@@ -27,7 +27,7 @@ int	select_strategy(char *s)
 		return (1);
 	else
 		print_err();
-	return (1);
+	return (0);
 }
 
 /* 	PUSH_SWAP
@@ -41,26 +41,25 @@ int	main(int ac, char *av[])
 	t_node	*stack_a;
 	int		bench;
 	int		strategy;
+	int		not_valid;
 
 	stack_a = NULL;
 	bench = 0;
 	if (ac == 1)
 		return (1);
 	strategy = check_params(av, &bench);
-	if ((bench && !strategy) || (!bench && strategy))
-		fill_args(ac - 1, av + 2, &stack_a);
-	if (bench && strategy)
-		fill_args(ac - 2, av + 3, &stack_a);
-	if (!bench && !strategy)
-		fill_args(ac, av, &stack_a);
-	if (check_repeated_or_unique(&stack_a))
+	if (strategy)
+		fill_args(ac - bench - 1, av + bench + 2, &stack_a);
+	else
+		fill_args(ac - bench, av + bench + 1, &stack_a);
+	if ((not_valid = check_repeated_or_unique(&stack_a)) != 0)
 	{
 		free_lst(&stack_a);
-		print_err();
+		if (not_valid == 2)
+			print_err();
+		return (1);
 	}
 	/* else
 		push_swap(&stack_a); */
-	if (stack_a)
-		printf("OK");
 	return (0);
 }

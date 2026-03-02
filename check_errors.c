@@ -58,7 +58,7 @@ int	check_repeated_or_unique(t_node **lst)
 		while (j_node != NULL)
 		{
 			if (j_node->value == i_node->value)
-				return (1);
+				return (2);
 			j_node = j_node->next;
 		}
 		i_node = i_node->next;
