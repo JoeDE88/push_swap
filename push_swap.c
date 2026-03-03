@@ -30,31 +30,37 @@ int	select_strategy(char *s)
 	return (0);
 }
 
-/* double	compute_disorder(t_node **stack)
+double	compute_disorder(t_node **stack)
 {
 	double	mistakes;
 	double	total_pairs;
 	t_node	*i_node;
 	t_node	*j_node;
-	int		i;
-	int		occ;
 
 	i_node = *stack;
 	mistakes = 0;
 	total_pairs = 0;
-	i = 0;
-	occ = count_occurences(stack);
-	
+	while (i_node != NULL && i_node->next != NULL)
+	{
+		j_node = i_node->next;
+		while (j_node != NULL)
+		{
+			total_pairs++;
+			if (i_node->value > j_node->value)
+				mistakes++;
+			j_node = j_node->next;
+		}
+		i_node = i_node->next;
+	}
 	return (mistakes / total_pairs);
-} */
+}
 
 void	push_swap(t_node **lst, int bench, int strategy)
 {
 	double	disorder;
 
-	disorder = compute_disorder(lst);
-	printf("disorder: %.1f, bench: %d, strategy: %d\n", disorder, bench, strategy);
-};
+ 	disorder = compute_disorder(lst);
+}
 
 int	main(int ac, char *av[])
 {
