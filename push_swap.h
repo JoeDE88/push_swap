@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdiaz-ec <jdiaz-ec@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:52:39 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/02/25 14:52:47 by jdiaz-ec         ###   ########.fr       */
+/*   Updated: 2026/03/03 19:15:23 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int		ft_strncmp(char *s1, char *s2, int n);
 void	lst_addback(t_node **lst, t_node *new);
 t_node	*lst_new(int num);
 void	fill_list_from_arr(t_node **lst, char **arr);
+int	lstsize(t_node *lst);
 
 // free
 void	free_arr(char **arr);
@@ -59,5 +60,7 @@ void	free_lst(t_node **lst);
 // push swap
 void	push_swap(t_node **lst, int strategy);
 int		select_strategy(char *s);
+
+// operations
 
 #endif
