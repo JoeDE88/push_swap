@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:52:39 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/03 19:15:23 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/04 17:46:46 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,15 @@ void	push_swap(t_node **lst, int strategy);
 int		select_strategy(char *s);
 
 // operations
+void	swap(t_node **lst, char *op);
+void	push(t_node **dest, t_node **src, char *op);
+void ss(t_node **lst_a, t_node **lst_b);
+void	rotate(t_node **lst, char *op);
+void	reverse_rotate(t_node **lst, char *op);
+void	rr(t_node **lst_a, t_node **lst_b);
+void	rrr(t_node **lst_a, t_node **lst_b);
+
+//algoritmo
+void	algorithm_simple(t_node **dst, t_node **src);
 
 #endif
