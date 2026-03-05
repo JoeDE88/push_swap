@@ -14,7 +14,7 @@
 
 void	swap(t_node **lst, char *op)
 {
-	t_node *tmp;
+	t_node	*tmp;
 
 	if (!lst || !(*lst)->next)
 		return ;
@@ -32,7 +32,6 @@ void	push(t_node **dest, t_node **src, char *op)
 
 	if (!*src)
 		return ;
-
 	tmp = *src;
 	*src = (*src)->next;
 	tmp->next = *dest;
@@ -41,7 +40,7 @@ void	push(t_node **dest, t_node **src, char *op)
 		write(1, op, 3);
 }
 
-void ss(t_node **lst_a, t_node **lst_b)
+void	ss(t_node **lst_a, t_node **lst_b)
 {
 	swap(lst_a, NULL);
 	swap(lst_b, NULL);

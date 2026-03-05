@@ -41,8 +41,8 @@ void	reverse_rotate(t_node **lst, char *op)
 	last = *lst;
 	while (last->next)
 	{
-		second_last = last;      
-		last = last->next;       
+		second_last = last;
+		last = last->next;
 	}
 	second_last->next = NULL;
 	last->next = *lst;
@@ -51,7 +51,7 @@ void	reverse_rotate(t_node **lst, char *op)
 		write(1, op, 4);
 }
 
-void rr(t_node **lst_a, t_node **lst_b)
+void	rr(t_node **lst_a, t_node **lst_b)
 {
 	rotate(lst_a, NULL);
 	rotate(lst_b, NULL);

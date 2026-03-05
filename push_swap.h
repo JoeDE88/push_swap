@@ -61,4 +61,13 @@ void	push_swap(t_node **lst, int bench, int strategy);
 int		select_strategy(char *s);
 double	compute_disorder(t_node **stack);
 
+// operations
+void	swap(t_node **lst, char *op);
+void	push(t_node **dest, t_node **src, char *op);
+void	ss(t_node **lst_a, t_node **lst_b);
+void	rotate(t_node **lst, char *op);
+void	reverse_rotate(t_node **lst, char *op);
+void	rr(t_node **lst_a, t_node **lst_b);
+void	rrr(t_node **lst_a, t_node **lst_b);
+
 #endif
