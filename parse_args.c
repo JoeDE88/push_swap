@@ -32,7 +32,7 @@ void	fill_args(int ac, char **av, t_node **lst)
 		while (i < ac - 1)
 		{
 			num = ft_atoi(av[i]);
-			lst_addback(lst, lst_new(num));
+			lst_addback(lst, lst_new(num, i));
 			i++;
 		}
 	}

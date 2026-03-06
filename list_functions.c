@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_node	*lst_new(int num)
+t_node	*lst_new(int num, int i)
 {
 	t_node	*node;
 
@@ -20,6 +20,7 @@ t_node	*lst_new(int num)
 	if (node == NULL)
 		print_err();
 	node->value = num;
+	node->idx = i;
 	node->next = NULL;
 	return (node);
 }
@@ -49,22 +50,22 @@ void	fill_list_from_arr(t_node **lst, char **arr)
 	i = 0;
 	while (arr[i])
 	{
-		lst_addback(lst, lst_new(ft_atoi(arr[i])));
+		lst_addback(lst, lst_new(ft_atoi(arr[i]), i));
 		i++;
 	}
 }
 
-int	count_occurences(t_node **lst)
+int	count_nums(t_node **lst)
 {
 	t_node	*node;
-	int		occ;
+	int		nums;
 
 	node = *lst;
-	occ = 0;
+	nums = 0;
 	while (node)
 	{
-		occ++;
+		nums++;
 		node = node->next;
 	}
-	return (occ);
+	return (nums);
 }

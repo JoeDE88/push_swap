@@ -48,9 +48,9 @@ int		ft_strncmp(char *s1, char *s2, int n);
 
 // list
 void	lst_addback(t_node **lst, t_node *new);
-t_node	*lst_new(int num);
+t_node	*lst_new(int num, int i);
 void	fill_list_from_arr(t_node **lst, char **arr);
-int		count_occurences(t_node **lst);
+int		count_nums(t_node **lst);
 
 // free
 void	free_arr(char **arr);
@@ -69,5 +69,10 @@ void	rotate(t_node **lst, char *op);
 void	reverse_rotate(t_node **lst, char *op);
 void	rr(t_node **lst_a, t_node **lst_b);
 void	rrr(t_node **lst_a, t_node **lst_b);
+
+// algorithms
+void	simple_alg(t_node **stack, int nums, int bench);
+void	medium_alg(t_node **stack, int nums, int bench);
+void	complex_alg(t_node **stack, int nums, int bench);
 
 #endif

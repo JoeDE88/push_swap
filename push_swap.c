@@ -57,24 +57,27 @@ double	compute_disorder(t_node **stack)
 
 void	push_swap(t_node **stack_a, int bench, int strategy)
 {
+	int		nums;
 	double	disorder;
 
-	if (strategy == 2)
-	{
-		/* SIMPLE ALGORITHM O(n²) */
-	}
+	disorder = compute_disorder(stack_a);
+	if (disorder == 0)
+		return ;
+	nums = count_nums(stack_a);
+	/* if (strategy == 2)
+		simple_alg(stack_a, nums, bench);
 	if (strategy == 3)
-	{
-		/* MEDIUM ALGORITHM O(n√n) */
-	}
+		medium_alg(stack_a, nums, bench);
 	if (strategy == 4)
-	{
-		/* COMPLEX ALGORITHM O(nlogn) */
-	}
+		complex_alg(stack_a, nums, bench); */
 	if (strategy == 1 || strategy == 0)
 	{
-		/* DISORDER NEEDED ONLY IF --adaptive */
-		disorder = compute_disorder(stack_a);
+		//if (disorder < 0.2)
+			simple_alg(stack_a, nums, bench);
+		/* if (disorder >= 0.2 && disorder < 0.5)
+			medium_alg(stack_a, nums, bench);
+		else
+			complex_alg(stack_a, nums, bench); */
 	}
 }
 
@@ -96,6 +99,10 @@ int	main(int ac, char *av[])
 		fill_args(ac - bench, av + bench + 1, &stack_a);
 	check_repeated_or_unique(&stack_a);
 	if (stack_a)
+	{
+		t_node *head;
+		head = stack_a;
 		push_swap(&stack_a, bench, strategy);
+	}
 	return (0);
 }
