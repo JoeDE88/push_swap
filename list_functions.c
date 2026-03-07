@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 11:04:11 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/07 13:05:49 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/07 15:46:08 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	fill_list_from_arr(t_node **lst, char **arr)
 	}
 }
 
-<<<<<<< HEAD
 int	lstsize(t_node *lst)
 {
 	int count;
@@ -74,7 +73,6 @@ int	lstsize(t_node *lst)
 	}
 	return (count);
 }
-=======
 int	count_nums(t_node **lst)
 {
 	t_node	*node;
@@ -89,4 +87,3 @@ int	count_nums(t_node **lst)
 	}
 	return (nums);
 }
->>>>>>> main

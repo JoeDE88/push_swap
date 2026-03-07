@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 19:58:57 by gblas-he          #+#    #+#             */
-/*   Updated: 2026/03/07 13:05:53 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/07 15:42:40 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	push(t_node **dest, t_node **src)
 	*dest = tmp;
 }
 
-<<<<<<< HEAD
 void	pa(t_node **a, t_node **b)
 {
 	push(a, b);
@@ -70,11 +69,3 @@ void ss(t_node **a, t_node **b)
 	swap(b);
 	ft_putstr("ss\n");
 }
-=======
-void	ss(t_node **lst_a, t_node **lst_b)
-{
-	swap(lst_a, NULL);
-	swap(lst_b, NULL);
-	write(1, "ss\n", 3);
-}
->>>>>>> main

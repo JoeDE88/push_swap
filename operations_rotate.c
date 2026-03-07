@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 19:25:23 by gblas-he          #+#    #+#             */
-/*   Updated: 2026/03/07 13:05:50 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/07 15:40:33 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,7 @@ void	rev_rotate(t_node **lst)
 	*lst = last;
 }
 
-<<<<<<< HEAD
 void	rra(t_node **a)
-=======
-void	rr(t_node **lst_a, t_node **lst_b)
->>>>>>> main
 {
 	rev_rotate(a);
 	ft_putstr("rra\n");
@@ -73,7 +69,6 @@ void	rr(t_node **lst_a, t_node **lst_b)
 
 void	rrb(t_node **b)
 {
-<<<<<<< HEAD
 	rev_rotate(b);
 	ft_putstr("rrb\n");
 }
@@ -93,9 +88,3 @@ void	rrr(t_node **a, t_node **b)
 	rev_rotate(b);
 	ft_putstr("rrr\n");
 }
-=======
-	reverse_rotate(lst_a, NULL);
-	reverse_rotate(lst_b, NULL);
-	write(1, "rrr\n", 4);
-}
->>>>>>> main

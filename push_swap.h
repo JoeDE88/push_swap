@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:52:39 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/07 13:05:48 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/07 15:44:23 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,8 @@ void	ft_putstr(char *s);
 void	lst_addback(t_node **lst, t_node *new);
 t_node	*lst_new(int num, int i);
 void	fill_list_from_arr(t_node **lst, char **arr);
-<<<<<<< HEAD
-int	lstsize(t_node *lst);
-=======
+int		lstsize(t_node *lst);
 int		count_nums(t_node **lst);
->>>>>>> main
 
 // free
 void	free_arr(char **arr);
@@ -65,15 +62,6 @@ void	free_lst(t_node **lst);
 void	push_swap(t_node **lst, int bench, int strategy);
 int		select_strategy(char *s);
 double	compute_disorder(t_node **stack);
-
-// operations
-void	swap(t_node **lst, char *op);
-void	push(t_node **dest, t_node **src, char *op);
-void	ss(t_node **lst_a, t_node **lst_b);
-void	rotate(t_node **lst, char *op);
-void	reverse_rotate(t_node **lst, char *op);
-void	rr(t_node **lst_a, t_node **lst_b);
-void	rrr(t_node **lst_a, t_node **lst_b);
 
 // algorithms
 void	simple_alg(t_node **stack, int nums, int bench);
