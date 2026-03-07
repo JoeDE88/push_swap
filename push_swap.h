@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:52:39 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/04 17:46:46 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/07 13:05:48 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		check_repeated_or_unique(t_node **lst);
 size_t	ft_strlcpy(char *dst, char *src, size_t size);
 int		ft_atoi(char *s);
 int		ft_strncmp(char *s1, char *s2, int n);
+void	ft_putstr(char *s);
 
 // list
 void	lst_addback(t_node **lst, t_node *new);
@@ -62,13 +63,21 @@ void	push_swap(t_node **lst, int strategy);
 int		select_strategy(char *s);
 
 // operations
-void	swap(t_node **lst, char *op);
-void	push(t_node **dest, t_node **src, char *op);
-void ss(t_node **lst_a, t_node **lst_b);
-void	rotate(t_node **lst, char *op);
-void	reverse_rotate(t_node **lst, char *op);
-void	rr(t_node **lst_a, t_node **lst_b);
-void	rrr(t_node **lst_a, t_node **lst_b);
+void	swap(t_node **lst);
+void	sa(t_node **a);
+void	sb(t_node **b);
+void 	ss(t_node **a, t_node **b);
+void	push(t_node **dest, t_node **src);
+void	pa(t_node **a, t_node **b);
+void	pb(t_node **a, t_node **b);
+void	rotate(t_node **lst);
+void	ra(t_node **a);
+void	rb(t_node **b);
+void	rr(t_node **a, t_node **b);
+void	reverse_rotate(t_node **lst);
+void	rra(t_node **a);
+void	rrb(t_node **b);
+void	rrr(t_node **a, t_node **b);
 
 //algoritmo
 void	algorithm_simple(t_node **dst, t_node **src);

@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 13:41:38 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/03 17:28:38 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/07 13:05:52 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,16 @@ int	ft_strncmp(char *s1, char *s2, int n)
 	while (s1[i] && s1[i] == s2[i] && i < n - 1)
 		i++;
 	return (s1[i] - s2[i]);
+}
+
+void	ft_putstr(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
 }
