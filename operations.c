@@ -15,7 +15,7 @@
 // Intercambia los dos primeros elementos del stack
 void	swap(t_node **lst)
 {
-	t_node *tmp;
+	t_node	*tmp;
 
 	if (!lst || !(*lst)->next)
 		return ;
@@ -44,13 +44,13 @@ void	push(t_node **dest, t_node **src)
 
 	if (!*src)
 		return ;
-
 	tmp = *src;
 	*src = (*src)->next;
 	tmp->next = *dest;
 	*dest = tmp;
 }
 
+<<<<<<< HEAD
 void	pa(t_node **a, t_node **b)
 {
 	push(a, b);
@@ -70,3 +70,11 @@ void ss(t_node **a, t_node **b)
 	swap(b);
 	ft_putstr("ss\n");
 }
+=======
+void	ss(t_node **lst_a, t_node **lst_b)
+{
+	swap(lst_a, NULL);
+	swap(lst_b, NULL);
+	write(1, "ss\n", 3);
+}
+>>>>>>> main

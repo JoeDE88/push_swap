@@ -15,8 +15,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <limits.h>
+# include <stdio.h>
 
 typedef struct s_node
 {
@@ -27,8 +27,7 @@ typedef struct s_node
 
 // parse args
 void	fill_args(int ac, char **av, t_node **lst);
-int		check_params(char **av, int *bench);
-// int		parse_args(int ac, char **av, int *bench, int *args_count, int *strategy);
+void	check_params(char **av, int *bench, int *strategy);
 
 // safe split
 int		fill_arr(char **arr, char *str, char c);
@@ -40,7 +39,7 @@ char	**ft_split(char *str, char c);
 void	print_err(void);
 void	check_args(char **av, int ac);
 void	check_str(char *str);
-int		check_repeated_or_unique(t_node **lst);
+void	check_repeated_or_unique(t_node **lst);
 
 // utils
 size_t	ft_strlcpy(char *dst, char *src, size_t size);
@@ -50,17 +49,36 @@ void	ft_putstr(char *s);
 
 // list
 void	lst_addback(t_node **lst, t_node *new);
-t_node	*lst_new(int num);
+t_node	*lst_new(int num, int i);
 void	fill_list_from_arr(t_node **lst, char **arr);
+<<<<<<< HEAD
 int	lstsize(t_node *lst);
+=======
+int		count_nums(t_node **lst);
+>>>>>>> main
 
 // free
 void	free_arr(char **arr);
 void	free_lst(t_node **lst);
 
 // push swap
-void	push_swap(t_node **lst, int strategy);
+void	push_swap(t_node **lst, int bench, int strategy);
 int		select_strategy(char *s);
+double	compute_disorder(t_node **stack);
+
+// operations
+void	swap(t_node **lst, char *op);
+void	push(t_node **dest, t_node **src, char *op);
+void	ss(t_node **lst_a, t_node **lst_b);
+void	rotate(t_node **lst, char *op);
+void	reverse_rotate(t_node **lst, char *op);
+void	rr(t_node **lst_a, t_node **lst_b);
+void	rrr(t_node **lst_a, t_node **lst_b);
+
+// algorithms
+void	simple_alg(t_node **stack, int nums, int bench);
+void	medium_alg(t_node **stack, int nums, int bench);
+void	complex_alg(t_node **stack, int nums, int bench);
 
 // operations
 void	swap(t_node **lst);

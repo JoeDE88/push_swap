@@ -17,24 +17,69 @@ int	select_strategy(char *s)
 	int	i;
 
 	i = 2;
-	if (!ft_strncmp(s+i, "simple", 6))
-		return (1);
-	if (!ft_strncmp(s+i, "medium", 6))
+	if (!ft_strncmp(s + i, "simple", 6))
 		return (2);
-	if (!ft_strncmp(s+i, "complex", 7))
+	if (!ft_strncmp(s + i, "medium", 6))
 		return (3);
-	if (!ft_strncmp(s+i, "adaptive", 8))
-		return (0);
+	if (!ft_strncmp(s + i, "complex", 7))
+		return (4);
+	if (!ft_strncmp(s + i, "adaptive", 8))
+		return (1);
 	else
 		print_err();
 	return (0);
 }
 
-/* 	PUSH_SWAP
-void	push_swap(t_node **lst, int strategy)
+double	compute_disorder(t_node **stack)
 {
-};
-*/
+	double	mistakes;
+	double	total_pairs;
+	t_node	*i_node;
+	t_node	*j_node;
+
+	i_node = *stack;
+	mistakes = 0;
+	total_pairs = 0;
+	while (i_node != NULL && i_node->next != NULL)
+	{
+		j_node = i_node->next;
+		while (j_node != NULL)
+		{
+			total_pairs++;
+			if (i_node->value > j_node->value)
+				mistakes++;
+			j_node = j_node->next;
+		}
+		i_node = i_node->next;
+	}
+	return (mistakes / total_pairs);
+}
+
+void	push_swap(t_node **stack_a, int bench, int strategy)
+{
+	int		nums;
+	double	disorder;
+
+	disorder = compute_disorder(stack_a);
+	if (disorder == 0)
+		return ;
+	nums = count_nums(stack_a);
+	/* if (strategy == 2)
+		simple_alg(stack_a, nums, bench);
+	if (strategy == 3)
+		medium_alg(stack_a, nums, bench);
+	if (strategy == 4)
+		complex_alg(stack_a, nums, bench); */
+	if (strategy == 1 || strategy == 0)
+	{
+		//if (disorder < 0.2)
+			simple_alg(stack_a, nums, bench);
+		/* if (disorder >= 0.2 && disorder < 0.5)
+			medium_alg(stack_a, nums, bench);
+		else
+			complex_alg(stack_a, nums, bench); */
+	}
+}
 
 int	main(int ac, char *av[])
 {
@@ -44,21 +89,20 @@ int	main(int ac, char *av[])
 
 	stack_a = NULL;
 	bench = 0;
+	strategy = 0;
 	if (ac == 1)
-		return (1);
-	strategy = check_params(av, &bench);
-	if ((bench && !strategy) || (!bench && strategy))
-		fill_args(ac - 1, av + 2, &stack_a);
-	if (bench && strategy)
-		fill_args(ac - 2, av + 3, &stack_a);
-	if (check_repeated_or_unique(&stack_a))
-	{
-		free_lst(&stack_a);
-		print_err();
-	}
-	/* else
-		push_swap(&stack_a); */
+		return (0);
+	check_params(av, &bench, &strategy);
+	if (strategy)
+		fill_args(ac - bench - 1, av + bench + 2, &stack_a);
+	else
+		fill_args(ac - bench, av + bench + 1, &stack_a);
+	check_repeated_or_unique(&stack_a);
 	if (stack_a)
-		printf("OK");
+	{
+		t_node *head;
+		head = stack_a;
+		push_swap(&stack_a, bench, strategy);
+	}
 	return (0);
 }

@@ -44,7 +44,7 @@ void	check_args(char **av, int ac)
 	}
 }
 
-int	check_repeated_or_unique(t_node **lst)
+void	check_repeated_or_unique(t_node **lst)
 {
 	t_node	*i_node;
 	t_node	*j_node;
@@ -58,13 +58,15 @@ int	check_repeated_or_unique(t_node **lst)
 		while (j_node != NULL)
 		{
 			if (j_node->value == i_node->value)
-				return (1);
+			{
+				free_lst(lst);
+				print_err();
+			}
 			j_node = j_node->next;
 		}
 		i_node = i_node->next;
 		i++;
 	}
 	if (!i)
-		return (1);
-	return (0);
+		free_lst(lst);
 }

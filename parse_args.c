@@ -18,7 +18,7 @@ void	fill_args(int ac, char **av, t_node **lst)
 	int		num;
 	int		i;
 
-	i = 1;
+	i = 0;
 	if (ac == 2)
 	{
 		check_str(*(av));
@@ -32,28 +32,25 @@ void	fill_args(int ac, char **av, t_node **lst)
 		while (i < ac - 1)
 		{
 			num = ft_atoi(av[i]);
-			lst_addback(lst, lst_new(num));
+			lst_addback(lst, lst_new(num, i));
 			i++;
 		}
 	}
 }
 
-int	check_params(char **av, int *bench)
+void	check_params(char **av, int *bench, int *strategy)
 {
 	int	i;
-	int	strategy;
 
 	i = 1;
-	strategy = 0;
 	if (!ft_strncmp(av[i], "--", 2))
 	{
 		if (!ft_strncmp(av[i], "--bench", 7))
 		{
 			*bench = 1;
-			i +=1;
+			i += 1;
 		}
 		if (!ft_strncmp(av[i], "--", 2))
-			strategy = select_strategy(av[i]);		
+			*strategy = select_strategy(av[i]);
 	}
-	return (strategy);
 }
