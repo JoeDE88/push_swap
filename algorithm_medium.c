@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm_complex.c                                :+:      :+:    :+:   */
+/*   algorithm_medium.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/07 15:11:02 by gblas-he          #+#    #+#             */
-/*   Updated: 2026/03/07 17:01:47 by gblas-he         ###   ########.fr       */
+/*   Created: 2026/03/07 17:19:35 by gblas-he          #+#    #+#             */
+/*   Updated: 2026/03/07 18:33:07 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	radix_sort(t_node **a, t_node **b)
+void	chunks_sort(t_node **a, t_node **b)
 {
 }

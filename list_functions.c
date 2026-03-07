@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 11:04:11 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/07 15:46:08 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/07 19:30:55 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	fill_list_from_arr(t_node **lst, char **arr)
 
 int	lstsize(t_node *lst)
 {
-	int count;
-	t_node *current_node;
+	int		count;
+	t_node	*current_node;
 
 	if (!lst)
 		print_err();

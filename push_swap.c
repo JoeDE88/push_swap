@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdiaz-ec <jdiaz-ec@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:52:04 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/02/26 16:24:16 by jdiaz-ec         ###   ########.fr       */
+/*   Updated: 2026/03/07 19:54:59 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,6 @@ int	select_strategy(char *s)
 	return (0);
 }
 
-double	compute_disorder(t_node **stack)
-{
-	double	mistakes;
-	double	total_pairs;
-	t_node	*i_node;
-	t_node	*j_node;
-
-	i_node = *stack;
-	mistakes = 0;
-	total_pairs = 0;
-	while (i_node != NULL && i_node->next != NULL)
-	{
-		j_node = i_node->next;
-		while (j_node != NULL)
-		{
-			total_pairs++;
-			if (i_node->value > j_node->value)
-				mistakes++;
-			j_node = j_node->next;
-		}
-		i_node = i_node->next;
-	}
-	return (mistakes / total_pairs);
-}
-
 void	push_swap(t_node **stack_a, int bench, int strategy)
 {
 	int		nums;
@@ -72,8 +47,8 @@ void	push_swap(t_node **stack_a, int bench, int strategy)
 		complex_alg(stack_a, nums, bench); */
 	if (strategy == 1 || strategy == 0)
 	{
-		//if (disorder < 0.2)
-			simple_alg(stack_a, nums, bench);
+		// if (disorder < 0.2)
+		simple_alg(stack_a, nums, bench);
 		/* if (disorder >= 0.2 && disorder < 0.5)
 			medium_alg(stack_a, nums, bench);
 		else
@@ -86,6 +61,7 @@ int	main(int ac, char *av[])
 	t_node	*stack_a;
 	int		bench;
 	int		strategy;
+	t_node	*head;
 
 	stack_a = NULL;
 	bench = 0;
@@ -100,8 +76,8 @@ int	main(int ac, char *av[])
 	check_repeated_or_unique(&stack_a);
 	if (stack_a)
 	{
-		t_node *head;
 		head = stack_a;
+		index_list(&stack_a);
 		push_swap(&stack_a, bench, strategy);
 	}
 	return (0);

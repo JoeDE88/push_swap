@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 13:41:38 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/07 13:05:52 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/07 16:56:14 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,13 @@ int	ft_atoi(char *s)
 
 int	ft_strncmp(char *s1, char *s2, int n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s1[i] && s1[i] == s2[i] && i < n - 1)
 		i++;
 	return (s1[i] - s2[i]);
 }
-<<<<<<< HEAD
 
 void	ft_putstr(char *s)
 {
@@ -81,5 +80,3 @@ void	ft_putstr(char *s)
 		i++;
 	}
 }
-=======
->>>>>>> main
