@@ -12,6 +12,6 @@
 
 #include "push_swap.h"
 
-void	chunks_sort(t_node **a, t_node **b)
+/* void	chunks_sort(t_node **a, t_node **b)
 {
-}
+} */

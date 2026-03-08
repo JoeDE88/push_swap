@@ -86,6 +86,6 @@ void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
 
 //algoritmo
-void	algorithm_simple(t_node **dst, t_node **src);
+void	selection_sort(t_node **a, t_node **b);
 
 #endif

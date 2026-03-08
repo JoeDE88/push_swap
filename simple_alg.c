@@ -22,18 +22,16 @@ void	simple_alg(t_node **stack, int nums, int bench)
 	if (nums <= 3)
 	{
 		if (node->value > next->value && next->value < next->next->value)
-			rotate(&node, "ra\n");
+			ra(&node);
 		if (node->value > next->value && next->value > next->next->value)
 		{
-			rotate(&node, "ra\n");
-			swap(&node, "sa\n");
+			ra(&node);
+			sa(&node);
 		}
 		if (node->value < next->value && next->value > next->next->value)
-			reverse_rotate(&node, "rra\n");
+			rra(&node);
 	}
 	else
-	{
-		/* SIMPLE SORT ALGORITHM */
-	}
-	bench = 0;
+		selection_sort(stack, NULL);
+	printf("bench %d\n", bench);
 }

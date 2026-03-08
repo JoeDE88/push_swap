@@ -54,6 +54,7 @@ void	push_swap(t_node **stack_a, int bench, int strategy)
 		else
 			complex_alg(stack_a, nums, bench); */
 	}
+	printf("bench: %d\n", bench);
 }
 
 int	main(int ac, char *av[])
@@ -61,7 +62,6 @@ int	main(int ac, char *av[])
 	t_node	*stack_a;
 	int		bench;
 	int		strategy;
-	t_node	*head;
 
 	stack_a = NULL;
 	bench = 0;
@@ -76,8 +76,7 @@ int	main(int ac, char *av[])
 	check_repeated_or_unique(&stack_a);
 	if (stack_a)
 	{
-		head = stack_a;
-		index_list(&stack_a);
+		//index_list(&stack_a);
 		push_swap(&stack_a, bench, strategy);
 	}
 	return (0);
