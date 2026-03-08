@@ -6,13 +6,14 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 19:58:57 by gblas-he          #+#    #+#             */
-/*   Updated: 2026/03/02 20:09:10 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/07 15:42:40 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_node **lst, char *op)
+// Intercambia los dos primeros elementos del stack
+void	swap(t_node **lst)
 {
 	t_node	*tmp;
 
@@ -22,11 +23,22 @@ void	swap(t_node **lst, char *op)
 	*lst = (*lst)->next;
 	tmp->next = (*lst)->next;
 	(*lst)->next = tmp;
-	if (op)
-		write(1, op, 3);
 }
 
-void	push(t_node **dest, t_node **src, char *op)
+void	sa(t_node **a)
+{
+	swap(a);
+	ft_putstr("sa\n");
+}
+
+void	sb(t_node **b)
+{
+	swap(b);
+	ft_putstr("sb\n");
+}
+
+// Toma el primer elemento del 1º stack y lo coloca el primero en el 2º stack
+void	push(t_node **dest, t_node **src)
 {
 	t_node	*tmp;
 
@@ -36,13 +48,24 @@ void	push(t_node **dest, t_node **src, char *op)
 	*src = (*src)->next;
 	tmp->next = *dest;
 	*dest = tmp;
-	if (op)
-		write(1, op, 3);
 }
 
-void	ss(t_node **lst_a, t_node **lst_b)
+void	pa(t_node **a, t_node **b)
 {
-	swap(lst_a, NULL);
-	swap(lst_b, NULL);
-	write(1, "ss\n", 3);
+	push(a, b);
+	ft_putstr("pa\n");
+}
+
+void	pb(t_node **a, t_node **b)
+{
+	push(b, a);
+	ft_putstr("pb\n");
+}
+
+// Intercambia los dos primeros elementos de ambos stacks a la vez
+void ss(t_node **a, t_node **b)
+{
+	swap(a);
+	swap(b);
+	ft_putstr("ss\n");
 }

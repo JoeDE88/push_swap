@@ -6,13 +6,14 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 19:25:23 by gblas-he          #+#    #+#             */
-/*   Updated: 2026/03/02 19:56:01 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/07 15:40:33 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate(t_node **lst, char *op)
+//Desplaza hacia arriba todos los elementos del stack a una posición
+void	rotate(t_node **lst)
 {
 	t_node	*first;
 	t_node	*last;
@@ -26,11 +27,22 @@ void	rotate(t_node **lst, char *op)
 	*lst = first->next;
 	first->next = NULL;
 	last->next = first;
-	if (op)
-		write(1, op, 3);
 }
 
-void	reverse_rotate(t_node **lst, char *op)
+void	ra(t_node **a)
+{
+	rotate(a);
+	ft_putstr("ra\n");
+}
+
+void	rb(t_node **b)
+{
+	rotate(b);
+	ft_putstr("rb\n");
+}
+
+//Desplaza hacia abajo todos los elementos del stack a una posición
+void	rev_rotate(t_node **lst)
 {
 	t_node	*last;
 	t_node	*second_last;
@@ -47,20 +59,32 @@ void	reverse_rotate(t_node **lst, char *op)
 	second_last->next = NULL;
 	last->next = *lst;
 	*lst = last;
-	if (op)
-		write(1, op, 4);
 }
 
-void	rr(t_node **lst_a, t_node **lst_b)
+void	rra(t_node **a)
 {
-	rotate(lst_a, NULL);
-	rotate(lst_b, NULL);
-	write(1, "rr\n", 3);
+	rev_rotate(a);
+	ft_putstr("rra\n");
 }
 
-void	rrr(t_node **lst_a, t_node **lst_b)
+void	rrb(t_node **b)
 {
-	reverse_rotate(lst_a, NULL);
-	reverse_rotate(lst_b, NULL);
-	write(1, "rrr\n", 4);
+	rev_rotate(b);
+	ft_putstr("rrb\n");
+}
+
+// Desplaza hacia arriba todos los elementos de ambos stacks a una posición a la vez
+void	rr(t_node **a, t_node **b)
+{
+	rotate(a);
+	rotate(b);
+	ft_putstr("rr\n");
+}
+
+//Desplaza hacia abajo todos los elementos de ambos stacks a una posición a la vez
+void	rrr(t_node **a, t_node **b)
+{
+	rev_rotate(a);
+	rev_rotate(b);
+	ft_putstr("rrr\n");
 }
