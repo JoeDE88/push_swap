@@ -37,6 +37,6 @@ double	compute_disorder(t_node **stack)
 	return (mistakes / total_pairs);
 }
 
-void	index_list(t_node a)
+/* void	index_list(t_node a)
 {
-}
+} */

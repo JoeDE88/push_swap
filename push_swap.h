@@ -87,5 +87,5 @@ void	rrr(t_node **a, t_node **b);
 
 //algoritmo
 void	selection_sort(t_node **a, t_node **b);
-t_node *s_min_node(t_node *a, int *min_pos, int *size);
+
 #endif
