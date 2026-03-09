@@ -32,22 +32,13 @@ void	rotate(t_node **lst)
 void	ra(t_node **a, int bench)
 {
 	rotate(a);
-	if (bench)
-	{
-		//printf("bench: %d\n", bench);
-		ft_putstr("ra\n", 2);
-	}
-	else
-		ft_putstr("ra\n", 1);
+	ft_putstr("ra\n");
 }
 
 void	rb(t_node **b, int bench)
 {
 	rotate(b);
-	if (bench)
-		ft_putstr("rb\n", 2);
-	else
-		ft_putstr("rb\n", 1);
+	ft_putstr("rb\n");
 }
 
 //Desplaza hacia abajo todos los elementos del stack a una posición
@@ -73,19 +64,13 @@ void	rev_rotate(t_node **lst)
 void	rra(t_node **a, int bench)
 {
 	rev_rotate(a);
-	if (bench)
-		ft_putstr("rra\n", 2);
-	else
-		ft_putstr("rra\n", 1);
+	ft_putstr("rra\n");
 }
 
 void	rrb(t_node **b, int bench)
 {
 	rev_rotate(b);
-	if (bench)
-		ft_putstr("rrb\n", 2);
-	else
-		ft_putstr("rrb\n", 1);
+	ft_putstr("rrb\n");
 }
 
 // Desplaza hacia arriba todos los elementos de ambos stacks a una posición a la vez
@@ -93,10 +78,7 @@ void	rr(t_node **a, t_node **b, int bench)
 {
 	rotate(a);
 	rotate(b);
-	if (bench)
-		ft_putstr("rr\n", 2);
-	else
-		ft_putstr("rr\n", 1);
+	ft_putstr("rr\n");
 }
 
 //Desplaza hacia abajo todos los elementos de ambos stacks a una posición a la vez
@@ -104,8 +86,5 @@ void	rrr(t_node **a, t_node **b, int bench)
 {
 	rev_rotate(a);
 	rev_rotate(b);
-	if (bench)
-		ft_putstr("rrr\n", 2);
-	else
-		ft_putstr("rrr\n", 1);
+	ft_putstr("rrr\n");
 }
