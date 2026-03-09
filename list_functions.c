@@ -44,6 +44,11 @@ void	lst_addback(t_node **lst, t_node *new)
 		last->next = new;
 	}
 }
+void	lst_addfront(t_node **lst, t_node *new)
+{
+	new->next = *lst;
+	*lst = new;
+}
 
 void	fill_list_from_arr(t_node **lst, char **arr)
 {
@@ -57,7 +62,7 @@ void	fill_list_from_arr(t_node **lst, char **arr)
 	}
 }
 
-int	lstsize(t_node *lst)
+int	lst_size(t_node *lst)
 {
 	int		count;
 	t_node	*current_node;
@@ -73,17 +78,4 @@ int	lstsize(t_node *lst)
 	}
 	return (count);
 }
-int	count_nums(t_node **lst)
-{
-	t_node	*node;
-	int		nums;
 
-	node = *lst;
-	nums = 0;
-	while (node)
-	{
-		nums++;
-		node = node->next;
-	}
-	return (nums);
-}

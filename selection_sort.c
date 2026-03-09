@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	selection_sort(t_node **a, t_node **b)
+void	selection_sort(t_node **a, t_node **b, int bench)
 {
     t_node *min;
     t_node *tmp;
@@ -35,18 +35,37 @@ void	selection_sort(t_node **a, t_node **b)
             tmp = tmp->next;
             i++;
         }
+
         if (min_pos <= i / 2)
         {
             while ((*a)->value != min->value)
-                ra(a);
+            {
+                if (bench)
+                    ra(a, 2);
+                else
+                    ra(a, 1);
+            }
         }
         else
         {
             while ((*a)->value != min->value)
-                rra(a);
+            {
+                if (bench)
+                    rra(a, 2);
+                else
+                    rra(a, 1);
+            }
         }
-        pb(a, b);
+        if (bench)
+            pb(a, b, 2);
+        else
+            pb(a, b, 1);
     }
     while (*b)
-        pa(a, b);
+    {
+        if (bench)
+            pa(a, b, 2);
+        else
+           pa(a, b, 1);
+    }
 }
