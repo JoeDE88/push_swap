@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:52:39 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/09 15:40:31 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/09 18:20:28 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ void	rrb(t_node **b, int bench);
 void	rrr(t_node **a, t_node **b, int bench);
 
 //algoritmo
-void	selection_sort(t_node **a, t_node **b, int bench);
+void	selection_sort(t_node **a, t_node **b);
 
 #endif
