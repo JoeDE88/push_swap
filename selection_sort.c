@@ -1,51 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm_simple.c                                 :+:      :+:    :+:   */
+/*   selection_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 17:36:22 by gblas-he          #+#    #+#             */
-/*   Updated: 2026/03/07 15:47:37 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/09 15:56:53 by jdiaz-ec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Buscar el mínimo
+t_node *s_min_node(t_node *a, int *min_pos, int *size)
+{
+	t_node *min;
+
+	while (a)
+	{
+		min = a;
+		min_pos = 0;
+		size = 0;
+		while (a)
+		{
+			if(a->value < min->value)
+			{
+				min = a;
+				min_pos = size;
+			}
+			a = a->next;
+			size++;
+		}
+	}
+	return (min);
+}
+
 void	selection_sort(t_node **a, t_node **b)
 {
     t_node *min;
-    t_node *tmp;
     int min_pos;
-    int i;
+    int size;
 
-    while (*a)
-    {
-        min = *a;
-        tmp = *a;
-        min_pos = 0;
-        i = 0;
-        while (tmp)
-        {
-            if (tmp->value < min->value)
-            {
-                min = tmp;
-                min_pos = i;
-            }
-            tmp = tmp->next;
-            i++;
-        }
-        if (min_pos <= i / 2)
-        {
-            while ((*a)->value != min->value)
-                ra(a);
-        }
-        else
-        {
-            while ((*a)->value != min->value)
-                rra(a);
-        }
-        pb(a, b);
+	while (*a)
+	{
+		min = s_min_node(*a, &min_pos, &size);
+		if (min_pos <= size / 2)
+		{
+			while ((*a)->value != min->value)
+				ra(a);
+		}
+		else
+		{
+			while ((*a)->value != min->value)
+				rra(a);
+		}
+		pb(a, b);
     }
     while (*b)
         pa(a, b);
