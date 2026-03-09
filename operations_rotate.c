@@ -29,13 +29,13 @@ void	rotate(t_node **lst)
 	last->next = first;
 }
 
-void	ra(t_node **a, int bench)
+void	ra(t_node **a)
 {
 	rotate(a);
 	ft_putstr("ra\n");
 }
 
-void	rb(t_node **b, int bench)
+void	rb(t_node **b)
 {
 	rotate(b);
 	ft_putstr("rb\n");
@@ -61,20 +61,20 @@ void	rev_rotate(t_node **lst)
 	*lst = last;
 }
 
-void	rra(t_node **a, int bench)
+void	rra(t_node **a)
 {
 	rev_rotate(a);
 	ft_putstr("rra\n");
 }
 
-void	rrb(t_node **b, int bench)
+void	rrb(t_node **b)
 {
 	rev_rotate(b);
 	ft_putstr("rrb\n");
 }
 
 // Desplaza hacia arriba todos los elementos de ambos stacks a una posición a la vez
-void	rr(t_node **a, t_node **b, int bench)
+void	rr(t_node **a, t_node **b)
 {
 	rotate(a);
 	rotate(b);
@@ -82,7 +82,7 @@ void	rr(t_node **a, t_node **b, int bench)
 }
 
 //Desplaza hacia abajo todos los elementos de ambos stacks a una posición a la vez
-void	rrr(t_node **a, t_node **b, int bench)
+void	rrr(t_node **a, t_node **b)
 {
 	rev_rotate(a);
 	rev_rotate(b);

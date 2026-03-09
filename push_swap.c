@@ -45,6 +45,7 @@ void	push_swap(t_node **stack_a, int bench, int strategy)
 		medium_alg(stack_a, nums, bench);
 	if (strategy == 4)
 		complex_alg(stack_a, nums, bench); */
+	printf("size: %d\n", nums);
 	if (strategy == 1 || strategy == 0)
 	{
 		// if (disorder < 0.2)

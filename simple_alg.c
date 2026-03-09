@@ -23,15 +23,16 @@ void	simple_alg(t_node **stack_a, int nums, int bench)
 	if (nums <= 3)
 	{
 		if (node->value > next->value && next->value < next->next->value)
-			ra(&node, bench);
+			ra(&node);
 		if (node->value > next->value && next->value > next->next->value)
 		{
-			ra(&node, bench);
-			sa(&node, bench);
+			ra(&node);
+			sa(&node);
 		}
 		if (node->value < next->value && next->value > next->next->value)
-			rra(&node, bench);
+			rra(&node);
 	}
 	else
-		selection_sort(stack_a, &stack_b, bench);
+		selection_sort(stack_a, &stack_b);
+	bench = 0;
 }
