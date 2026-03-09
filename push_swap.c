@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:52:04 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/09 15:40:43 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/09 18:09:20 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	main(int ac, char *av[])
 	if (stack_a)
 	{
 		head = stack_a;
-		index_list(&stack_a);
+		// index_list(&stack_a);
 		push_swap(&stack_a, bench, strategy);
 	}
 	return (0);
