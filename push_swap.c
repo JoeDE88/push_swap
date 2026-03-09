@@ -32,24 +32,21 @@ int	select_strategy(char *s)
 
 void	push_swap(t_node **stack_a, int bench, int strategy)
 {
-	int		nums;
 	double	disorder;
 
 	disorder = compute_disorder(stack_a);
 	if (disorder == 0)
 		return ;
-	nums = lst_size(*stack_a);
 	/* if (strategy == 2)
 		simple_alg(stack_a, nums, bench);
 	if (strategy == 3)
 		medium_alg(stack_a, nums, bench);
 	if (strategy == 4)
 		complex_alg(stack_a, nums, bench); */
-	printf("size: %d\n", nums);
 	if (strategy == 1 || strategy == 0)
 	{
-		// if (disorder < 0.2)
-		simple_alg(stack_a, nums, bench);
+		if (disorder < 0.2)
+			simple_alg(stack_a, bench);
 		/* if (disorder >= 0.2 && disorder < 0.5)
 			medium_alg(stack_a, nums, bench);
 		else

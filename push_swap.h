@@ -63,9 +63,9 @@ int		select_strategy(char *s);
 double	compute_disorder(t_node **stack);
 
 // algorithms
-void	simple_alg(t_node **stack_a, int nums, int bench);
-void	medium_alg(t_node **stack_a, int nums, int bench);
-void	complex_alg(t_node **stack_a, int nums, int bench);
+void	simple_alg(t_node **stack_a, int bench);
+void	medium_alg(t_node **stack_a, int bench);
+void	complex_alg(t_node **stack_a, int bench);
 
 // operations
 void	swap(t_node **lst);
@@ -84,7 +84,8 @@ void	rra(t_node **a);
 void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
 
-//algoritmo
+//algoritmos
+void	sort_three(t_node **stack, int bench);
 void	selection_sort(t_node **a, t_node **b);
 
 #endif
