@@ -6,13 +6,13 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 11:04:11 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/07 19:30:55 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/09 15:42:37 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*lst_new(int num, int i)
+t_node	*lst_new(int num)
 {
 	t_node	*node;
 
@@ -20,28 +20,28 @@ t_node	*lst_new(int num, int i)
 	if (node == NULL)
 		print_err();
 	node->value = num;
-	node->idx = i;
+	node->idx = 0;
 	node->next = NULL;
 	return (node);
 }
 
-void	lst_addback(t_node **lst, t_node *new)
+void	lst_addback(t_node **lst, t_node *new_node)
 {
 	t_node	*last;
 
-	if (!new || !lst)
+	if (!new_node || !lst)
 		print_err();
 	last = *lst;
 	if (*lst == NULL)
 	{
-		*lst = new;
+		*lst = new_node;
 		return ;
 	}
-	if (lst && new)
+	if (lst && new_node)
 	{
 		while (last->next != NULL)
 			last = last->next;
-		last->next = new;
+		last->next = new_node;
 	}
 }
 
@@ -52,7 +52,7 @@ void	fill_list_from_arr(t_node **lst, char **arr)
 	i = 0;
 	while (arr[i])
 	{
-		lst_addback(lst, lst_new(ft_atoi(arr[i]), i));
+		lst_addback(lst, lst_new(ft_atoi(arr[i])));
 		i++;
 	}
 }
