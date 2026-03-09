@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:52:39 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/07 15:44:23 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/09 15:40:31 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int		ft_strncmp(char *s1, char *s2, int n);
 void	ft_putstr(char *s, int fd);
 
 // list
-void	lst_addback(t_node **lst, t_node *new);
-t_node	*lst_new(int num, int i);
+void	lst_addback(t_node **lst, t_node *new_node);
+t_node	*lst_new(int num);
 void	fill_list_from_arr(t_node **lst, char **arr);
 int		lst_size(t_node *lst);
 
