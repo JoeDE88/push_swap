@@ -12,26 +12,26 @@
 
 #include "push_swap.h"
 
-void	simple_alg(t_node **stack, int nums, int bench)
+void	simple_alg(t_node **stack_a, int nums, int bench)
 {
 	t_node	*node;
 	t_node	*next;
+	t_node	*stack_b;
 
-	node = *stack;
+	node = *stack_a;
 	next = node->next;
 	if (nums <= 3)
 	{
 		if (node->value > next->value && next->value < next->next->value)
-			ra(&node);
+			ra(&node, bench);
 		if (node->value > next->value && next->value > next->next->value)
 		{
-			ra(&node);
-			sa(&node);
+			ra(&node, bench);
+			sa(&node, bench);
 		}
 		if (node->value < next->value && next->value > next->next->value)
-			rra(&node);
+			rra(&node, bench);
 	}
 	else
-		selection_sort(stack, NULL);
-	printf("bench %d\n", bench);
+		selection_sort(stack_a, &stack_b, bench);
 }
