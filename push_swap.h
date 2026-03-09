@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:52:39 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/07 15:44:23 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/09 13:46:28 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,6 @@ void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
 
 //algoritmo
-void	algorithm_simple(t_node **dst, t_node **src);
-
+void	selection_sort(t_node **a, t_node **b);
+t_node *s_min_node(t_node *a, int *min_pos, int *size);
 #endif

@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:52:04 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/07 19:54:59 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/09 13:42:14 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,42 @@ int	main(int ac, char *av[])
 		push_swap(&stack_a, bench, strategy);
 	}
 	return (0);
+
+	//pruebas gblas
+	t_node	*node1;
+	t_node	*node2;
+	t_node	*node3;
+	t_node	*node4;
+	t_node	*a;
+	t_node	*b;
+	t_node	*tmp;
+	int		size;
+
+	size = 0;
+	a = NULL;
+	b = NULL;
+	node1 = lst_new(6);
+	node2 = lst_new(2);
+	node3 = lst_new(8);
+	node4 = lst_new(1);
+	lst_addback(&a, node1);
+	lst_addback(&a, node2);
+	lst_addback(&a, node3);
+	lst_addback(&a, node4);
+	lst_addback(&a, lst_new(6));
+	tmp = a;
+	while (tmp)
+	{
+		printf("%d", tmp->value);
+		tmp = tmp->next;
+	}
+	size = lstsize(a);
+	printf("\n%d\n", size);
+	selection_sort(&a, &b);
+	tmp = a;
+	while (tmp)
+	{
+		printf("%d", tmp->value);
+		tmp = tmp->next;
+	}
 }
