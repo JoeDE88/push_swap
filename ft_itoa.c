@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-static int	ft_countdigits(long n);
 static char	*ft_malloc(int n);
 static void	ft_fill(char *s, int digits, long nbr);
 

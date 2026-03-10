@@ -28,7 +28,7 @@ void	simple_alg(t_node **stack_a, int bench, b_node *bench_ptr)
 	else if (nums == 3)
 		sort_three(stack_a, bench, bench_ptr);	
 	else
-		selection_sort(stack_a, &stack_b);
+		selection_sort(stack_a, &stack_b, bench, bench_ptr);
 }
 
 void	sort_three(t_node **stack, int bench, b_node *bench_ptr)
@@ -39,12 +39,12 @@ void	sort_three(t_node **stack, int bench, b_node *bench_ptr)
 	node = *stack;
 	next = node->next;
 	if (node->value > next->value && next->value < next->next->value)
-		ra(&node);
+		ra(&node, bench, bench_ptr);
 	if (node->value > next->value && next->value > next->next->value)
 	{
-		ra(&node);
+		ra(&node, bench, bench_ptr);
 		sa(&node, bench, bench_ptr);
 	}
 	if (node->value < next->value && next->value > next->next->value)
-		rra(&node);
+		rra(&node, bench, bench_ptr);
 }

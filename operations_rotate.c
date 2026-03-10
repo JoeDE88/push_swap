@@ -29,10 +29,13 @@ void	rotate(t_node **lst)
 	last->next = first;
 }
 
-void	ra(t_node **a)
+void	ra(t_node **a, int bench, b_node *bench_ptr)
 {
 	rotate(a);
-	ft_putstr("ra\n", 1);
+	if (!bench)
+		ft_putstr("ra\n", 1);
+	else
+		bench_ptr->ra += 1;
 }
 
 void	rb(t_node **b)
@@ -61,10 +64,13 @@ void	rev_rotate(t_node **lst)
 	*lst = last;
 }
 
-void	rra(t_node **a)
+void	rra(t_node **a, int bench, b_node *bench_ptr)
 {
 	rev_rotate(a);
-	ft_putstr("rra\n", 1);
+	if (!bench)
+		ft_putstr("rra\n", 1);
+	else
+		bench_ptr->rra += 1;
 }
 
 void	rrb(t_node **b)

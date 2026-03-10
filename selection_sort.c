@@ -36,7 +36,7 @@ t_node	*s_min_node(t_node *a, int *min_pos, int *size)
 	return (min);
 }
 
-void	selection_sort(t_node **a, t_node **b)
+void	selection_sort(t_node **a, t_node **b, int bench, b_node *bench_ptr)
 {
 	t_node	*min;
 	int		min_pos;
@@ -48,12 +48,12 @@ void	selection_sort(t_node **a, t_node **b)
 		if (min_pos <= size / 2)
 		{
 			while ((*a)->value != min->value)
-				ra(a);
+				ra(a, bench, bench_ptr);
 		}
 		else
 		{
 			while ((*a)->value != min->value)
-				rra(a);
+				rra(a, bench, bench_ptr);
 		}
 		pb(a, b);
 	}

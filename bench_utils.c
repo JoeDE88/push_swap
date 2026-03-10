@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 
+
 b_node *init_bench(void)
 {
 	b_node *bench_ptr;
@@ -34,11 +35,12 @@ b_node *init_bench(void)
 	return (bench_ptr);
 }
 
-void	print_bench(b_node *bench)
+void	print_bench(b_node *bench, double *disorder)
 {
-	char *s;
+	char	*s;
 
-	write(2, "[bench] disorder: ", 18);
+	s = ft_itoa(*(int*)disorder);
+	write(2, s, ft_strlen(s));
 	s = ft_itoa(bench->sa);
 	write(2, "sa: ", 4);
 	write(2, s, ft_strlen(s));

@@ -12,12 +12,15 @@
 
 #include "push_swap.h"
 
-void	push_swap(t_node **stack_a, int bench, int strategy, b_node *bench_ptr)
+void	push_swap(t_node **stack_a, int bench, int strategy)
 {
 	double	disorder;
+	b_node	*bench_ptr;
 
+	bench_ptr = NULL;
 	disorder = compute_disorder(stack_a);
-	
+	if (bench)
+		bench_ptr = init_bench();
 	if (disorder == 0)
 		return ;
 	if (strategy == 2)
@@ -35,6 +38,7 @@ void	push_swap(t_node **stack_a, int bench, int strategy, b_node *bench_ptr)
 		else
 			complex_alg(stack_a, nums, bench); */
 	}
+	print_bench(bench_ptr, &disorder);
 }
 
 int	main(int ac, char *av[])
@@ -42,17 +46,15 @@ int	main(int ac, char *av[])
 	t_node	*stack_a;
 	int		bench;
 	int		strategy;
-	b_node	*bench_ptr;
+	
 
 	stack_a = NULL;
-	bench_ptr = NULL;
 	bench = 0;
 	strategy = 0;
 	if (ac == 1)
 		return (0);
 	check_params(av, 1, &bench, &strategy);
-	if (bench)
-		bench_ptr = init_bench();
+
 	if (strategy)
 		fill_args(ac - bench - 1, av + bench + 2, &stack_a);
 	else
@@ -61,8 +63,7 @@ int	main(int ac, char *av[])
 	if (stack_a)
 	{
 		// index_list(&stack_a);
-		push_swap(&stack_a, bench, strategy, bench_ptr);
-		//print_bench(bench_ptr);
+		push_swap(&stack_a, bench, strategy);
 	}
 	return (0);
 }
