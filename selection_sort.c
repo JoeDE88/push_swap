@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 17:36:22 by gblas-he          #+#    #+#             */
-/*   Updated: 2026/03/09 18:19:28 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/10 12:28:38 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ t_node	*s_min_node(t_node *a, int *min_pos, int *size)
 	while (a)
 	{
 		min = a;
-		min_pos = 0;
-		size = 0;
+		*min_pos = 0;
+		*size = 0;
 		while (a)
 		{
 			if (a->value < min->value)
 			{
 				min = a;
-				min_pos = size;
+				*min_pos = *size;
 			}
 			a = a->next;
-			size++;
+			(*size)++;
 		}
 	}
 	return (min);

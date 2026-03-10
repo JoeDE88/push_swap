@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_alg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdiaz-ec <jdiaz-ec@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 13:54:33 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/06 13:54:46 by jdiaz-ec         ###   ########.fr       */
+/*   Updated: 2026/03/10 12:31:53 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	simple_alg(t_node **stack_a, int bench)
 		selection_sort(stack_a, &stack_b);
 }
 
-void	sort_three(t_node **stack, int bench)
+void	sort_three(t_node **stack, __attribute__((unused)) int bench)
 {
 	t_node	*node;
 	t_node	*next;
