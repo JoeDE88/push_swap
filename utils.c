@@ -12,6 +12,16 @@
 
 #include "push_swap.h"
 
+size_t	ft_strlen(char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}
+
 size_t	ft_strlcpy(char *dst, char *src, size_t size)
 {
 	size_t	i;
@@ -69,14 +79,15 @@ int	ft_strncmp(char *s1, char *s2, int n)
 	return (s1[i] - s2[i]);
 }
 
-void	ft_putstr(char *s)
+void	ft_putstr(char *s, int fd)
 {
 	int	i;
 
 	i = 0;
 	while (s[i])
 	{
-		write(1, &s[i], 1);
+		write(fd, &s[i], 1);
 		i++;
 	}
 }
+

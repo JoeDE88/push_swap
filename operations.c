@@ -25,16 +25,19 @@ void	swap(t_node **lst)
 	(*lst)->next = tmp;
 }
 
-void	sa(t_node **a)
+void	sa(t_node **a, int bench, b_node *bench_ptr)
 {
 	swap(a);
-	ft_putstr("sa\n");
+	if (!bench)
+		ft_putstr("sa\n", 1);
+	else
+		bench_ptr->sa += 1;
 }
 
 void	sb(t_node **b)
 {
 	swap(b);
-	ft_putstr("sb\n");
+	ft_putstr("sb\n", 1);
 }
 
 // Toma el primer elemento del 1º stack y lo coloca el primero en el 2º stack
@@ -53,13 +56,13 @@ void	push(t_node **dest, t_node **src)
 void	pa(t_node **a, t_node **b)
 {
 	push(a, b);
-	ft_putstr("pa\n");
+	ft_putstr("pa\n", 1);
 }
 
 void	pb(t_node **a, t_node **b)
 {
 	push(b, a);
-	ft_putstr("pb\n");
+	ft_putstr("pb\n", 1);
 }
 
 // Intercambia los dos primeros elementos de ambos stacks a la vez
@@ -67,5 +70,5 @@ void ss(t_node **a, t_node **b)
 {
 	swap(a);
 	swap(b);
-	ft_putstr("ss\n");
+	ft_putstr("ss\n", 1);
 }

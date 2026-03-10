@@ -12,6 +12,24 @@
 
 #include "push_swap.h"
 
+int	select_strategy(char *s)
+{
+	int	i;
+
+	i = 2;
+	if (!ft_strncmp(s + i, "simple", 6))
+		return (2);
+	if (!ft_strncmp(s + i, "medium", 6))
+		return (3);
+	if (!ft_strncmp(s + i, "complex", 7))
+		return (4);
+	if (!ft_strncmp(s + i, "adaptive", 8))
+		return (1);
+	else
+		print_err();
+	return (0);
+}
+
 void	fill_args(int ac, char **av, t_node **lst)
 {
 	char	**arr;
@@ -38,19 +56,23 @@ void	fill_args(int ac, char **av, t_node **lst)
 	}
 }
 
-void	check_params(char **av, int *bench, int *strategy)
+void	check_params(char **av, int ac, int *bench, int *strategy)
 {
-	int	i;
-
-	i = 1;
-	if (!ft_strncmp(av[i], "--", 2))
+	if (!ft_strncmp(av[ac], "--bench", 7))
 	{
-		if (!ft_strncmp(av[i], "--bench", 7))
+		*bench = 1;
+		ac += 1;
+		if (!ft_strncmp(av[ac], "--", 2))
+			*strategy = select_strategy(av[ac]);
+	}
+	else
+	{
+		if (!ft_strncmp(av[ac], "--", 2))
 		{
-			*bench = 1;
-			i += 1;
+			*strategy = select_strategy(av[ac]);
+			ac += 1;
 		}
-		if (!ft_strncmp(av[i], "--", 2))
-			*strategy = select_strategy(av[i]);
+		if (!ft_strncmp(av[ac], "--bench", 7))
+			*bench = 1;
 	}
 }

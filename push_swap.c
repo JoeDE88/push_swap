@@ -12,41 +12,24 @@
 
 #include "push_swap.h"
 
-int	select_strategy(char *s)
-{
-	int	i;
-
-	i = 2;
-	if (!ft_strncmp(s + i, "simple", 6))
-		return (2);
-	if (!ft_strncmp(s + i, "medium", 6))
-		return (3);
-	if (!ft_strncmp(s + i, "complex", 7))
-		return (4);
-	if (!ft_strncmp(s + i, "adaptive", 8))
-		return (1);
-	else
-		print_err();
-	return (0);
-}
-
-void	push_swap(t_node **stack_a, int bench, int strategy)
+void	push_swap(t_node **stack_a, int bench, int strategy, b_node *bench_ptr)
 {
 	double	disorder;
 
 	disorder = compute_disorder(stack_a);
+	
 	if (disorder == 0)
 		return ;
-	/* if (strategy == 2)
-		simple_alg(stack_a, nums, bench);
-	if (strategy == 3)
+	if (strategy == 2)
+		simple_alg(stack_a, bench, bench_ptr);
+	/*if (strategy == 3)
 		medium_alg(stack_a, nums, bench);
 	if (strategy == 4)
 		complex_alg(stack_a, nums, bench); */
 	if (strategy == 1 || strategy == 0)
 	{
-		if (disorder < 0.2)
-			simple_alg(stack_a, bench);
+		//if (disorder < 0.2)
+			simple_alg(stack_a, bench, bench_ptr);
 		/* if (disorder >= 0.2 && disorder < 0.5)
 			medium_alg(stack_a, nums, bench);
 		else
@@ -59,13 +42,17 @@ int	main(int ac, char *av[])
 	t_node	*stack_a;
 	int		bench;
 	int		strategy;
+	b_node	*bench_ptr;
 
 	stack_a = NULL;
+	bench_ptr = NULL;
 	bench = 0;
 	strategy = 0;
 	if (ac == 1)
 		return (0);
-	check_params(av, &bench, &strategy);
+	check_params(av, 1, &bench, &strategy);
+	if (bench)
+		bench_ptr = init_bench();
 	if (strategy)
 		fill_args(ac - bench - 1, av + bench + 2, &stack_a);
 	else
@@ -74,7 +61,8 @@ int	main(int ac, char *av[])
 	if (stack_a)
 	{
 		// index_list(&stack_a);
-		push_swap(&stack_a, bench, strategy);
+		push_swap(&stack_a, bench, strategy, bench_ptr);
+		//print_bench(bench_ptr);
 	}
 	return (0);
 }
