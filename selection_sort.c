@@ -20,17 +20,17 @@ t_node	*s_min_node(t_node *a, int *min_pos, int *size)
 	while (a)
 	{
 		min = a;
-		min_pos = 0;
-		size = 0;
+		*min_pos = 0;
+		*size = 0;
 		while (a)
 		{
 			if (a->value < min->value)
 			{
 				min = a;
-				min_pos = size;
+				*min_pos = *size;
 			}
 			a = a->next;
-			size++;
+			(*size)++;
 		}
 	}
 	return (min);
