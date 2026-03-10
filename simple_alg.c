@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_alg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdiaz-ec <jdiaz-ec@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 13:54:33 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/06 13:54:46 by jdiaz-ec         ###   ########.fr       */
+/*   Updated: 2026/03/10 18:21:33 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ void	simple_alg(t_node **stack_a, int bench, b_node *bench_ptr)
 
 void	sort_three(t_node **stack, int bench, b_node *bench_ptr)
 {
-	t_node	*node;
-	t_node	*next;
+	t_node *node;
+	t_node *next;
 
 	node = *stack;
 	next = node->next;
 	if (node->value > next->value && next->value < next->next->value)
-			ra(&node);
+		ra(&node);
 	if (node->value > next->value && next->value > next->next->value)
 	{
 		ra(&node);

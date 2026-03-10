@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 19:18:19 by gblas-he          #+#    #+#             */
-/*   Updated: 2026/03/07 19:54:56 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/10 18:26:36 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,108 @@ double	compute_disorder(t_node **stack)
 	return (mistakes / total_pairs);
 }
 
-/* void	index_list(t_node a)
+void	quicksort(int *arr, int left, int right)
 {
-} */
+	int	pivot;
+	int	i;
+	int	j;
+	int	tmp;
+
+	i = left;
+	j = right;
+	pivot = arr[(left + right) / 2];
+	while (i < j)
+	{
+		while (arr[i] <= pivot && i <= right - 1)
+			i++;
+		while (arr[j] > pivot && j >= left + 1)
+			j--;
+		if (i < j)
+		{
+			if (arr[i] >= pivot && arr[j] <= pivot)
+			{
+				tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
+			}
+			i++;
+			j--;
+		}
+	}
+}
+void	index_list(t_node **a)
+{
+	t_node	*tmp;
+	int		size;
+	int		*arr;
+	int		i;
+
+	size = lst_size(*a);
+	arr = malloc(sizeof(int) * size);
+	if (!arr)
+		return ;
+	tmp = *a;
+	i = 0;
+	while (tmp)
+	{
+		arr[i++] = tmp->value;
+		tmp = tmp->next;
+	}
+	quicksort(arr, 0, size - 1);
+	free(arr);
+}
+
+// int	main(void)
+// {
+// 	t_node	*a;
+// 	t_node	*tmp;
+// 	t_node	*node1;
+// 	t_node	*node2;
+// 	t_node	*node3;
+// 	t_node	*node4;
+// 	t_node	*node5;
+// 	t_node	*node6;
+
+// 	a = NULL;
+// 	node1 = lst_new(1);
+// 	node2 = lst_new(2);
+// 	node3 = lst_new(3);
+// 	node4 = lst_new(99);
+// 	node5 = lst_new(-1);
+// 	node6 = lst_new(0);
+// 	// Añadir nodos al frente
+// 	lst_addback(&a, node1);
+// 	lst_addback(&a, node2);
+// 	lst_addback(&a, node3);
+// 	lst_addback(&a, node4);
+// 	lst_addback(&a, node5);
+// 	lst_addback(&a, node6);
+// 	// Imprimir la lista
+// 	tmp = a;
+// 	while (tmp)
+// 	{
+// 		printf("%d", tmp->value);
+// 		if (tmp->next)
+// 			printf(" -> ");
+// 		tmp = tmp->next;
+// 	}
+// 	printf(" -> NULL\n");
+// 	index_list(&a);
+// 	// Imprimir la lista
+// 	tmp = a;
+// 	while (tmp)
+// 	{
+// 		printf("%d", tmp->value);
+// 		if (tmp->next)
+// 			printf(" -> ");
+// 		tmp = tmp->next;
+// 	}
+// 	printf(" -> NULL\n");
+// 	// Liberar memoria
+// 	while (a)
+// 	{
+// 		tmp = a->next;
+// 		free(a);
+// 		a = tmp;
+// 	}
+// }
