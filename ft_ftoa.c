@@ -24,28 +24,28 @@ int	fill_zero(char *str, int digits)
 
 void	fill_from_double(char *str, int digits, int int_part, int rem_part)
 {
-		while (digits > 0)
+	while (digits > 0)
+	{
+		if (rem_part == 0)
+			digits = fill_zero(str, digits);
+		else
 		{
-			if (rem_part == 0)
-				digits = fill_zero(str, digits);
-			else
+			while (rem_part > 0)
 			{
-				while (rem_part > 0)
-				{
-					str[digits] = (rem_part % 10) + 48;
-					rem_part /= 10;
-					digits--;
-				}
-			}
-			str[digits] = '.';
-			digits -= 1;
-			while (int_part > 0)
-			{				
-				str[digits] = (int_part % 10) + 48;
-				int_part /= 10;
+				str[digits] = (rem_part % 10) + 48;
+				rem_part /= 10;
 				digits--;
 			}
 		}
+		str[digits] = '.';
+		digits -= 1;
+		while (int_part > 0)
+		{
+			str[digits] = (int_part % 10) + 48;
+			int_part /= 10;
+			digits--;
+		}
+	}
 }
 
 char	*ft_ftoa(double d)
@@ -58,7 +58,6 @@ char	*ft_ftoa(double d)
 	d *= 100;
 	int_part = (int)d;
 	rem_part = (d - (float)int_part);
-	
 	if (rem_part == 0)
 		digits = count_digits(int_part) + 2;
 	else

@@ -25,7 +25,7 @@ void	swap(t_node **lst)
 	(*lst)->next = tmp;
 }
 
-void	sa(t_node **a, int bench, b_node *bench_ptr)
+void	sa(t_node **a, int bench, t_bench *bench_ptr)
 {
 	swap(a);
 	if (!bench)
@@ -34,7 +34,7 @@ void	sa(t_node **a, int bench, b_node *bench_ptr)
 		bench_ptr->sa += 1;
 }
 
-void	sb(t_node **b, int bench, b_node *bench_ptr)
+void	sb(t_node **b, int bench, t_bench *bench_ptr)
 {
 	swap(b);
 	if (!bench)
@@ -56,7 +56,7 @@ void	push(t_node **dest, t_node **src)
 	*dest = tmp;
 }
 
-void	pa(t_node **a, t_node **b, int bench, b_node *bench_ptr)
+void	pa(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
 {
 	push(a, b);
 	if (!bench)
@@ -65,7 +65,7 @@ void	pa(t_node **a, t_node **b, int bench, b_node *bench_ptr)
 		bench_ptr->pa += 1;
 }
 
-void	pb(t_node **a, t_node **b, int bench, b_node *bench_ptr)
+void	pb(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
 {
 	push(b, a);
 	if (!bench)
@@ -75,7 +75,7 @@ void	pb(t_node **a, t_node **b, int bench, b_node *bench_ptr)
 }
 
 // Intercambia los dos primeros elementos de ambos stacks a la vez
-void ss(t_node **a, t_node **b, int bench, b_node *bench_ptr)
+void ss(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
 {
 	swap(a);
 	swap(b);

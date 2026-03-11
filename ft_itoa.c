@@ -17,7 +17,7 @@ static void	ft_fill(char *s, int digits, long nbr);
 int	count_digits(long n)
 {
 	int		digits;
-	
+
 	digits = 0;
 	if (n < 0)
 	{
@@ -37,7 +37,7 @@ int	count_digits(long n)
 char	*ft_malloc(int n)
 {
 	char	*ptr;
-	
+
 	ptr = malloc((n + 1) * sizeof(char));
 	if (ptr == NULL)
 		return (NULL);
@@ -60,7 +60,7 @@ char	*ft_itoa(int n)
 	int		digits;
 	long	nbr;
 	int		is_negative;
-	
+
 	nbr = n;
 	is_negative = 0;
 	digits = count_digits(nbr);

@@ -36,7 +36,7 @@ t_node	*s_min_node(t_node *a, int *min_pos, int *size)
 	return (min);
 }
 
-void	selection_sort(t_node **a, t_node **b, int bench, b_node *bench_ptr)
+void	selection_sort(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
 {
 	t_node	*min;
 	int		min_pos;

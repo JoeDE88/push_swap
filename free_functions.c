@@ -28,11 +28,14 @@ void	free_arr(char **arr)
 void	free_lst(t_node **lst)
 {
 	t_node	*node;
+	t_node	*next;
 
-	while (*lst)
+	node = *lst;
+	while (node != NULL)
 	{
-		node = *lst;
-		*lst = (*lst)->next;
+		next = node->next;
 		free(node);
+		node = next;
 	}
+	*lst = NULL;
 }

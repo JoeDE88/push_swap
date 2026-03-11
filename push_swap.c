@@ -12,34 +12,43 @@
 
 #include "push_swap.h"
 
-void	push_swap(t_node **stack_a, t_node **stack_b, int bench, char *strategy)
+void	adaptive(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
 {
 	double	disorder;
-	b_node	*bench_ptr;
 
+	disorder = compute_disorder(a);
+	//if (disorder < 0.2)
+		simple_alg(a, b, bench, bench_ptr);
+	/* if (disorder >= 0.2 && disorder < 0.5)
+			medium_alg(stack_a, stack_b, bench, bench_ptr);
+	else
+		complex_alg(stack_a, stack_b, bench, bench_ptr); */
+	printf("dis: %f\n", disorder);
+}
+
+void	push_swap(t_node **stack_a, int bench, char *strategy)
+{
+	t_node	*stack_b;
+	t_bench	*bench_ptr;
+	double	disorder;
+
+	stack_b = NULL;
 	bench_ptr = NULL;
 	disorder = compute_disorder(stack_a);
 	if (bench)
 		bench_ptr = init_bench();
-	//if (strategy == 2)
 	if (!ft_strncmp(strategy, "simple", 6))
-		simple_alg(stack_a, stack_b, bench, bench_ptr);
-	/*if (strategy == 3)
-		medium_alg(stack_a, nums, bench);
-	if (strategy == 4)
-		complex_alg(stack_a, nums, bench); */
-	//if (strategy == 1 || strategy == 0)
+		simple_alg(stack_a, &stack_b, bench, bench_ptr);
+	/*if (!ft_strncmp(strategy, "medium", 6))
+		medium_alg(stack_a, stack_b, bench, bench_ptr);
+	if (!ft_strncmp(strategy, "complex", 7))
+		complex_alg(stack_a, stack_b, bench, bench_ptr); */
 	else if (!ft_strncmp(strategy, "adaptive", 8))
-	{
-		//if (disorder < 0.2)
-			simple_alg(stack_a, stack_b, bench, bench_ptr);
-		/* if (disorder >= 0.2 && disorder < 0.5)
-			medium_alg(stack_a, nums, bench);
-		else
-			complex_alg(stack_a, nums, bench); */
-	}
+		adaptive(stack_a, &stack_b, bench, bench_ptr);
 	if (bench)
 		print_bench(bench_ptr, &disorder, strategy);
+	if (stack_b)
+		free_lst(&stack_b);
 }
 
 int	main(int ac, char *av[])
@@ -48,11 +57,9 @@ int	main(int ac, char *av[])
 	int		bench;
 	int		flag_strategy;
 	char	*strategy;
-	t_node	*stack_b;
-	
+
 	flag_strategy = 0;
 	stack_a = NULL;
-	stack_b = NULL;
 	bench = 0;
 	if (ac == 1)
 		return (0);
@@ -65,9 +72,9 @@ int	main(int ac, char *av[])
 	if (stack_a)
 	{
 		// index_list(&stack_a);
-		push_swap(&stack_a, &stack_b, bench, strategy);
+		push_swap(&stack_a, bench, strategy);
 		free_lst(&stack_a);
-		free_lst(&stack_b);
 	}
+	free(strategy);
 	return (0);
 }

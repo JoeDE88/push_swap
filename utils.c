@@ -90,6 +90,7 @@ void	ft_putstr(char *s, int fd)
 		i++;
 	}
 }
+
 char	*ft_strdup(char *str)
 {
 	size_t	len;

@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-b_node	*init_bench(void)
+t_bench	*init_bench(void)
 {
-	b_node	*bench_ptr;
+	t_bench	*bench_ptr;
 
-	bench_ptr = malloc(sizeof(b_node));
+	bench_ptr = malloc(sizeof(t_bench));
 	if (bench_ptr == NULL)
 		return (NULL);
 	bench_ptr->sa = 0;
@@ -34,7 +34,7 @@ b_node	*init_bench(void)
 	return (bench_ptr);
 }
 
-void	print_bench(b_node *bench, double *disorder, char *strategy)
+void	print_bench(t_bench *bench, double *disorder, char *strategy)
 {
 	int		total_ops;
 
@@ -45,7 +45,6 @@ void	print_bench(b_node *bench, double *disorder, char *strategy)
 	total_ops += bench->rra;
 	total_ops += bench->rrb;
 	total_ops += bench->rrr;
-	//s = parse_strategy(*strategy);
 	ft_printf("[bench] disorder: %f%%\n", *disorder);
 	ft_printf("[bench] strategy: %s / 0(nVn)\n", strategy);
 	ft_printf("[bench] total_ops: %d\n", total_ops);

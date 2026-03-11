@@ -66,6 +66,7 @@ void	quicksort(int *arr, int left, int right)
 		}
 	}
 }
+
 void	index_list(t_node **a)
 {
 	t_node	*tmp;
