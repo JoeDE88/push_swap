@@ -92,12 +92,12 @@ void	free_arr(char **arr);
 void	free_lst(t_node **lst);
 
 // push swap
-void	push_swap(t_node **lst, int bench, int strategy);
+void	push_swap(t_node **stack_a, t_node **stack_b, int bench, int strategy);
 int		select_strategy(char *s);
 double	compute_disorder(t_node **stack);
 
 // algorithms
-void	simple_alg(t_node **stack_a, int bench, b_node *bench_ptr);
+void	simple_alg(t_node **stack_a, t_node **stack_b, int bench, b_node *bench_ptr);
 void	medium_alg(t_node **stack_a, int bench);
 void	complex_alg(t_node **stack_a, int bench);
 

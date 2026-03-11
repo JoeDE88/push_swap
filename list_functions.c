@@ -18,7 +18,10 @@ t_node	*lst_new(int num)
 
 	node = malloc(sizeof(t_node));
 	if (node == NULL)
+	{
+		free(node);
 		print_err();
+	}
 	node->value = num;
 	node->idx = 0;
 	node->next = NULL;
@@ -55,6 +58,12 @@ void	fill_list_from_arr(t_node **lst, char **arr)
 	int	i;
 
 	i = 0;
+	if (!*lst)
+	{
+		printf("aqui");
+		*lst = lst_new(ft_atoi(arr[i]));
+		i += 1;
+	}
 	while (arr[i])
 	{
 		lst_addback(lst, lst_new(ft_atoi(arr[i])));
@@ -67,8 +76,6 @@ int	lst_size(t_node *lst)
 	int		count;
 	t_node	*current_node;
 
-	if (!lst)
-		print_err();
 	current_node = lst;
 	count = 0;
 	while (current_node != NULL)

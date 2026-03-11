@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	push_swap(t_node **stack_a, int bench, int strategy)
+void	push_swap(t_node **stack_a, t_node **stack_b,int bench, int strategy)
 {
 	double	disorder;
 	b_node	*bench_ptr;
@@ -22,7 +22,7 @@ void	push_swap(t_node **stack_a, int bench, int strategy)
 	if (bench)
 		bench_ptr = init_bench();
 	if (strategy == 2)
-		simple_alg(stack_a, bench, bench_ptr);
+		simple_alg(stack_a, stack_b, bench, bench_ptr);
 	/*if (strategy == 3)
 		medium_alg(stack_a, nums, bench);
 	if (strategy == 4)
@@ -30,7 +30,7 @@ void	push_swap(t_node **stack_a, int bench, int strategy)
 	if (strategy == 1 || strategy == 0)
 	{
 		//if (disorder < 0.2)
-			simple_alg(stack_a, bench, bench_ptr);
+			simple_alg(stack_a, stack_b, bench, bench_ptr);
 		/* if (disorder >= 0.2 && disorder < 0.5)
 			medium_alg(stack_a, nums, bench);
 		else
@@ -45,15 +45,15 @@ int	main(int ac, char *av[])
 	t_node	*stack_a;
 	int		bench;
 	int		strategy;
+	t_node	*stack_b;
 	
-
 	stack_a = NULL;
+	stack_b = NULL;
 	bench = 0;
 	strategy = 0;
 	if (ac == 1)
 		return (0);
 	check_params(av, 1, &bench, &strategy);
-
 	if (strategy)
 		fill_args(ac - bench - 1, av + bench + 2, &stack_a);
 	else
@@ -62,7 +62,9 @@ int	main(int ac, char *av[])
 	if (stack_a)
 	{
 		// index_list(&stack_a);
-		push_swap(&stack_a, bench, strategy);
+		push_swap(&stack_a, &stack_b, bench, strategy);
+		free_lst(&stack_a);
+		free_lst(&stack_b);
 	}
 	return (0);
 }

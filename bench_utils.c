@@ -54,4 +54,6 @@ void	print_bench(b_node *bench, double *disorder, int *strategy)
 	ft_printf(" pa:	%d pb: %d\n", bench->pa, bench->pb);
 	ft_printf("[bench] ra: %d rb: %d rr: %d", bench->ra, bench->rb, bench->rr);
 	ft_printf(" rra: %d rrb: %d rrr: %d\n", bench->rra, bench->rrb, bench->rrr);
+	free(s);
+	free(bench);
 }

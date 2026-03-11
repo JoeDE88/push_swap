@@ -92,7 +92,7 @@ char	**ft_split(char *str, char c)
 	arr = malloc((words + 1) * sizeof(char *));
 	if (arr == NULL)
 		return (NULL);
-	arr[words] = NULL;
+	arr[words] = 0;
 	if (fill_arr(arr, str, c))
 		return (NULL);
 	return (arr);

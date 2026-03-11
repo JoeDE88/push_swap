@@ -69,6 +69,8 @@ void	fill_args(int ac, char **av, t_node **lst)
 	{
 		check_str(*(av));
 		arr = ft_split(*(av), ' ');
+		if (arr == NULL)
+			return ;
 		fill_list_from_arr(lst, arr);
 		free_arr(arr);
 	}
