@@ -12,23 +12,12 @@
 
 #include "push_swap.h"
 
-static char	*ft_malloc(int n);
 static void	ft_fill(char *s, int digits, long nbr);
 
-static void	ft_fill(char *s, int digits, long nbr)
-{
-	while (digits > 0)
-	{
-		s[digits - 1] = (nbr % 10) + 48;
-		nbr /= 10;
-		digits--;
-	}
-}
-
-static int	ft_countdigits(long n)
+int	count_digits(long n)
 {
 	int		digits;
-
+	
 	digits = 0;
 	if (n < 0)
 	{
@@ -45,14 +34,24 @@ static int	ft_countdigits(long n)
 	return (digits);
 }
 
-static char	*ft_malloc(int n)
+char	*ft_malloc(int n)
 {
 	char	*ptr;
-
+	
 	ptr = malloc((n + 1) * sizeof(char));
 	if (ptr == NULL)
 		return (NULL);
 	return (ptr);
+}
+
+static void	ft_fill(char *s, int digits, long nbr)
+{
+	while (digits > 0)
+	{
+		s[digits - 1] = (nbr % 10) + 48;
+		nbr /= 10;
+		digits--;
+	}
 }
 
 char	*ft_itoa(int n)
@@ -61,10 +60,10 @@ char	*ft_itoa(int n)
 	int		digits;
 	long	nbr;
 	int		is_negative;
-
+	
 	nbr = n;
 	is_negative = 0;
-	digits = ft_countdigits(nbr);
+	digits = count_digits(nbr);
 	if (nbr < 0)
 	{
 		nbr *= -1;

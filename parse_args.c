@@ -12,6 +12,34 @@
 
 #include "push_swap.h"
 
+char	*parse_strategy(int strategy)
+{
+	char	*str;
+
+	str = NULL;
+	if (strategy == 0 || strategy == 1)
+	{
+		str = ft_malloc(8 + 1);
+		ft_strlcpy(str, "Adaptive", 9);
+	}
+	if (strategy == 2)
+	{
+		str = ft_malloc(6 + 1);
+		ft_strlcpy(str, "Simple", 7);
+	}
+	if (strategy == 3)
+	{
+		str = ft_malloc(6 + 1);
+		ft_strlcpy(str, "Medium", 7);
+	}
+	if (strategy == 4)
+	{
+		str = ft_malloc(7 + 1);
+		ft_strlcpy(str, "Complex", 8);
+	}
+	return (str);	
+}
+
 int	select_strategy(char *s)
 {
 	int	i;

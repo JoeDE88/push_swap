@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdio.h>
+# include <stdarg.h>
 
 typedef struct s_node
 {
@@ -43,7 +44,14 @@ typedef struct bench
 }	b_node;
 
 b_node *init_bench(void);
-void	print_bench(b_node *bench, double *disorder);
+void	print_bench(b_node *bench, double *disorder, int *strategy);
+void	ft_printf(const char *format, ...);
+void	convert(va_list args, char specifier);
+void	ft_printchar(char c);
+void	ft_printstr(char *s);
+void	ft_printint(int n);
+void	ft_printdouble(double n);
+char	*parse_strategy(int strategy);
 
 // parse args
 void	fill_args(int ac, char **av, t_node **lst);
@@ -67,7 +75,11 @@ int		ft_atoi(char *s);
 int		ft_strncmp(char *s1, char *s2, int n);
 void	ft_putstr(char *s, int fd);
 char	*ft_itoa(int n);
+char	*ft_ftoa(double d);
 size_t	ft_strlen(char *s);
+int		count_digits(long n);
+char	*ft_malloc(int n);
+void	fill_from_double(char *str, int digits, int int_part, int rem_part);
 
 // list
 void	lst_addback(t_node **lst, t_node *new_node);

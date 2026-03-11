@@ -21,8 +21,6 @@ void	push_swap(t_node **stack_a, int bench, int strategy)
 	disorder = compute_disorder(stack_a);
 	if (bench)
 		bench_ptr = init_bench();
-	if (disorder == 0)
-		return ;
 	if (strategy == 2)
 		simple_alg(stack_a, bench, bench_ptr);
 	/*if (strategy == 3)
@@ -38,7 +36,8 @@ void	push_swap(t_node **stack_a, int bench, int strategy)
 		else
 			complex_alg(stack_a, nums, bench); */
 	}
-	print_bench(bench_ptr, &disorder);
+	if (bench)
+		print_bench(bench_ptr, &disorder, &strategy);
 }
 
 int	main(int ac, char *av[])
