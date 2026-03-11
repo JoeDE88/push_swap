@@ -60,7 +60,6 @@ void	fill_list_from_arr(t_node **lst, char **arr)
 	i = 0;
 	if (!*lst)
 	{
-		printf("aqui");
 		*lst = lst_new(ft_atoi(arr[i]));
 		i += 1;
 	}

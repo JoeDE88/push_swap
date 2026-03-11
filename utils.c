@@ -90,4 +90,24 @@ void	ft_putstr(char *s, int fd)
 		i++;
 	}
 }
+char	*ft_strdup(char *str)
+{
+	size_t	len;
+	size_t	i;
+	char	*dup;
 
+	i = 0;
+	if (str == NULL)
+		return (NULL);
+	len = ft_strlen(str);
+	dup = malloc((len + 1) * sizeof(char));
+	if (dup == NULL)
+		return (NULL);
+	while (i < len)
+	{
+		dup[i] = str[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
+}

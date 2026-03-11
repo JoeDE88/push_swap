@@ -44,18 +44,17 @@ typedef struct bench
 }	b_node;
 
 b_node *init_bench(void);
-void	print_bench(b_node *bench, double *disorder, int *strategy);
+void	print_bench(b_node *bench, double *disorder, char *strategy);
 void	ft_printf(const char *format, ...);
 void	convert(va_list args, char specifier);
 void	ft_printchar(char c);
 void	ft_printstr(char *s);
 void	ft_printint(int n);
 void	ft_printdouble(double n);
-char	*parse_strategy(int strategy);
 
 // parse args
 void	fill_args(int ac, char **av, t_node **lst);
-void	check_params(char **av, int ac, int *bench, int *strategy);
+char	*check_params(char **av, int ac, int *bench, int *strategy);
 
 // safe split
 int		fill_arr(char **arr, char *str, char c);
@@ -80,6 +79,7 @@ size_t	ft_strlen(char *s);
 int		count_digits(long n);
 char	*ft_malloc(int n);
 void	fill_from_double(char *str, int digits, int int_part, int rem_part);
+char	*ft_strdup(char *str);
 
 // list
 void	lst_addback(t_node **lst, t_node *new_node);
@@ -92,8 +92,8 @@ void	free_arr(char **arr);
 void	free_lst(t_node **lst);
 
 // push swap
-void	push_swap(t_node **stack_a, t_node **stack_b, int bench, int strategy);
-int		select_strategy(char *s);
+void	push_swap(t_node **stack_a, t_node **stack_b, int bench, char *strategy);
+char	*select_strategy(char *s);
 double	compute_disorder(t_node **stack);
 
 // algorithms
@@ -104,19 +104,19 @@ void	complex_alg(t_node **stack_a, int bench);
 // operations
 void	swap(t_node **lst);
 void	sa(t_node **a, int bench, b_node *bench_ptr);
-void	sb(t_node **b);
-void 	ss(t_node **a, t_node **b);
+void	sb(t_node **b, int bench, b_node *bench_ptr);
+void	ss(t_node **a, t_node **b, int bench, b_node *bench_ptr);
 void	push(t_node **dest, t_node **src);
-void	pa(t_node **a, t_node **b);
-void	pb(t_node **a, t_node **b);
+void	pa(t_node **a, t_node **b, int bench, b_node *bench_ptr);
+void	pb(t_node **a, t_node **b, int bench, b_node *bench_ptr);
 void	rotate(t_node **lst);
 void	ra(t_node **a, int bench, b_node *bench_ptr);
-void	rb(t_node **b);
-void	rr(t_node **a, t_node **b);
+void	rb(t_node **b, int bench, b_node *bench_ptr);
+void	rr(t_node **a, t_node **b, int bench, b_node *bench_ptr);
 void	rev_rotate(t_node **lst);
 void	rra(t_node **a, int bench, b_node *bench_ptr);
-void	rrb(t_node **b);
-void	rrr(t_node **a, t_node **b);
+void	rrb(t_node **b, int bench, b_node *bench_ptr);
+void	rrr(t_node **a, t_node **b, int bench, b_node *bench_ptr);
 
 //algoritmos
 void	sort_three(t_node **stack, int bench, b_node *bench_ptr);

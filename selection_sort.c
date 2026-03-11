@@ -55,8 +55,8 @@ void	selection_sort(t_node **a, t_node **b, int bench, b_node *bench_ptr)
 			while ((*a)->value != min->value)
 				rra(a, bench, bench_ptr);
 		}
-		pb(a, b);
+		pb(a, b, bench, bench_ptr);
 	}
 	while (*b)
-		pa(a, b);
+		pa(a, b, bench, bench_ptr);
 }

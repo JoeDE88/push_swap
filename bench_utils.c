@@ -34,9 +34,8 @@ b_node	*init_bench(void)
 	return (bench_ptr);
 }
 
-void	print_bench(b_node *bench, double *disorder, int *strategy)
+void	print_bench(b_node *bench, double *disorder, char *strategy)
 {
-	char	*s;
 	int		total_ops;
 
 	total_ops = bench->sa + bench->sb + bench->ss + bench->pa + bench->pb;
@@ -46,14 +45,13 @@ void	print_bench(b_node *bench, double *disorder, int *strategy)
 	total_ops += bench->rra;
 	total_ops += bench->rrb;
 	total_ops += bench->rrr;
-	s = parse_strategy(*strategy);
-	ft_printf("[bench] disorder: %f%%\n", *disorder, s, 251);
-	ft_printf("[bench] strategy: %s / 0(nVn)\n", s);
+	//s = parse_strategy(*strategy);
+	ft_printf("[bench] disorder: %f%%\n", *disorder);
+	ft_printf("[bench] strategy: %s / 0(nVn)\n", strategy);
 	ft_printf("[bench] total_ops: %d\n", total_ops);
 	ft_printf("[bench] sa: %d sb: %d ss: %d", bench->sa, bench->sb, bench->ss);
 	ft_printf(" pa:	%d pb: %d\n", bench->pa, bench->pb);
 	ft_printf("[bench] ra: %d rb: %d rr: %d", bench->ra, bench->rb, bench->rr);
 	ft_printf(" rra: %d rrb: %d rrr: %d\n", bench->rra, bench->rrb, bench->rrr);
-	free(s);
 	free(bench);
 }
