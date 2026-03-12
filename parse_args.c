@@ -44,7 +44,6 @@ void	fill_args(int ac, char **av, t_node **lst)
 		if (arr == NULL)
 			return ;
 		fill_list_from_arr(lst, arr);
-		free_arr(arr);
 	}
 	else
 	{

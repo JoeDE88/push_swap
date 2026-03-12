@@ -45,6 +45,8 @@ typedef struct s_bench
 
 t_bench	*init_bench(void);
 void	print_bench(t_bench *bench, double *disorder, char *strategy);
+
+// ft_printf
 void	ft_printf(const char *format, ...);
 void	convert(va_list args, char specifier);
 void	ft_printchar(char c);
@@ -55,6 +57,9 @@ void	ft_printdouble(double n);
 // parse args
 void	fill_args(int ac, char **av, t_node **lst);
 char	*check_params(char **av, int ac, int *bench, int *strategy);
+char	*select_strategy(char *s);
+void	check_bench(char *av, int *bench);
+char	*check_strategy(char *av, int *flag_strategy);
 
 // safe split
 int		fill_arr(char **arr, char *str, char c);
@@ -70,6 +75,8 @@ void	check_repeated_or_unique(t_node **lst);
 
 // utils
 size_t	ft_strlcpy(char *dst, char *src, size_t size);
+int		is_plus_or_min(int c);
+int		ft_isdigit(int c);
 int		ft_atoi(char *s);
 int		ft_strncmp(char *s1, char *s2, int n);
 void	ft_putstr(char *s, int fd);
@@ -93,7 +100,6 @@ void	free_lst(t_node **lst);
 
 // push swap
 void	push_swap(t_node **stack_a, int bench, char *strategy);
-char	*select_strategy(char *s);
 double	compute_disorder(t_node **stack);
 
 // algorithms

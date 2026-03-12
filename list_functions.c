@@ -71,6 +71,7 @@ void	fill_list_from_arr(t_node **lst, char **arr)
 		lst_addback(lst, lst_new(ft_atoi(arr[i])));
 		i++;
 	}
+	free_arr(arr);
 }
 
 int	lst_size(t_node *lst)

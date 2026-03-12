@@ -53,9 +53,10 @@ int	ft_atoi(char *s)
 	negative = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] == '-')
+		if (is_plus_or_min(s[i]))
 		{
-			negative = 1;
+			if (s[i] == '-')
+				negative = 1;
 			i++;
 		}
 		n *= 10;

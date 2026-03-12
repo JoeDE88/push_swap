@@ -12,6 +12,20 @@
 
 #include "push_swap.h"
 
+int	is_plus_or_min(int c)
+{
+	if (c == '-' || c == '+')
+		return (1);
+	return (0);
+}
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
 void	print_err(void)
 {
 	write(2, "Error\n", 6);
@@ -25,8 +39,13 @@ void	check_str(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] == '-' || (str[i] >= '0' && str[i] <= '9') || str[i] == ' ')
-			i++;
+		if (is_plus_or_min(str[i]) || ft_isdigit(str[i]) || str[i] == ' ')
+		{
+			if (is_plus_or_min(str[i]) && !ft_isdigit(str[i + 1]))
+				print_err();
+			else
+				i++;
+		}
 		else
 			print_err();
 	}
