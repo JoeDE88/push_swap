@@ -12,43 +12,44 @@
 
 #include "push_swap.h"
 
-void	adaptive(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
+void	adaptive(t_node **a, int bench, t_bench *bench_ptr)
 {
 	double	disorder;
 
 	disorder = compute_disorder(a);
 	//if (disorder < 0.2)
-		simple_alg(a, b, bench, bench_ptr);
+		simple_alg(a, bench, bench_ptr);
 	/* if (disorder >= 0.2 && disorder < 0.5)
-			medium_alg(stack_a, stack_b, bench, bench_ptr);
+			medium_alg(stack_a, bench, bench_ptr);
 	else
-		complex_alg(stack_a, stack_b, bench, bench_ptr); */
+		complex_alg(stack_a, bench, bench_ptr); */
 	printf("dis: %f\n", disorder);
 }
 
 void	push_swap(t_node **stack_a, int bench, char *strategy)
 {
-	t_node	*stack_b;
 	t_bench	*bench_ptr;
 	double	disorder;
 
-	stack_b = NULL;
 	bench_ptr = NULL;
 	disorder = compute_disorder(stack_a);
+	if (!disorder)
+	{
+		free_lst(stack_a);
+		return ;
+	}
 	if (bench)
 		bench_ptr = init_bench();
 	if (!ft_strncmp(strategy, "simple", 6))
-		simple_alg(stack_a, &stack_b, bench, bench_ptr);
+		simple_alg(stack_a, bench, bench_ptr);
 	/*if (!ft_strncmp(strategy, "medium", 6))
 		medium_alg(stack_a, stack_b, bench, bench_ptr);
 	if (!ft_strncmp(strategy, "complex", 7))
 		complex_alg(stack_a, stack_b, bench, bench_ptr); */
 	else if (!ft_strncmp(strategy, "adaptive", 8))
-		adaptive(stack_a, &stack_b, bench, bench_ptr);
+		adaptive(stack_a, bench, bench_ptr);
 	if (bench)
 		print_bench(bench_ptr, &disorder, strategy);
-	if (stack_b)
-		free_lst(&stack_b);
 }
 
 int	main(int ac, char *av[])

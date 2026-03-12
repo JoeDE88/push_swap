@@ -12,11 +12,13 @@
 
 #include "push_swap.h"
 
-void	simple_alg(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
+void	simple_alg(t_node **a, int bench, t_bench *bench_ptr)
 {
+	t_node	*stack_b;
 	t_node	*next;
 	int		nums;
 
+	stack_b = NULL;
 	next = (*a)->next;
 	nums = lst_size(*a);
 	if (nums == 2 && (*a)->value > next->value)
@@ -24,7 +26,9 @@ void	simple_alg(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
 	else if (nums == 3)
 		sort_three(a, bench, bench_ptr);
 	else
-		selection_sort(a, b, bench, bench_ptr);
+		selection_sort(a, &stack_b, bench, bench_ptr);
+	if (stack_b)
+		free_lst(&stack_b);
 }
 
 void	sort_three(t_node **stack, int bench, t_bench *bench_ptr)
