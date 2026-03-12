@@ -38,7 +38,7 @@ char	*ft_malloc(int n)
 {
 	char	*ptr;
 
-	ptr = malloc((n + 1) * sizeof(char));
+	ptr = malloc((n) * sizeof(char));
 	if (ptr == NULL)
 		return (NULL);
 	return (ptr);
@@ -67,11 +67,11 @@ char	*ft_itoa(int n)
 	if (nbr < 0)
 	{
 		nbr *= -1;
-		str = ft_malloc(digits);
+		str = ft_malloc(digits + 1);
 		is_negative = 1;
 	}
 	else
-		str = ft_malloc(digits);
+		str = ft_malloc(digits + 1);
 	if (str == NULL)
 		return (NULL);
 	str[digits] = 0;

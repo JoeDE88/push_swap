@@ -34,7 +34,10 @@ void	ra(t_node **a, int bench, t_bench *bench_ptr)
 	if (!bench)
 		ft_putstr("ra\n", 1);
 	else
+	{
 		bench_ptr->ra += 1;
+		bench_ptr->total_ops += 1;
+	}
 }
 
 void	rb(t_node **b, int bench, t_bench *bench_ptr)
@@ -43,7 +46,10 @@ void	rb(t_node **b, int bench, t_bench *bench_ptr)
 	if (!bench)
 		ft_putstr("rb\n", 1);
 	else
+	{
 		bench_ptr->rb += 1;
+		bench_ptr->total_ops += 1;
+	}
 }
 
 void	rev_rotate(t_node **lst)
@@ -71,7 +77,10 @@ void	rra(t_node **a, int bench, t_bench *bench_ptr)
 	if (!bench)
 		ft_putstr("rra\n", 1);
 	else
+	{
 		bench_ptr->rra += 1;
+		bench_ptr->total_ops += 1;
+	}
 }
 
 void	rrb(t_node **b, int bench, t_bench *bench_ptr)
@@ -80,7 +89,10 @@ void	rrb(t_node **b, int bench, t_bench *bench_ptr)
 	if (!bench)
 		ft_putstr("rrb\n", 1);
 	else
+	{
 		bench_ptr->rrb += 1;
+		bench_ptr->total_ops += 1;
+	}
 }
 
 void	rr(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
@@ -90,7 +102,10 @@ void	rr(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
 	if (!bench)
 		ft_putstr("rr\n", 1);
 	else
+	{
 		bench_ptr->rr += 1;
+		bench_ptr->total_ops += 1;
+	}
 }
 
 void	rrr(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
@@ -100,5 +115,8 @@ void	rrr(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
 	if (!bench)
 		ft_putstr("rrr\n", 1);
 	else
+	{
 		bench_ptr->rrr += 1;
+		bench_ptr->total_ops += 1;
+	}
 }

@@ -14,10 +14,14 @@
 
 int	fill_zero(char *str, int digits)
 {
-	while (digits > 3)
+	int	i;
+
+	i = 0;
+	while (i < 2)
 	{
 		str[digits] = '0';
 		digits--;
+		i++;
 	}
 	return (digits);
 }
@@ -62,7 +66,7 @@ char	*ft_ftoa(double d)
 		digits = count_digits(int_part) + 2;
 	else
 		digits = count_digits(int_part) + count_digits((int)(rem_part * 100));
-	str = ft_malloc(digits + 1);
+	str = ft_malloc(digits + 2);
 	if (str == NULL)
 		return (NULL);
 	str[digits + 1] = 0;

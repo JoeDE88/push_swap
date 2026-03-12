@@ -36,18 +36,9 @@ t_bench	*init_bench(void)
 
 void	print_bench(t_bench *bench, double *disorder, char *strategy)
 {
-	int		total_ops;
-
-	total_ops = bench->sa + bench->sb + bench->ss + bench->pa + bench->pb;
-	total_ops += bench->ra;
-	total_ops += bench->rb;
-	total_ops += bench->rr;
-	total_ops += bench->rra;
-	total_ops += bench->rrb;
-	total_ops += bench->rrr;
 	ft_printf("[bench] disorder: %f%%\n", *disorder);
-	ft_printf("[bench] strategy: %s / 0(nVn)\n", strategy);
-	ft_printf("[bench] total_ops: %d\n", total_ops);
+	ft_printf("[bench] strategy: %s / 0(n√n)\n", strategy);
+	ft_printf("[bench] total_ops: %d\n", bench->total_ops);
 	ft_printf("[bench] sa: %d sb: %d ss: %d", bench->sa, bench->sb, bench->ss);
 	ft_printf(" pa:	%d pb: %d\n", bench->pa, bench->pb);
 	ft_printf("[bench] ra: %d rb: %d rr: %d", bench->ra, bench->rb, bench->rr);
