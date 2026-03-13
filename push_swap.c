@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:52:04 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/10 18:12:15 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/13 13:24:10 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	main(int ac, char *av[])
 	check_repeated_or_unique(&stack_a);
 	if (stack_a)
 	{
-		// index_list(&stack_a);
+		index_list(&stack_a);
 		push_swap(&stack_a, bench, strategy);
 	}
 	return (0);

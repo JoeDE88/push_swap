@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 19:18:19 by gblas-he          #+#    #+#             */
-/*   Updated: 2026/03/10 20:19:49 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/13 13:52:42 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	quicksort(int *arr, int left, int right)
 	int	i;
 	int	j;
 
+	if (left >= right)
+		return ;
 	i = left;
 	j = right;
 	p = arr[left];
@@ -65,7 +67,30 @@ void	quicksort(int *arr, int left, int right)
 			q_swap(&arr[i], &arr[j]);
 	}
 	q_swap(&arr[left], &arr[j]);
+	quicksort(arr, left, j - 1);
+	quicksort(arr, j + 1, right);
 }
+
+void apply_index (t_node *a, int *arr, int size)
+{
+	int i;
+
+	while (a)
+	{
+		i = 0;
+		while (i < size)
+		{
+			if (a->value == arr[i])
+			{
+				a->idx = i;
+				break ;
+			}
+			i++;
+		}
+		a = a->next;
+	}
+}
+
 void	index_list(t_node **a)
 {
 	t_node	*tmp;
@@ -73,6 +98,8 @@ void	index_list(t_node **a)
 	int		*arr;
 	int		i;
 
+	if (!a || !*a)
+        return ;
 	size = lst_size(*a);
 	arr = malloc(sizeof(int) * size);
 	if (!arr)
@@ -85,10 +112,11 @@ void	index_list(t_node **a)
 		tmp = tmp->next;
 	}
 	quicksort(arr, 0, size - 1);
+	apply_index(*a, arr, size);
 	free(arr);
 }
 
-int	main(void)
+/* int	main(void)
 {
 	t_node	*a;
 	t_node	*tmp;
@@ -128,7 +156,7 @@ int	main(void)
 	tmp = a;
 	while (tmp)
 	{
-		printf("%d", tmp->value);
+		printf("%d, (%d)", tmp->value, tmp->idx);
 		if (tmp->next)
 			printf(" -> ");
 		tmp = tmp->next;
@@ -141,4 +169,4 @@ int	main(void)
 		free(a);
 		a = tmp;
 	}
-}
+} */
