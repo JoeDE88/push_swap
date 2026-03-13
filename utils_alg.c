@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 19:18:19 by gblas-he          #+#    #+#             */
-/*   Updated: 2026/03/13 13:52:42 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/13 20:28:50 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ void	quicksort(int *arr, int left, int right)
 	quicksort(arr, j + 1, right);
 }
 
-void apply_index (t_node *a, int *arr, int size)
+void	apply_index(t_node *a, int *arr, int size)
 {
-	int i;
+	int	i;
 
 	while (a)
 	{
@@ -99,7 +99,7 @@ void	index_list(t_node **a)
 	int		i;
 
 	if (!a || !*a)
-        return ;
+		return ;
 	size = lst_size(*a);
 	arr = malloc(sizeof(int) * size);
 	if (!arr)
@@ -115,58 +115,3 @@ void	index_list(t_node **a)
 	apply_index(*a, arr, size);
 	free(arr);
 }
-
-/* int	main(void)
-{
-	t_node	*a;
-	t_node	*tmp;
-	t_node	*node1;
-	t_node	*node2;
-	t_node	*node3;
-	t_node	*node4;
-	t_node	*node5;
-	t_node	*node6;
-
-	a = NULL;
-	node1 = lst_new(2);
-	node2 = lst_new(1);
-	node3 = lst_new(3);
-	node4 = lst_new(99);
-	node5 = lst_new(-1);
-	node6 = lst_new(0);
-	// Añadir nodos al frente
-	lst_addback(&a, node1);
-	lst_addback(&a, node2);
-	lst_addback(&a, node3);
-	lst_addback(&a, node4);
-	lst_addback(&a, node5);
-	lst_addback(&a, node6);
-	// Imprimir la lista
-	tmp = a;
-	while (tmp)
-	{
-		printf("%d", tmp->value);
-		if (tmp->next)
-			printf(" -> ");
-		tmp = tmp->next;
-	}
-	printf(" -> NULL\n");
-	index_list(&a);
-	// Imprimir la lista
-	tmp = a;
-	while (tmp)
-	{
-		printf("%d, (%d)", tmp->value, tmp->idx);
-		if (tmp->next)
-			printf(" -> ");
-		tmp = tmp->next;
-	}
-	printf(" -> NULL\n");
-	// Liberar memoria
-	while (a)
-	{
-		tmp = a->next;
-		free(a);
-		a = tmp;
-	}
-} */

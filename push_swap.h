@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:52:39 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/11 18:05:10 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/13 20:21:18 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ size_t	ft_strlcpy(char *dst, char *src, size_t size);
 int		ft_atoi(char *s);
 int		ft_strncmp(char *s1, char *s2, int n);
 void	ft_putstr(char *s);
+int		ft_sqrt(int nb);
 
 // list
 void	lst_addback(t_node **lst, t_node *new_node);
@@ -88,5 +89,6 @@ void	rrr(t_node **a, t_node **b);
 void	sort_three(t_node **stack, int bench);
 void	selection_sort(t_node **a, t_node **b);
 void	index_list(t_node **a);
+void	chunks_sort(t_node **a, t_node **b);
 
 #endif

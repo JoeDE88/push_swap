@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 13:41:38 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/10 20:17:15 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/13 20:28:56 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,22 @@ void	ft_putstr(char *s)
 		write(1, &s[i], 1);
 		i++;
 	}
+}
+
+int	ft_sqrt(int nb)
+{
+	int i;
+
+	i = 1;
+	if (nb <= 0)
+	{
+		return (0);
+	}
+	while (i <= nb / i)
+	{
+		if (i * i == nb)
+			return (i);
+		i++;
+	}
+	return (0);
 }
