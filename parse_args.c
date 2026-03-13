@@ -12,6 +12,17 @@
 
 #include "push_swap.h"
 
+int	*fill_nums_arr(int ac, int flags, char **av)
+{
+	int	i;
+
+	i = 1;
+	printf("ac: %d\n", ac);
+	printf("av[ac]: %s\n", av[i + flags]);
+	
+	return (NULL);
+}
+
 char	*select_strategy(char *s)
 {
 	int	i;

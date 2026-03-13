@@ -26,6 +26,18 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
+typedef struct s_algdata
+{
+	int		*arr;
+	int		bench;
+	char	*strategy;
+}	t_algdata;
+
+t_algdata   *parse_args(int ac, char **av);
+t_algdata   *fill_alg_data(int benchmark, char *strategy);
+void    	parse_flags(int flags, char **av, int *bench, char **strategy);
+void    	loop_flags(int flags, char **av, int *bench, char **strategy);
+int			*fill_nums_arr(int ac, int flags, char **av);
 // bench
 typedef struct s_bench
 {

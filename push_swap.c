@@ -54,8 +54,9 @@ void	push_swap(t_node **stack_a, int bench, char *strategy)
 
 int	main(int ac, char *av[])
 {
-	t_node	*stack_a;
-	int		bench;
+	t_node		*stack_a;
+	//t_algdata	*data;
+	 int		bench;
 	int		flag_strategy;
 	char	*strategy;
 
@@ -64,6 +65,8 @@ int	main(int ac, char *av[])
 	bench = 0;
 	if (ac == 1)
 		return (0);
+	/* data = parse_args(ac, av);
+	printf("stra: %s\n", data->strategy); */
 	strategy = check_params(av, 1, &bench, &flag_strategy);
 	if (flag_strategy)
 		fill_args(ac - bench - 1, av + bench + 2, &stack_a);
