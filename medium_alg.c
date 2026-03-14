@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 17:19:35 by gblas-he          #+#    #+#             */
-/*   Updated: 2026/03/13 20:32:45 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/14 19:48:08 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,17 @@
 void	chunks_sort(t_node **a, __attribute__((unused)) t_node **b)
 {
 	int	size;
-	int	chunks;
+	int	num_chunks;
+	int	resto;
+	int	chunks_size;
 
 	size = lst_size(*a);
-	chunks = ft_sqrt(size);
-	printf("dentro de función: %d %d \n", size, chunks);
+	num_chunks = ft_sqrt(size);
+	chunks_size = size / num_chunks;
+	if (size % num_chunks != 0)
+		num_chunks++;
+	printf("dentro de función: %d %d %d %d\n", size, num_chunks, resto,
+		chunks_size);
 }
 
 int	main(void)
@@ -38,8 +44,14 @@ int	main(void)
 	lst_addback(&a, lst_new(2));
 	lst_addback(&a, lst_new(3));
 	lst_addback(&a, lst_new(100));
+	lst_addback(&a, lst_new(-166));
+	lst_addback(&a, lst_new(140));
+	lst_addback(&a, lst_new(990));
 	lst_addback(&a, lst_new(34));
 	lst_addback(&a, lst_new(20));
+	lst_addback(&a, lst_new(-10));
+	lst_addback(&a, lst_new(-10));
+	lst_addback(&a, lst_new(-10));
 	lst_addback(&a, lst_new(-10));
 
 	// Imprimir la lista
@@ -64,6 +76,7 @@ int	main(void)
 			printf(" -> ");
 		tmp = tmp->next;
 	}
+
 	printf(" -> NULL\n");
 	// Liberar memoria
 	while (a)

@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 13:41:38 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/13 20:28:56 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/14 18:04:52 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,20 +81,15 @@ void	ft_putstr(char *s)
 	}
 }
 
+// raiz cuadrada no exacta
 int	ft_sqrt(int nb)
 {
 	int i;
 
 	i = 1;
 	if (nb <= 0)
-	{
 		return (0);
-	}
 	while (i <= nb / i)
-	{
-		if (i * i == nb)
-			return (i);
 		i++;
-	}
-	return (0);
+	return (i - 1);
 }
