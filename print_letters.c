@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_functions.c                                   :+:      :+:    :+:   */
+/*   print_letters.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdiaz-ec <jdiaz-ec@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/27 11:03:29 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/02/27 11:03:39 by jdiaz-ec         ###   ########.fr       */
+/*   Created: 2026/03/11 11:56:26 by jdiaz-ec          #+#    #+#             */
+/*   Updated: 2026/03/11 11:56:28 by jdiaz-ec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_str_arr(char **arr, size_t len)
+void	ft_printchar(char c)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < len)
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
+	write(2, &c, 1);
 }
 
-void	free_lst(t_node **lst)
+void	ft_printstr(char *s)
 {
-	t_node	*node;
-	t_node	*next;
+	int	i;
 
-	node = *lst;
-	while (node != NULL)
+	i = 0;
+	while (s[i] != '\0')
 	{
-		next = node->next;
-		free(node);
-		node = next;
+		write(2, &s[i], 1);
+		i++;
 	}
-	*lst = NULL;
 }

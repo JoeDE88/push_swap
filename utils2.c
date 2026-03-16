@@ -1,41 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_functions.c                                   :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdiaz-ec <jdiaz-ec@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/27 11:03:29 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/02/27 11:03:39 by jdiaz-ec         ###   ########.fr       */
+/*   Created: 2026/03/16 17:31:49 by jdiaz-ec          #+#    #+#             */
+/*   Updated: 2026/03/16 17:31:51 by jdiaz-ec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_str_arr(char **arr, size_t len)
+int	is_plus_or_min(int c)
+{
+	if (c == '-' || c == '+')
+		return (1);
+	return (0);
+}
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+size_t	ft_strlen(char *s)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < len)
-	{
-		free(arr[i]);
+	while (s[i] != '\0')
 		i++;
-	}
-	free(arr);
+	return (i);
 }
 
-void	free_lst(t_node **lst)
+void	print_err(void)
 {
-	t_node	*node;
-	t_node	*next;
-
-	node = *lst;
-	while (node != NULL)
-	{
-		next = node->next;
-		free(node);
-		node = next;
-	}
-	*lst = NULL;
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
 }

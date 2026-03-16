@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-//Desplaza hacia arriba todos los elementos del stack a una posición
 void	rotate(t_node **lst)
 {
 	t_node	*first;
@@ -29,19 +28,30 @@ void	rotate(t_node **lst)
 	last->next = first;
 }
 
-void	ra(t_node **a)
+void	ra(t_node **a, int bench, t_bench *bench_ptr)
 {
 	rotate(a);
-	ft_putstr("ra\n");
+	if (!bench)
+		ft_putstr("ra\n", 1);
+	else
+	{
+		bench_ptr->ra += 1;
+		bench_ptr->total_ops += 1;
+	}
 }
 
-void	rb(t_node **b)
+void	rb(t_node **b, int bench, t_bench *bench_ptr)
 {
 	rotate(b);
-	ft_putstr("rb\n");
+	if (!bench)
+		ft_putstr("rb\n", 1);
+	else
+	{
+		bench_ptr->rb += 1;
+		bench_ptr->total_ops += 1;
+	}
 }
 
-//Desplaza hacia abajo todos los elementos del stack a una posición
 void	rev_rotate(t_node **lst)
 {
 	t_node	*last;
@@ -61,30 +71,52 @@ void	rev_rotate(t_node **lst)
 	*lst = last;
 }
 
-void	rra(t_node **a)
+void	rra(t_node **a, int bench, t_bench *bench_ptr)
 {
 	rev_rotate(a);
-	ft_putstr("rra\n");
+	if (!bench)
+		ft_putstr("rra\n", 1);
+	else
+	{
+		bench_ptr->rra += 1;
+		bench_ptr->total_ops += 1;
+	}
 }
 
-void	rrb(t_node **b)
+void	rrb(t_node **b, int bench, t_bench *bench_ptr)
 {
 	rev_rotate(b);
-	ft_putstr("rrb\n");
+	if (!bench)
+		ft_putstr("rrb\n", 1);
+	else
+	{
+		bench_ptr->rrb += 1;
+		bench_ptr->total_ops += 1;
+	}
 }
 
-// Desplaza hacia arriba todos los elementos de ambos stacks a una posición a la vez
-void	rr(t_node **a, t_node **b)
+void	rr(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
 {
 	rotate(a);
 	rotate(b);
-	ft_putstr("rr\n");
+	if (!bench)
+		ft_putstr("rr\n", 1);
+	else
+	{
+		bench_ptr->rr += 1;
+		bench_ptr->total_ops += 1;
+	}
 }
 
-//Desplaza hacia abajo todos los elementos de ambos stacks a una posición a la vez
-void	rrr(t_node **a, t_node **b)
+void	rrr(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
 {
 	rev_rotate(a);
 	rev_rotate(b);
-	ft_putstr("rrr\n");
+	if (!bench)
+		ft_putstr("rrr\n", 1);
+	else
+	{
+		bench_ptr->rrr += 1;
+		bench_ptr->total_ops += 1;
+	}
 }

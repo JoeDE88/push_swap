@@ -12,45 +12,46 @@
 
 #include "push_swap.h"
 
-void	fill_args(int ac, char **av, t_node **lst)
+void	*fill_nums_arr(int ac, int flags, char **av, int *len)
 {
 	char	**arr;
-	int		num;
+	int		*nums_arr;
 	int		i;
 
-	i = 0;
-	if (ac == 2)
+	i = 1;
+	if (ac == 1)
 	{
-		check_str(*(av));
-		arr = ft_split(*(av), ' ');
-		fill_list_from_arr(lst, arr);
-		free_arr(arr);
+		check_str(*av);
+		arr = ft_split(*av, ' ', len);
+		if (arr == NULL)
+			return (NULL);
+		return (arr);
 	}
 	else
 	{
-		check_args(av, ac - 1);
-		while (i < ac - 1)
-		{
-			num = ft_atoi(av[i]);
-			lst_addback(lst, lst_new(num));
-			i++;
-		}
+		check_args(av, ac);
+		nums_arr = nums_array(&av[flags], ac);
+		*len = ac;
+		if (nums_arr == NULL)
+			return (NULL);
+		return (nums_arr);
 	}
+	return (NULL);
 }
 
-void	check_params(char **av, int *bench, int *strategy)
+int	*nums_array(char **av, int ac)
 {
+	int	*arr;
 	int	i;
 
-	i = 1;
-	if (!ft_strncmp(av[i], "--", 2))
+	arr = malloc(ac * sizeof(int));
+	if (arr == NULL)
+		return (NULL);
+	i = 0;
+	while (i < ac)
 	{
-		if (!ft_strncmp(av[i], "--bench", 7))
-		{
-			*bench = 1;
-			i += 1;
-		}
-		if (!ft_strncmp(av[i], "--", 2))
-			*strategy = select_strategy(av[i]);
+		arr[i] = ft_atoi(av[i]);
+		i++;
 	}
+	return (arr);
 }

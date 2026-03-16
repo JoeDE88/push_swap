@@ -12,73 +12,65 @@
 
 #include "push_swap.h"
 
-int	select_strategy(char *s)
+void	adaptive(t_node **a, int bench, t_bench *bench_ptr)
 {
-	int	i;
+	double	disorder;
 
-	i = 2;
-	if (!ft_strncmp(s + i, "simple", 6))
-		return (2);
-	if (!ft_strncmp(s + i, "medium", 6))
-		return (3);
-	if (!ft_strncmp(s + i, "complex", 7))
-		return (4);
-	if (!ft_strncmp(s + i, "adaptive", 8))
-		return (1);
+	disorder = compute_disorder(a);
+	//if (disorder < 0.2)
+		simple_alg(a, bench, bench_ptr);
+	/* if (disorder >= 0.2 && disorder < 0.5)
+			medium_alg(stack_a, bench, bench_ptr);
 	else
-		print_err();
-	return (0);
+		complex_alg(stack_a, bench, bench_ptr); */
+	printf("dis: %f\n", disorder);
 }
 
-void	push_swap(t_node **stack_a, int bench, int strategy)
+void	push_swap(t_node **stack_a, int bench, char *strategy)
 {
+	t_bench	*bench_ptr;
 	double	disorder;
 	t_node	*stack_b;
 
-	stack_b = NULL;
+	bench_ptr = NULL;
 	disorder = compute_disorder(stack_a);
-	if (disorder == 0)
-		return ;
-	/* if (strategy == 2)
-		simple_alg(stack_a, nums, bench);
-	if (strategy == 3)
-		medium_alg(stack_a, nums, bench);
-	if (strategy == 4)
-		complex_alg(stack_a, nums, bench); */
-	if (strategy == 1 || strategy == 0)
+	if (!disorder)
 	{
-		// if (disorder < 0.2)
-		// simple_alg(stack_a, bench);
-		// medium_alg(stack_a, nums, bench);
-		chunks_sort(stack_a, &stack_b);
-		/* if (disorder >= 0.2 && disorder < 0.5)
-		else
-			complex_alg(stack_a, nums, bench); */
+		free_lst(stack_a);
+		return ;
 	}
-	bench = 0;
+	if (bench)
+		bench_ptr = init_bench();
+	if (!ft_strncmp(strategy, "simple", 6))
+		simple_alg(stack_a, bench, bench_ptr);
+	/*if (!ft_strncmp(strategy, "medium", 6))
+		medium_alg(stack_a, stack_b, bench, bench_ptr);
+	if (!ft_strncmp(strategy, "complex", 7))
+		complex_alg(stack_a, stack_b, bench, bench_ptr); */
+	else if (!ft_strncmp(strategy, "adaptive", 8))
+		adaptive(stack_a, bench, bench_ptr);
+	if (bench)
+		print_bench(bench_ptr, &disorder, strategy);
 }
 
 int	main(int ac, char *av[])
 {
-	t_node	*stack_a;
-	int		bench;
-	int		strategy;
+	t_algdata	*data;
+	t_node		*stack_a;
 
+	data = NULL;
 	stack_a = NULL;
-	bench = 0;
-	strategy = 0;
 	if (ac == 1)
 		return (0);
-	check_params(av, &bench, &strategy);
-	if (strategy)
-		fill_args(ac - bench - 1, av + bench + 2, &stack_a);
-	else
-		fill_args(ac - bench, av + bench + 1, &stack_a);
+	parse_args(&data, ac, av);
+	fill_stack_from_arr(&stack_a, data);
 	check_repeated_or_unique(&stack_a);
 	if (stack_a)
 	{
-		index_list(&stack_a);
-		push_swap(&stack_a, bench, strategy);
+		// index_list(&stack_a);
+		push_swap(&stack_a, data->bench, data->strategy);
+		free_lst(&stack_a);
+		free(data);
 	}
 	return (0);
 }

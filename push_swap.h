@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdio.h>
+# include <stdarg.h>
 
 typedef struct s_node
 {
@@ -25,15 +26,62 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
+typedef struct s_algdata
+{
+	int		bench;
+	char	*strategy;
+	void	*arr;
+	size_t	size;
+	int		arr_type;
+}	t_algdata;
+
+t_algdata   *parse_args(t_algdata **data, int ac, char **av);
+t_algdata   *fill_alg_data(int benchmark, char *strategy, void *nums_array, int type, int len);
+void    	parse_flags(int flags, char **av, int *bench, char **strategy);
+void    	loop_flags(int flags, char **av, int *bench, char **strategy);
+void		*fill_nums_arr(int ac, int flags, char **av, int *len);
+int			*nums_array(char **av, int ac);
+void		fill_stack_from_arr(t_node **lst, t_algdata *data);
+void    	fill_from_string_array(t_node **lst, t_algdata *data);
+void		fill_from_int_array(t_node **lst, t_algdata *data);
+
+// bench
+typedef struct s_bench
+{
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+	int	total_ops;
+}	t_bench;
+
+t_bench	*init_bench(void);
+void	print_bench(t_bench *bench, double *disorder, char *strategy);
+
+// ft_printf
+void	ft_printf(const char *format, ...);
+void	convert(va_list args, char specifier);
+void	ft_printchar(char c);
+void	ft_printstr(char *s);
+void	ft_printint(int n);
+void	ft_printdouble(double n);
+
 // parse args
-void	fill_args(int ac, char **av, t_node **lst);
-void	check_params(char **av, int *bench, int *strategy);
+char	*select_strategy(char *s);
+int		count_flags(int ac, char **av);
 
 // safe split
 int		fill_arr(char **arr, char *str, char c);
 int		count_args(char *s);
 int		safe_malloc(char **arr, int pos, size_t len);
-char	**ft_split(char *str, char c);
+char	**ft_split(char *str, char c, int *len);
 
 // err
 void	print_err(void);
@@ -43,40 +91,53 @@ void	check_repeated_or_unique(t_node **lst);
 
 // utils
 size_t	ft_strlcpy(char *dst, char *src, size_t size);
+int		is_plus_or_min(int c);
+int		ft_isdigit(int c);
 int		ft_atoi(char *s);
 int		ft_strncmp(char *s1, char *s2, int n);
-void	ft_putstr(char *s);
+void	ft_putstr(char *s, int fd);
+char	*ft_itoa(int n);
+char	*ft_ftoa(double d);
+size_t	ft_strlen(char *s);
+int		count_digits(long n);
+char	*ft_malloc(int n);
+void	fill_from_double(char *str, int digits, int int_part, int rem_part);
+char	*ft_strdup(char *str);
 
 // list
 void	lst_addback(t_node **lst, t_node *new_node);
 t_node	*lst_new(int num);
-void	fill_list_from_arr(t_node **lst, char **arr);
 int		lst_size(t_node *lst);
 
 // free
-void	free_arr(char **arr);
+void	free_str_arr(char **arr, size_t len);
 void	free_lst(t_node **lst);
 
 // push swap
-void	push_swap(t_node **lst, int bench, int strategy);
-int		select_strategy(char *s);
+void	push_swap(t_node **stack_a, int bench, char *strategy);
+double	compute_disorder(t_node **stack);
+
+// algorithms
+void	simple_alg(t_node **a, int bench, t_bench *bench_ptr);
+void	medium_alg(t_node **stack_a, int bench, t_bench *bench_ptr);
+void	complex_alg(t_node **stack_a, int bench, t_bench *bench_ptr);
 
 // operations
 void	swap(t_node **lst);
-void	sa(t_node **a);
-void	sb(t_node **b);
-void 	ss(t_node **a, t_node **b);
+void	sa(t_node **a, int bench, t_bench *bench_ptr);
+void	sb(t_node **b, int bench, t_bench *bench_ptr);
+void	ss(t_node **a, t_node **b, int bench, t_bench *bench_ptr);
 void	push(t_node **dest, t_node **src);
-void	pa(t_node **a, t_node **b);
-void	pb(t_node **a, t_node **b);
+void	pa(t_node **a, t_node **b, int bench, t_bench *bench_ptr);
+void	pb(t_node **a, t_node **b, int bench, t_bench *bench_ptr);
 void	rotate(t_node **lst);
-void	ra(t_node **a);
-void	rb(t_node **b);
-void	rr(t_node **a, t_node **b);
+void	ra(t_node **a, int bench, t_bench *bench_ptr);
+void	rb(t_node **b, int bench, t_bench *bench_ptr);
+void	rr(t_node **a, t_node **b, int bench, t_bench *bench_ptr);
 void	rev_rotate(t_node **lst);
-void	rra(t_node **a);
-void	rrb(t_node **b);
-void	rrr(t_node **a, t_node **b);
+void	rra(t_node **a, int bench, t_bench *bench_ptr);
+void	rrb(t_node **b, int bench, t_bench *bench_ptr);
+void	rrr(t_node **a, t_node **b, int bench, t_bench *bench_ptr);
 
 // utils algoritmos
 double	compute_disorder(t_node **stack);
@@ -96,5 +157,8 @@ int		find_max_pos(t_node *b);
 void	push_chunks(t_node **a, t_node **b, int chunks_size);
 void	push_back(t_node **a, t_node **b);
 void	chunks_sort(t_node **a, t_node **b);
+void	adaptive(t_node **a, int bench, t_bench *bench_ptr);
+void	sort_three(t_node **stack, int bench, t_bench *bench_ptr);
+void	selection_sort(t_node **a, t_node **b, int bench, t_bench *bench_ptr);
 
 #endif
