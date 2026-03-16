@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 17:19:35 by gblas-he          #+#    #+#             */
-/*   Updated: 2026/03/16 15:39:50 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/16 15:43:01 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ int	main(void)
 		tmp = tmp->next;
 	}
 
-	printf("\n");
+	//printf("\n");
 
 	// printf("Maxima posición:%d\n", find_max_pos(a));
 
