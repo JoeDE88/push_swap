@@ -18,7 +18,7 @@ t_node	*lst_new(int num)
 
 	node = malloc(sizeof(t_node));
 	if (node == NULL)
-		print_err();
+		return (NULL);
 	node->value = num;
 	node->idx = 0;
 	node->next = NULL;
@@ -29,8 +29,13 @@ void	lst_addback(t_node **lst, t_node *new_node)
 {
 	t_node	*last;
 
-	if (!new_node || !lst)
+	if (!lst)
 		print_err();
+	if (new_node == NULL)
+	{
+		free_lst(lst);
+		print_err();
+	}
 	last = *lst;
 	if (*lst == NULL)
 	{
@@ -44,22 +49,11 @@ void	lst_addback(t_node **lst, t_node *new_node)
 		last->next = new_node;
 	}
 }
+
 void	lst_addfront(t_node **lst, t_node *new)
 {
 	new->next = *lst;
 	*lst = new;
-}
-
-void	fill_list_from_arr(t_node **lst, char **arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i])
-	{
-		lst_addback(lst, lst_new(ft_atoi(arr[i])));
-		i++;
-	}
 }
 
 int	lst_size(t_node *lst)
@@ -67,8 +61,6 @@ int	lst_size(t_node *lst)
 	int		count;
 	t_node	*current_node;
 
-	if (!lst)
-		print_err();
 	current_node = lst;
 	count = 0;
 	while (current_node != NULL)
@@ -78,4 +70,3 @@ int	lst_size(t_node *lst)
 	}
 	return (count);
 }
-

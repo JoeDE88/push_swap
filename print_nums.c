@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_functions.c                                   :+:      :+:    :+:   */
+/*   print_nums.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdiaz-ec <jdiaz-ec@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/27 11:03:29 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/02/27 11:03:39 by jdiaz-ec         ###   ########.fr       */
+/*   Created: 2026/03/11 12:03:51 by jdiaz-ec          #+#    #+#             */
+/*   Updated: 2026/03/11 12:07:13 by jdiaz-ec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_str_arr(char **arr, size_t len)
+void	ft_printint(int n)
 {
-	size_t	i;
+	char	*s;
 
-	i = 0;
-	while (i < len)
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
+	s = ft_itoa(n);
+	ft_printstr(s);
+	free(s);
 }
 
-void	free_lst(t_node **lst)
+void	ft_printdouble(double d)
 {
-	t_node	*node;
-	t_node	*next;
+	char	*s;
 
-	node = *lst;
-	while (node != NULL)
-	{
-		next = node->next;
-		free(node);
-		node = next;
-	}
-	*lst = NULL;
+	s = ft_ftoa(d);
+	ft_printstr(s);
+	free(s);
 }

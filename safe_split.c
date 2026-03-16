@@ -83,16 +83,15 @@ int	safe_malloc(char **arr, int pos, size_t len)
 	return (0);
 }
 
-char	**ft_split(char *str, char c)
+char	**ft_split(char *str, char c, int *words)
 {
 	char	**arr;
-	int		words;
 
-	words = count_args(str);
-	arr = malloc((words + 1) * sizeof(char *));
+	*words = count_args(str);
+	arr = malloc((*words + 1) * sizeof(char *));
 	if (arr == NULL)
 		return (NULL);
-	arr[words] = NULL;
+	arr[*words] = 0;
 	if (fill_arr(arr, str, c))
 		return (NULL);
 	return (arr);

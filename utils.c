@@ -43,9 +43,10 @@ int	ft_atoi(char *s)
 	negative = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] == '-')
+		if (is_plus_or_min(s[i]))
 		{
-			negative = 1;
+			if (s[i] == '-')
+				negative = 1;
 			i++;
 		}
 		n *= 10;
@@ -69,14 +70,36 @@ int	ft_strncmp(char *s1, char *s2, int n)
 	return (s1[i] - s2[i]);
 }
 
-void	ft_putstr(char *s)
+void	ft_putstr(char *s, int fd)
 {
 	int i;
 
 	i = 0;
 	while (s[i])
 	{
-		write(1, &s[i], 1);
+		write(fd, &s[i], 1);
 		i++;
 	}
+}
+
+char	*ft_strdup(char *str)
+{
+	size_t	len;
+	size_t	i;
+	char	*dup;
+
+	i = 0;
+	if (str == NULL)
+		return (NULL);
+	len = ft_strlen(str);
+	dup = malloc((len + 1) * sizeof(char));
+	if (dup == NULL)
+		return (NULL);
+	while (i < len)
+	{
+		dup[i] = str[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
 }
