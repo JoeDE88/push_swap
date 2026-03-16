@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:52:04 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/13 13:24:10 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/16 17:02:37 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int	select_strategy(char *s)
 void	push_swap(t_node **stack_a, int bench, int strategy)
 {
 	double	disorder;
+	t_node	*stack_b;
 
+	stack_b = NULL;
 	disorder = compute_disorder(stack_a);
 	if (disorder == 0)
 		return ;
@@ -45,13 +47,15 @@ void	push_swap(t_node **stack_a, int bench, int strategy)
 		complex_alg(stack_a, nums, bench); */
 	if (strategy == 1 || strategy == 0)
 	{
-		if (disorder < 0.2)
-			simple_alg(stack_a, bench);
+		// if (disorder < 0.2)
+		// simple_alg(stack_a, bench);
+		// medium_alg(stack_a, nums, bench);
+		chunks_sort(stack_a, &stack_b);
 		/* if (disorder >= 0.2 && disorder < 0.5)
-			medium_alg(stack_a, nums, bench);
 		else
 			complex_alg(stack_a, nums, bench); */
 	}
+	bench = 0;
 }
 
 int	main(int ac, char *av[])

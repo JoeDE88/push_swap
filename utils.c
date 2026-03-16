@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 13:41:38 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/14 18:04:52 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/16 16:59:27 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	ft_strncmp(char *s1, char *s2, int n)
 
 void	ft_putstr(char *s)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (s[i])
@@ -79,17 +79,4 @@ void	ft_putstr(char *s)
 		write(1, &s[i], 1);
 		i++;
 	}
-}
-
-// raiz cuadrada no exacta
-int	ft_sqrt(int nb)
-{
-	int i;
-
-	i = 1;
-	if (nb <= 0)
-		return (0);
-	while (i <= nb / i)
-		i++;
-	return (i - 1);
 }

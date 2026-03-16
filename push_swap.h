@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:52:39 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/16 14:12:19 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/16 17:06:06 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ size_t	ft_strlcpy(char *dst, char *src, size_t size);
 int		ft_atoi(char *s);
 int		ft_strncmp(char *s1, char *s2, int n);
 void	ft_putstr(char *s);
-int		ft_sqrt(int nb);
 
 // list
 void	lst_addback(t_node **lst, t_node *new_node);
@@ -61,12 +60,6 @@ void	free_lst(t_node **lst);
 // push swap
 void	push_swap(t_node **lst, int bench, int strategy);
 int		select_strategy(char *s);
-double	compute_disorder(t_node **stack);
-
-// algorithms
-void	simple_alg(t_node **stack_a, int bench);
-void	medium_alg(t_node **stack_a, int bench);
-void	complex_alg(t_node **stack_a, int bench);
 
 // operations
 void	swap(t_node **lst);
@@ -80,15 +73,28 @@ void	rotate(t_node **lst);
 void	ra(t_node **a);
 void	rb(t_node **b);
 void	rr(t_node **a, t_node **b);
-void	reverse_rotate(t_node **lst);
+void	rev_rotate(t_node **lst);
 void	rra(t_node **a);
 void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
 
+// utils algoritmos
+double	compute_disorder(t_node **stack);
+void	q_swap(int *a, int *b);
+void	quicksort(int *arr, int left, int right);
+void	apply_index(t_node *a, int *arr, int size);
+void	index_list(t_node **a);
+
+
 //algoritmos
+void	simple_alg(t_node **stack_a, int bench);
 void	sort_three(t_node **stack, int bench);
 void	selection_sort(t_node **a, t_node **b);
 void	index_list(t_node **a);
+void	chunks_sort(t_node **a, t_node **b);
+int		find_max_pos(t_node *b);
+void	push_chunks(t_node **a, t_node **b, int chunks_size);
+void	push_back(t_node **a, t_node **b);
 void	chunks_sort(t_node **a, t_node **b);
 
 #endif
