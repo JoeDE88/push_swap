@@ -56,24 +56,6 @@ void	lst_addfront(t_node **lst, t_node *new)
 	*lst = new;
 }
 
-void	fill_list_from_arr(t_node **lst, char **arr)
-{
-	int	i;
-
-	i = 0;
-	if (!*lst)
-	{
-		*lst = lst_new(ft_atoi(arr[i]));
-		i += 1;
-	}
-	while (arr[i])
-	{
-		lst_addback(lst, lst_new(ft_atoi(arr[i])));
-		i++;
-	}
-	free_arr(arr);
-}
-
 int	lst_size(t_node *lst)
 {
 	int		count;

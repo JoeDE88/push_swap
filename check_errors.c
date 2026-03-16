@@ -12,26 +12,6 @@
 
 #include "push_swap.h"
 
-int	is_plus_or_min(int c)
-{
-	if (c == '-' || c == '+')
-		return (1);
-	return (0);
-}
-
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
-void	print_err(void)
-{
-	write(2, "Error\n", 6);
-	exit(EXIT_FAILURE);
-}
-
 void	check_str(char *str)
 {
 	int	i;

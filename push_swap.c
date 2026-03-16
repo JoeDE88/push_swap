@@ -54,31 +54,22 @@ void	push_swap(t_node **stack_a, int bench, char *strategy)
 
 int	main(int ac, char *av[])
 {
+	t_algdata	*data;
 	t_node		*stack_a;
-	//t_algdata	*data;
-	 int		bench;
-	int		flag_strategy;
-	char	*strategy;
 
-	flag_strategy = 0;
+	data = NULL;
 	stack_a = NULL;
-	bench = 0;
 	if (ac == 1)
 		return (0);
-	/* data = parse_args(ac, av);
-	printf("stra: %s\n", data->strategy); */
-	strategy = check_params(av, 1, &bench, &flag_strategy);
-	if (flag_strategy)
-		fill_args(ac - bench - 1, av + bench + 2, &stack_a);
-	else
-		fill_args(ac - bench, av + bench + 1, &stack_a);
+	parse_args(&data, ac, av);
+	fill_stack_from_arr(&stack_a, data);
 	check_repeated_or_unique(&stack_a);
 	if (stack_a)
 	{
 		// index_list(&stack_a);
-		push_swap(&stack_a, bench, strategy);
+		push_swap(&stack_a, data->bench, data->strategy);
 		free_lst(&stack_a);
+		free(data);
 	}
-	free(strategy);
 	return (0);
 }

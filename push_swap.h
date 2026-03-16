@@ -28,16 +28,23 @@ typedef struct s_node
 
 typedef struct s_algdata
 {
-	int		*arr;
 	int		bench;
 	char	*strategy;
+	void	*arr;
+	size_t	size;
+	int		arr_type;
 }	t_algdata;
 
-t_algdata   *parse_args(int ac, char **av);
-t_algdata   *fill_alg_data(int benchmark, char *strategy);
+t_algdata   *parse_args(t_algdata **data, int ac, char **av);
+t_algdata   *fill_alg_data(int benchmark, char *strategy, void *nums_array, int type, int len);
 void    	parse_flags(int flags, char **av, int *bench, char **strategy);
 void    	loop_flags(int flags, char **av, int *bench, char **strategy);
-int			*fill_nums_arr(int ac, int flags, char **av);
+void		*fill_nums_arr(int ac, int flags, char **av, int *len);
+int			*nums_array(char **av, int ac);
+void		fill_stack_from_arr(t_node **lst, t_algdata *data);
+void    	fill_from_string_array(t_node **lst, t_algdata *data);
+void		fill_from_int_array(t_node **lst, t_algdata *data);
+
 // bench
 typedef struct s_bench
 {
@@ -67,17 +74,14 @@ void	ft_printint(int n);
 void	ft_printdouble(double n);
 
 // parse args
-void	fill_args(int ac, char **av, t_node **lst);
-char	*check_params(char **av, int ac, int *bench, int *strategy);
 char	*select_strategy(char *s);
-void	check_bench(char *av, int *bench);
-char	*check_strategy(char *av, int *flag_strategy);
+int		count_flags(int ac, char **av);
 
 // safe split
 int		fill_arr(char **arr, char *str, char c);
 int		count_args(char *s);
 int		safe_malloc(char **arr, int pos, size_t len);
-char	**ft_split(char *str, char c);
+char	**ft_split(char *str, char c, int *len);
 
 // err
 void	print_err(void);
@@ -103,11 +107,10 @@ char	*ft_strdup(char *str);
 // list
 void	lst_addback(t_node **lst, t_node *new_node);
 t_node	*lst_new(int num);
-void	fill_list_from_arr(t_node **lst, char **arr);
 int		lst_size(t_node *lst);
 
 // free
-void	free_arr(char **arr);
+void	free_str_arr(char **arr, size_t len);
 void	free_lst(t_node **lst);
 
 // push swap

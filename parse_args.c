@@ -12,96 +12,46 @@
 
 #include "push_swap.h"
 
-int	*fill_nums_arr(int ac, int flags, char **av)
-{
-	int	i;
-
-	i = 1;
-	printf("ac: %d\n", ac);
-	printf("av[ac]: %s\n", av[i + flags]);
-	
-	return (NULL);
-}
-
-char	*select_strategy(char *s)
-{
-	int	i;
-
-	i = 2;
-	if (!ft_strncmp(s + i, "simple", 6))
-		return (s + 2);
-	if (!ft_strncmp(s + i, "medium", 6))
-		return (s + 2);
-	if (!ft_strncmp(s + i, "complex", 7))
-		return (s + 2);
-	if (!ft_strncmp(s + i, "adaptive", 8))
-		return (s + 2);
-	else
-		print_err();
-	return (NULL);
-}
-
-void	fill_args(int ac, char **av, t_node **lst)
+void	*fill_nums_arr(int ac, int flags, char **av, int *len)
 {
 	char	**arr;
-	int		num;
+	int		*nums_arr;
 	int		i;
 
-	i = 0;
-	if (ac == 2)
+	i = 1;
+	if (ac == 1)
 	{
-		check_str(*(av));
-		arr = ft_split(*(av), ' ');
+		check_str(*av);
+		arr = ft_split(*av, ' ', len);
 		if (arr == NULL)
-			return ;
-		fill_list_from_arr(lst, arr);
+			return (NULL);
+		return (arr);
 	}
 	else
 	{
-		check_args(av, ac - 1);
-		while (i < ac - 1)
-		{
-			num = ft_atoi(av[i]);
-			lst_addback(lst, lst_new(num));
-			i++;
-		}
+		check_args(av, ac);
+		nums_arr = nums_array(&av[flags], ac);
+		*len = ac;
+		if (nums_arr == NULL)
+			return (NULL);
+		return (nums_arr);
 	}
+	return (NULL);
 }
 
-void	check_bench(char *av, int *bench)
+int	*nums_array(char **av, int ac)
 {
-	if (!ft_strncmp(av, "--bench", 7))
-		*bench = 1;
-	else
-		*bench = 0;
-}
+	int	*arr;
+	int	i;
 
-char	*check_strategy(char *av, int *flag_strategy)
-{
-	char	*strat;
-
-	if (!ft_strncmp(av, "--", 2))
+	arr = malloc(ac * sizeof(int));
+	if (arr == NULL)
+		return (NULL);
+	i = 0;
+	while (i < ac)
 	{
-		strat = ft_strdup(select_strategy(av));
-		*flag_strategy = 1;
+		arr[i] = ft_atoi(av[i]);
+		i++;
 	}
-	else
-		strat = ft_strdup("adaptive");
-	return (strat);
-}
-
-char	*check_params(char **av, int ac, int *bench, int *strategy)
-{
-	char	*strat;
-
-	check_bench(av[ac], bench);
-	if (*bench)
-		strat = check_strategy(av[ac + 1], strategy);
-	else
-	{
-		strat = check_strategy(av[ac], strategy);
-		if (av[ac + 1] != NULL)
-			check_bench(av[ac + 1], bench);
-	}
-	return (strat);
+	return (arr);
 }
