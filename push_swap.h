@@ -148,9 +148,6 @@ void	index_list(t_node **a);
 
 
 //algoritmos
-void	simple_alg(t_node **stack_a, int bench);
-void	sort_three(t_node **stack, int bench);
-void	selection_sort(t_node **a, t_node **b);
 void	index_list(t_node **a);
 void	chunks_sort(t_node **a, t_node **b);
 int		find_max_pos(t_node *b);
