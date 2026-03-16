@@ -25,27 +25,27 @@ void	swap(t_node **lst)
 	(*lst)->next = tmp;
 }
 
-void	sa(t_node **a, int bench, t_bench *bench_ptr)
+void	sa(t_node **a, t_algdata *data, t_bench *bm)
 {
 	swap(a);
-	if (!bench)
+	if (!data->bench)
 		ft_putstr("sa\n", 1);
 	else
 	{
-		bench_ptr->sa += 1;
-		bench_ptr->total_ops += 1;
+		bm->sa += 1;
+		bm->total_ops += 1;
 	}
 }
 
-void	sb(t_node **b, int bench, t_bench *bench_ptr)
+void	sb(t_node **b, t_algdata *data, t_bench *bm)
 {
 	swap(b);
-	if (!bench)
+	if (!data->bench)
 		ft_putstr("sb\n", 1);
 	else
 	{
-		bench_ptr->sb += 1;
-		bench_ptr->total_ops += 1;
+		bm->sb += 1;
+		bm->total_ops += 1;
 	}
 }
 
@@ -62,40 +62,40 @@ void	push(t_node **dest, t_node **src)
 	*dest = tmp;
 }
 
-void	pa(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
+void	pa(t_node **a, t_node **b, t_algdata *data, t_bench *bm)
 {
 	push(a, b);
-	if (!bench)
+	if (!data->bench)
 		ft_putstr("pa\n", 1);
 	else
 	{
-		bench_ptr->pa += 1;
-		bench_ptr->total_ops += 1;
+		bm->pa += 1;
+		bm->total_ops += 1;
 	}
 }
 
-void	pb(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
+void	pb(t_node **a, t_node **b, t_algdata *data, t_bench *bm)
 {
 	push(b, a);
-	if (!bench)
+	if (!data->bench)
 		ft_putstr("pb\n", 1);
 	else
 	{
-		bench_ptr->pb += 1;
-		bench_ptr->total_ops += 1;
+		bm->pb += 1;
+		bm->total_ops += 1;
 	}
 }
 
 // Intercambia los dos primeros elementos de ambos stacks a la vez
-void ss(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
+void ss(t_node **a, t_node **b, t_algdata *data, t_bench *bm)
 {
 	swap(a);
 	swap(b);
-	if (!bench)
+	if (!data->bench)
 		ft_putstr("ss\n", 1);
 	else
 	{
-		bench_ptr->ss += 1;
-		bench_ptr->total_ops += 1;
+		bm->ss += 1;
+		bm->total_ops += 1;
 	}
 }

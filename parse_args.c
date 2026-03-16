@@ -16,13 +16,11 @@ void	*fill_nums_arr(int ac, int flags, char **av, int *len)
 {
 	char	**arr;
 	int		*nums_arr;
-	int		i;
-
-	i = 1;
+	
 	if (ac == 1)
 	{
-		check_str(*av);
-		arr = ft_split(*av, ' ', len);
+		check_str(*(av+flags));
+		arr = ft_split(*(av+flags), ' ', len);
 		if (arr == NULL)
 			return (NULL);
 		return (arr);

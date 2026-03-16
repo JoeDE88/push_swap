@@ -12,15 +12,13 @@
 
 #include "push_swap.h"
 
-t_algdata	*fill_alg_data(int benchmark, char *strategy, void *nums_array, int type, int len)
+t_algdata	*fill_alg_data(void *nums_array, int type, int len)
 {
 	t_algdata	*data;
 
 	data = malloc(sizeof(t_algdata));
 	if (data == NULL)
 		return (NULL);
-	data->bench = benchmark;
-	data->strategy = strategy;
 	data->arr_type = type;
 	data->arr = nums_array;
 	data->size = len;
@@ -29,9 +27,6 @@ t_algdata	*fill_alg_data(int benchmark, char *strategy, void *nums_array, int ty
 
 void	fill_stack_from_arr(t_node **lst, t_algdata *data)
 {
-	int	i;
-
-	i = 0;
 	if (data->arr_type == 0)
 	{
 		fill_from_string_array(lst, data);

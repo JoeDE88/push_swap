@@ -28,27 +28,27 @@ void	rotate(t_node **lst)
 	last->next = first;
 }
 
-void	ra(t_node **a, int bench, t_bench *bench_ptr)
+void	ra(t_node **a, t_algdata *data, t_bench *bm)
 {
 	rotate(a);
-	if (!bench)
+	if (!data->bench)
 		ft_putstr("ra\n", 1);
 	else
 	{
-		bench_ptr->ra += 1;
-		bench_ptr->total_ops += 1;
+		bm->ra += 1;
+		bm->total_ops += 1;
 	}
 }
 
-void	rb(t_node **b, int bench, t_bench *bench_ptr)
+void	rb(t_node **b, t_algdata *data, t_bench *bm)
 {
 	rotate(b);
-	if (!bench)
+	if (!data->bench)
 		ft_putstr("rb\n", 1);
 	else
 	{
-		bench_ptr->rb += 1;
-		bench_ptr->total_ops += 1;
+		bm->rb += 1;
+		bm->total_ops += 1;
 	}
 }
 
@@ -71,52 +71,52 @@ void	rev_rotate(t_node **lst)
 	*lst = last;
 }
 
-void	rra(t_node **a, int bench, t_bench *bench_ptr)
+void	rra(t_node **a, t_algdata *data, t_bench *bm)
 {
 	rev_rotate(a);
-	if (!bench)
+	if (!data->bench)
 		ft_putstr("rra\n", 1);
 	else
 	{
-		bench_ptr->rra += 1;
-		bench_ptr->total_ops += 1;
+		bm->rra += 1;
+		bm->total_ops += 1;
 	}
 }
 
-void	rrb(t_node **b, int bench, t_bench *bench_ptr)
+void	rrb(t_node **b, t_algdata *data, t_bench *bm)
 {
 	rev_rotate(b);
-	if (!bench)
+	if (!data->bench)
 		ft_putstr("rrb\n", 1);
 	else
 	{
-		bench_ptr->rrb += 1;
-		bench_ptr->total_ops += 1;
+		bm->rrb += 1;
+		bm->total_ops += 1;
 	}
 }
 
-void	rr(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
+void	rr(t_node **a, t_node **b, t_algdata *data, t_bench *bm)
 {
 	rotate(a);
 	rotate(b);
-	if (!bench)
+	if (!data->bench)
 		ft_putstr("rr\n", 1);
 	else
 	{
-		bench_ptr->rr += 1;
-		bench_ptr->total_ops += 1;
+		bm->rr += 1;
+		bm->total_ops += 1;
 	}
 }
 
-void	rrr(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
+void	rrr(t_node **a, t_node **b, t_algdata *data, t_bench *bm)
 {
 	rev_rotate(a);
 	rev_rotate(b);
-	if (!bench)
+	if (!data->bench)
 		ft_putstr("rrr\n", 1);
 	else
 	{
-		bench_ptr->rrr += 1;
-		bench_ptr->total_ops += 1;
+		bm->rrr += 1;
+		bm->total_ops += 1;
 	}
 }

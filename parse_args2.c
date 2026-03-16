@@ -24,13 +24,18 @@ t_algdata	*parse_args(t_algdata **data, int ac, char **av)
 	len = 0;
 	flags = count_flags(ac, av);
 	parse_flags(flags, av, &bench, &strategy);
-	nums = fill_nums_arr(ac - 1 - flags, flags, av + 1, &len);
+	nums = fill_nums_arr(ac - 1 - flags, flags + 1, av, &len);
 	if (ac == 2)
-		*data = fill_alg_data(bench, strategy, nums, 0, len);
+		*data = fill_alg_data(nums, 0, len);
 	else
-		*data = fill_alg_data(bench, strategy, nums, 1, len);
+		*data = fill_alg_data(nums, 1, len);
 	if (*data == NULL)
 		print_err();
+	else
+	{
+		(*data)->bench = bench;
+		(*data)->strategy = strategy;
+	}
 	return (*data);
 }
 

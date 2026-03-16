@@ -36,7 +36,7 @@ typedef struct s_algdata
 }	t_algdata;
 
 t_algdata   *parse_args(t_algdata **data, int ac, char **av);
-t_algdata   *fill_alg_data(int benchmark, char *strategy, void *nums_array, int type, int len);
+t_algdata   *fill_alg_data(void *nums_array, int type, int len);
 void    	parse_flags(int flags, char **av, int *bench, char **strategy);
 void    	loop_flags(int flags, char **av, int *bench, char **strategy);
 void		*fill_nums_arr(int ac, int flags, char **av, int *len);
@@ -114,30 +114,30 @@ void	free_str_arr(char **arr, size_t len);
 void	free_lst(t_node **lst);
 
 // push swap
-void	push_swap(t_node **stack_a, int bench, char *strategy);
+void	push_swap(t_node **stack_a, t_algdata *data);
 double	compute_disorder(t_node **stack);
 
 // algorithms
-void	simple_alg(t_node **a, int bench, t_bench *bench_ptr);
-void	medium_alg(t_node **stack_a, int bench, t_bench *bench_ptr);
-void	complex_alg(t_node **stack_a, int bench, t_bench *bench_ptr);
+void	simple_alg(t_node **a, t_algdata *data, t_bench *bm);
+void	medium_alg(t_node **stack_a, t_algdata *data, t_bench *bm);
+void	complex_alg(t_node **stack_a, t_algdata *data, t_bench *bm);
 
 // operations
 void	swap(t_node **lst);
-void	sa(t_node **a, int bench, t_bench *bench_ptr);
-void	sb(t_node **b, int bench, t_bench *bench_ptr);
-void	ss(t_node **a, t_node **b, int bench, t_bench *bench_ptr);
+void	sa(t_node **a, t_algdata *data, t_bench *bm);
+void	sb(t_node **b, t_algdata *data, t_bench *bm);
+void	ss(t_node **a, t_node **b, t_algdata *data, t_bench *bm);
 void	push(t_node **dest, t_node **src);
-void	pa(t_node **a, t_node **b, int bench, t_bench *bench_ptr);
-void	pb(t_node **a, t_node **b, int bench, t_bench *bench_ptr);
+void	pa(t_node **a, t_node **b, t_algdata *data, t_bench *bm);
+void	pb(t_node **a, t_node **b, t_algdata *data, t_bench *bm);
 void	rotate(t_node **lst);
-void	ra(t_node **a, int bench, t_bench *bench_ptr);
-void	rb(t_node **b, int bench, t_bench *bench_ptr);
-void	rr(t_node **a, t_node **b, int bench, t_bench *bench_ptr);
+void	ra(t_node **a, t_algdata *data, t_bench *bm);
+void	rb(t_node **b, t_algdata *data, t_bench *bm);
+void	rr(t_node **a, t_node **b, t_algdata *data, t_bench *bm);
 void	rev_rotate(t_node **lst);
-void	rra(t_node **a, int bench, t_bench *bench_ptr);
-void	rrb(t_node **b, int bench, t_bench *bench_ptr);
-void	rrr(t_node **a, t_node **b, int bench, t_bench *bench_ptr);
+void	rra(t_node **a, t_algdata *data, t_bench *bm);
+void	rrb(t_node **b, t_algdata *data, t_bench *bm);
+void	rrr(t_node **a, t_node **b, t_algdata *data, t_bench *bm);
 
 // utils algoritmos
 double	compute_disorder(t_node **stack);
@@ -149,13 +149,12 @@ void	index_list(t_node **a);
 
 //algoritmos
 void	index_list(t_node **a);
-void	chunks_sort(t_node **a, t_node **b);
+void	chunks_sort(t_node **a, t_node **b, t_algdata *data, t_bench *bm);
 int		find_max_pos(t_node *b);
 void	push_chunks(t_node **a, t_node **b, int chunks_size);
 void	push_back(t_node **a, t_node **b);
-void	chunks_sort(t_node **a, t_node **b);
-void	adaptive(t_node **a, int bench, t_bench *bench_ptr);
-void	sort_three(t_node **stack, int bench, t_bench *bench_ptr);
-void	selection_sort(t_node **a, t_node **b, int bench, t_bench *bench_ptr);
+void	adaptive(t_node **a, t_algdata *data, t_bench *bm);
+void	sort_three(t_node **stack, t_algdata *data, t_bench *bm);
+void	selection_sort(t_node **a, t_node **b, t_algdata *data, t_bench *bm);
 
 #endif
