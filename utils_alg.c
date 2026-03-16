@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 19:18:19 by gblas-he          #+#    #+#             */
-/*   Updated: 2026/03/10 18:26:36 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/13 20:28:50 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,33 +37,57 @@ double	compute_disorder(t_node **stack)
 	return (mistakes / total_pairs);
 }
 
-void	quicksort(int *arr, int left, int right)
+void	q_swap(int *a, int *b)
 {
-	int	pivot;
-	int	i;
-	int	j;
 	int	tmp;
 
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+void	quicksort(int *arr, int left, int right)
+{
+	int	p;
+	int	i;
+	int	j;
+
+	if (left >= right)
+		return ;
 	i = left;
 	j = right;
-	pivot = arr[(left + right) / 2];
+	p = arr[left];
 	while (i < j)
 	{
-		while (arr[i] <= pivot && i <= right - 1)
+		while (arr[i] <= p && i <= right - 1)
 			i++;
-		while (arr[j] > pivot && j >= left + 1)
+		while (arr[j] > p && j >= left + 1)
 			j--;
 		if (i < j)
+			q_swap(&arr[i], &arr[j]);
+	}
+	q_swap(&arr[left], &arr[j]);
+	quicksort(arr, left, j - 1);
+	quicksort(arr, j + 1, right);
+}
+
+void	apply_index(t_node *a, int *arr, int size)
+{
+	int	i;
+
+	while (a)
+	{
+		i = 0;
+		while (i < size)
 		{
-			if (arr[i] >= pivot && arr[j] <= pivot)
+			if (a->value == arr[i])
 			{
-				tmp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = tmp;
+				a->idx = i;
+				break ;
 			}
 			i++;
-			j--;
 		}
+		a = a->next;
 	}
 }
 
@@ -74,6 +98,8 @@ void	index_list(t_node **a)
 	int		*arr;
 	int		i;
 
+	if (!a || !*a)
+		return ;
 	size = lst_size(*a);
 	arr = malloc(sizeof(int) * size);
 	if (!arr)
@@ -86,5 +112,6 @@ void	index_list(t_node **a)
 		tmp = tmp->next;
 	}
 	quicksort(arr, 0, size - 1);
+	apply_index(*a, arr, size);
 	free(arr);
 }

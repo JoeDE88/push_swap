@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:52:04 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/10 18:12:15 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/16 17:02:37 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	push_swap(t_node **stack_a, int bench, char *strategy)
 {
 	t_bench	*bench_ptr;
 	double	disorder;
+	t_node	*stack_b;
 
 	bench_ptr = NULL;
 	disorder = compute_disorder(stack_a);
