@@ -36,7 +36,7 @@ t_bench	*init_bench(void)
 
 void	print_bench(t_data *data, double *disorder)
 {
-	int dis;
+	int	dis;
 
 	dis = *disorder * 100;
 	ft_printf("[bench] disorder: %f%%\n", *disorder);
