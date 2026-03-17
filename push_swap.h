@@ -63,6 +63,7 @@ void		fill_from_string_array(t_node **lst, t_data *data);
 void		fill_from_int_array(t_node **lst, t_data *data);
 t_bench		*init_bench(void);
 void		print_bench(t_data *data, double *disorder);
+char		*compute_complexity(t_data *data, double *disorder);
 
 // ft_printf
 void		ft_printf(const char *format, ...);
