@@ -12,6 +12,30 @@
 
 #include "push_swap.h"
 
+void	parse_args(t_algdata **data, int ac, char **av)
+{
+	void	*nums;
+	int		flags;
+	int		bench;
+	int		len;
+	char	*strategy;
+
+	bench = 0;
+	len = 0;
+	flags = count_flags(ac, av);
+	parse_flags(flags, av, &bench, &strategy);
+	nums = fill_nums_arr(ac - 1 - flags, flags, av, &len);
+	if (ac - flags == 2)
+		*data = fill_alg_data(nums, 0, len);
+	else
+		*data = fill_alg_data(nums, 1, len);
+	(*data)->bench = bench;
+	(*data)->strategy = strategy;
+	if (*data == NULL)
+		print_err();
+	(*data)->benchmark = init_bench();
+}
+
 void	*fill_nums_arr(int ac, int flags, char **av, int *len)
 {
 	char	**arr;
@@ -19,16 +43,16 @@ void	*fill_nums_arr(int ac, int flags, char **av, int *len)
 	
 	if (ac == 1)
 	{
-		check_str(*(av+flags));
-		arr = ft_split(*(av+flags), ' ', len);
+		check_str(*(av + 1 + flags));
+		arr = ft_split(*(av + 1 + flags), ' ', len);
 		if (arr == NULL)
 			return (NULL);
 		return (arr);
 	}
 	else
 	{
-		check_args(av, ac);
-		nums_arr = nums_array(&av[flags], ac);
+		check_args(&av[flags + 1], ac);
+		nums_arr = nums_array(&av[flags + 1], ac);
 		*len = ac;
 		if (nums_arr == NULL)
 			return (NULL);

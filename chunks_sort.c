@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include "push_swap.h"
+#include "push_swap.h"
 
 int	find_max_pos(t_node *b)
 {
@@ -36,7 +36,7 @@ int	find_max_pos(t_node *b)
 	return (max_pos);
 }
 
-void	push_chunks(t_node **a, t_node **b, int chunks_size)
+void	push_chunks(t_node **a, t_node **b, int chunks_size, t_algdata *data)
 {
 	int	i;
 
@@ -45,21 +45,21 @@ void	push_chunks(t_node **a, t_node **b, int chunks_size)
 	{
 		if ((*a)->idx <= i)
 		{
-			pb(a, b);
-			rb(b);
+			pb(a, b, data);
+			rb(b, data);
 			i++;
 		}
 		else if ((*a)->idx <= i + chunks_size)
 		{
-			pb(a, b);
+			pb(a, b, data);
 			i++;
 		}
 		else
-			ra(a);
+			ra(a, data);
 	}
 }
 
-void	push_back(t_node **a, t_node **b)
+void	push_back(t_node **a, t_node **b, t_algdata *data)
 {
 	int	size;
 	int	max_pos;
@@ -71,19 +71,19 @@ void	push_back(t_node **a, t_node **b)
 		if (max_pos <= size / 2)
 		{
 			while (max_pos--)
-				rb(b);
+				rb(b, data);
 		}
 		else
 		{
 			max_pos = size - max_pos;
 			while (max_pos--)
-				rrb(b);
+				rrb(b, data);
 		}
-		pa(a, b);
+		pa(a, b, data);
 	}
 }
 
-void	chunks_sort(t_node **a, t_node **b, t_algdata *data, t_bench *bm)
+void	chunks_sort(t_node **a, t_node **b, t_algdata *data)
 {
 	int size;
 	int num_chunks;
@@ -97,6 +97,6 @@ void	chunks_sort(t_node **a, t_node **b, t_algdata *data, t_bench *bm)
 	chunks_size = size / num_chunks;
 	if (size % num_chunks)
 		chunks_size++;
-	push_chunks(a, b, chunks_size);
-	push_back(a, b);
-} */
+	push_chunks(a, b, chunks_size, data);
+	push_back(a, b, data);
+}

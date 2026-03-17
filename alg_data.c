@@ -22,6 +22,7 @@ t_algdata	*fill_alg_data(void *nums_array, int type, int len)
 	data->arr_type = type;
 	data->arr = nums_array;
 	data->size = len;
+	data->benchmark = NULL;
 	return (data);
 }
 

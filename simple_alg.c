@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	simple_alg(t_node **a, t_algdata *data, t_bench *bm)
+void	simple_alg(t_node **a, t_algdata *data)
 {
 	t_node	*stack_b;
 	t_node	*next;
@@ -22,16 +22,16 @@ void	simple_alg(t_node **a, t_algdata *data, t_bench *bm)
 	next = (*a)->next;
 	nums = lst_size(*a);
 	if (nums == 2 && (*a)->value > next->value)
-		sa(a, data, bm);
+		sa(a, data);
 	else if (nums == 3)
-		sort_three(a, data, bm);
+		sort_three(a, data);
 	else
-		selection_sort(a, &stack_b, data, bm);
+		selection_sort(a, &stack_b, data);
 	if (stack_b)
 		free_lst(&stack_b);
 }
 
-void	sort_three(t_node **stack, t_algdata *data, t_bench *bm)
+void	sort_three(t_node **stack, t_algdata *data)
 {
 	t_node	*next;
 
@@ -39,23 +39,23 @@ void	sort_three(t_node **stack, t_algdata *data, t_bench *bm)
 	if ((*stack)->value > next->value && next->value < next->next->value)
 	{
 		if ((*stack)->value > next->next->value)
-			ra(stack, data, bm);
+			ra(stack, data);
 		else
-			sa(stack, data, bm);
+			sa(stack, data);
 	}
 	if ((*stack)->value > next->value && next->value > next->next->value)
 	{
-		ra(stack, data, bm);
-		sa(stack, data, bm);
+		ra(stack, data);
+		sa(stack, data);
 	}
 	if ((*stack)->value < next->value && next->value > next->next->value)
 	{
 		if ((*stack)->value > next->next->value)
-			rra(stack, data, bm);
+			rra(stack, data);
 		else
 		{
-			rra(stack, data, bm);
-			sa(stack, data, bm);
+			rra(stack, data);
+			sa(stack, data);
 		}
 	}
 }

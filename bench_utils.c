@@ -34,14 +34,14 @@ t_bench	*init_bench(void)
 	return (bench_ptr);
 }
 
-void	print_bench(t_bench *bench, double *disorder, char *strategy)
+void	print_bench(t_algdata *data, double *disorder, char *strategy)
 {
 	ft_printf("[bench] disorder: %f%%\n", *disorder);
 	ft_printf("[bench] strategy: %s / 0(n√n)\n", strategy);
-	ft_printf("[bench] total_ops: %d\n", bench->total_ops);
-	ft_printf("[bench] sa: %d sb: %d ss: %d", bench->sa, bench->sb, bench->ss);
-	ft_printf(" pa:	%d pb: %d\n", bench->pa, bench->pb);
-	ft_printf("[bench] ra: %d rb: %d rr: %d", bench->ra, bench->rb, bench->rr);
-	ft_printf(" rra: %d rrb: %d rrr: %d\n", bench->rra, bench->rrb, bench->rrr);
-	free(bench);
+	ft_printf("[bench] total_ops: %d\n", data->benchmark->total_ops);
+	ft_printf("[bench] sa: %d sb: %d ss: %d", data->benchmark->sa, data->benchmark->sb, data->benchmark->ss);
+	ft_printf(" pa:	%d pb: %d\n", data->benchmark->pa, data->benchmark->pb);
+	ft_printf("[bench] ra: %d rb: %d rr: %d", data->benchmark->ra, data->benchmark->rb, data->benchmark->rr);
+	ft_printf(" rra: %d rrb: %d rrr: %d\n", data->benchmark->rra, data->benchmark->rrb, data->benchmark->rrr);
+	free(data->benchmark);
 }
