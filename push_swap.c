@@ -12,14 +12,13 @@
 
 #include "push_swap.h"
 
-void	adaptive(t_node **a, t_algdata *data)
+void	adaptive(t_node **a, t_data *data)
 {
 	double	disorder;
 
 	disorder = compute_disorder(a);
 	if (disorder < 0.2)
 		simple_alg(a, data);
-	
 	if (disorder >= 0.2 && disorder < 0.5)
 		medium_alg(a, data);
 	/*
@@ -27,11 +26,9 @@ void	adaptive(t_node **a, t_algdata *data)
 		complex_alg(stack_a, data); */
 }
 
-void	push_swap(t_node **stack_a, t_algdata *data)
+void	push_swap(t_node **stack_a, t_data *data)
 {
-	//t_bench	*benchmark;
 	double	disorder;
-	//t_node	*stack_b;
 
 	disorder = compute_disorder(stack_a);
 	if (!disorder)
@@ -49,15 +46,14 @@ void	push_swap(t_node **stack_a, t_algdata *data)
 	*/
 	if (!ft_strncmp(data->strategy, "adaptive", 8))
 		adaptive(stack_a, data);
-	
 	if (data->bench)
-		print_bench(data, &disorder, data->strategy);
+		print_bench(data, &disorder);
 }
 
 int	main(int ac, char *av[])
 {
-	t_algdata	*data;
-	t_node		*stack_a;
+	t_data	*data;
+	t_node	*stack_a;
 
 	data = NULL;
 	stack_a = NULL;

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	simple_alg(t_node **a, t_algdata *data)
+void	simple_alg(t_node **a, t_data *data)
 {
 	t_node	*stack_b;
 	t_node	*next;
@@ -31,7 +31,7 @@ void	simple_alg(t_node **a, t_algdata *data)
 		free_lst(&stack_b);
 }
 
-void	sort_three(t_node **stack, t_algdata *data)
+void	sort_three(t_node **stack, t_data *data)
 {
 	t_node	*next;
 

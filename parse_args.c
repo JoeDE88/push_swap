@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	parse_args(t_algdata **data, int ac, char **av)
+void	parse_args(t_data **data, int ac, char **av)
 {
 	void	*nums;
 	int		flags;
@@ -33,14 +33,14 @@ void	parse_args(t_algdata **data, int ac, char **av)
 	(*data)->strategy = strategy;
 	if (*data == NULL)
 		print_err();
-	(*data)->benchmark = init_bench();
+	(*data)->bm = init_bench();
 }
 
 void	*fill_nums_arr(int ac, int flags, char **av, int *len)
 {
 	char	**arr;
 	int		*nums_arr;
-	
+
 	if (ac == 1)
 	{
 		check_str(*(av + 1 + flags));

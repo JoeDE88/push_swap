@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chunks_sort.c                                       :+:      :+:    :+:   */
+/*   chunks_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -36,7 +36,7 @@ int	find_max_pos(t_node *b)
 	return (max_pos);
 }
 
-void	push_chunks(t_node **a, t_node **b, int chunks_size, t_algdata *data)
+void	push_chunks(t_node **a, t_node **b, int chunks_size, t_data *data)
 {
 	int	i;
 
@@ -59,7 +59,7 @@ void	push_chunks(t_node **a, t_node **b, int chunks_size, t_algdata *data)
 	}
 }
 
-void	push_back(t_node **a, t_node **b, t_algdata *data)
+void	push_back(t_node **a, t_node **b, t_data *data)
 {
 	int	size;
 	int	max_pos;
@@ -83,11 +83,11 @@ void	push_back(t_node **a, t_node **b, t_algdata *data)
 	}
 }
 
-void	chunks_sort(t_node **a, t_node **b, t_algdata *data)
+void	chunks_sort(t_node **a, t_node **b, t_data *data)
 {
-	int size;
-	int num_chunks;
-	int chunks_size;
+	int	size;
+	int	num_chunks;
+	int	chunks_size;
 
 	size = lst_size(*a);
 	if (size <= 100)
