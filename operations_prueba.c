@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   operations_prueba.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 19:58:57 by gblas-he          #+#    #+#             */
-/*   Updated: 2026/03/09 13:43:57 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/17 18:14:38 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,16 @@ void	swap(t_node **lst)
 	(*lst)->next = tmp;
 }
 
-void	sa(t_node **a, int bench, t_bench *bench_ptr)
+void	sa(t_node **a)
 {
 	swap(a);
-	if (!bench)
-		ft_putstr("sa\n", 1);
-	else
-	{
-		bench_ptr->sa += 1;
-		bench_ptr->total_ops += 1;
-	}
+	ft_putstr("sa\n", 1);
 }
 
-void	sb(t_node **b, int bench, t_bench *bench_ptr)
+void	sb(t_node **b)
 {
 	swap(b);
-	if (!bench)
-		ft_putstr("sb\n", 1);
-	else
-	{
-		bench_ptr->sb += 1;
-		bench_ptr->total_ops += 1;
-	}
+	ft_putstr("sb\n", 1);
 }
 
 // Toma el primer elemento del 1º stack y lo coloca el primero en el 2º stack
@@ -62,40 +50,22 @@ void	push(t_node **dest, t_node **src)
 	*dest = tmp;
 }
 
-void	pa(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
+void	pa(t_node **a, t_node **b)
 {
 	push(a, b);
-	if (!bench)
-		ft_putstr("pa\n", 1);
-	else
-	{
-		bench_ptr->pa += 1;
-		bench_ptr->total_ops += 1;
-	}
+	ft_putstr("pa\n", 1);
 }
 
-void	pb(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
+void	pb(t_node **a, t_node **b)
 {
 	push(b, a);
-	if (!bench)
-		ft_putstr("pb\n", 1);
-	else
-	{
-		bench_ptr->pb += 1;
-		bench_ptr->total_ops += 1;
-	}
+	ft_putstr("pb\n", 1);
 }
 
 // Intercambia los dos primeros elementos de ambos stacks a la vez
-void ss(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
+void ss(t_node **a, t_node **b)
 {
 	swap(a);
 	swap(b);
-	if (!bench)
 		ft_putstr("ss\n", 1);
-	else
-	{
-		bench_ptr->ss += 1;
-		bench_ptr->total_ops += 1;
-	}
 }

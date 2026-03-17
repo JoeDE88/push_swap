@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_rotate.c                                :+:      :+:    :+:   */
+/*   operations_rotate_prueba.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 19:25:23 by gblas-he          #+#    #+#             */
-/*   Updated: 2026/03/07 15:40:33 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/17 18:14:39 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,16 @@ void	rotate(t_node **lst)
 	last->next = first;
 }
 
-void	ra(t_node **a, int bench, t_bench *bench_ptr)
+void	ra(t_node **a)
 {
 	rotate(a);
-	if (!bench)
-		ft_putstr("ra\n", 1);
-	else
-	{
-		bench_ptr->ra += 1;
-		bench_ptr->total_ops += 1;
-	}
+	ft_putstr("ra\n", 1);
 }
 
-void	rb(t_node **b, int bench, t_bench *bench_ptr)
+void	rb(t_node **b)
 {
 	rotate(b);
-	if (!bench)
-		ft_putstr("rb\n", 1);
-	else
-	{
-		bench_ptr->rb += 1;
-		bench_ptr->total_ops += 1;
-	}
+	ft_putstr("rb\n", 1);
 }
 
 void	rev_rotate(t_node **lst)
@@ -71,52 +59,28 @@ void	rev_rotate(t_node **lst)
 	*lst = last;
 }
 
-void	rra(t_node **a, int bench, t_bench *bench_ptr)
+void	rra(t_node **a)
 {
 	rev_rotate(a);
-	if (!bench)
-		ft_putstr("rra\n", 1);
-	else
-	{
-		bench_ptr->rra += 1;
-		bench_ptr->total_ops += 1;
-	}
+	ft_putstr("rra\n", 1);
 }
 
-void	rrb(t_node **b, int bench, t_bench *bench_ptr)
+void	rrb(t_node **b)
 {
 	rev_rotate(b);
-	if (!bench)
-		ft_putstr("rrb\n", 1);
-	else
-	{
-		bench_ptr->rrb += 1;
-		bench_ptr->total_ops += 1;
-	}
+	ft_putstr("rrb\n", 1);
 }
 
-void	rr(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
+void	rr(t_node **a, t_node **b)
 {
 	rotate(a);
 	rotate(b);
-	if (!bench)
-		ft_putstr("rr\n", 1);
-	else
-	{
-		bench_ptr->rr += 1;
-		bench_ptr->total_ops += 1;
-	}
+	ft_putstr("rr\n", 1);
 }
 
-void	rrr(t_node **a, t_node **b, int bench, t_bench *bench_ptr)
+void	rrr(t_node **a, t_node **b)
 {
 	rev_rotate(a);
 	rev_rotate(b);
-	if (!bench)
-		ft_putstr("rrr\n", 1);
-	else
-	{
-		bench_ptr->rrr += 1;
-		bench_ptr->total_ops += 1;
-	}
+	ft_putstr("rrr\n", 1);
 }
