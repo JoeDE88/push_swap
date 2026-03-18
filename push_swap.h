@@ -112,6 +112,7 @@ int			lst_size(t_node *lst);
 // free
 void		free_str_arr(char **arr, size_t len);
 void		free_lst(t_node **lst);
+void		free_data(t_data **data);
 
 // push swap
 void		push_swap(t_node **stack_a, t_data *data);

@@ -21,9 +21,9 @@ void	adaptive(t_node **a, t_data *data)
 		simple_alg(a, data);
 	if (disorder >= 0.2 && disorder < 0.5)
 		medium_alg(a, data);
-	/*
 	else
-		complex_alg(stack_a, data); */
+		//complex_alg(a, data);
+		medium_alg(a, data);
 }
 
 void	push_swap(t_node **stack_a, t_data *data)
@@ -64,10 +64,10 @@ int	main(int ac, char *av[])
 	check_repeated_or_unique(&stack_a);
 	if (stack_a)
 	{
-		// index_list(&stack_a);
+		index_list(&stack_a);
 		push_swap(&stack_a, data);
 		free_lst(&stack_a);
-		free(data);
+		free_data(&data);
 	}
 	return (0);
 }
