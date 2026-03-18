@@ -36,9 +36,6 @@ t_bench	*init_bench(void)
 
 void	print_bench(t_data *data, double *disorder)
 {
-	int	dis;
-
-	dis = *disorder * 100;
 	ft_printf("[bench] disorder: %f%%\n", *disorder);
 	ft_printf("[bench] strategy: %s / ", data->strategy);
 	ft_printf("%s\n", compute_complexity(data, disorder));
