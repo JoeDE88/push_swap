@@ -12,11 +12,28 @@
 
 #include "push_swap.h"
 
+void	complex_alg(t_node **a, t_data *data)
+{
+	t_node	*stack_b;
+	int		nums;
+
+	stack_b = NULL;
+	nums = lst_size(*a);
+	if (nums == 2 && (*a)->value > (*a)->next->value)
+		sa(a, data);
+	else if (nums == 3)
+		sort_three(a, data);
+	else
+		radix_sort(a, &stack_b, data);
+	if (stack_b)
+		free_lst(&stack_b);
+}
+
 int	get_max_bits(t_node *a)
 {
 	int	max_idx;
 
-	__attribute__((unused)) int max_bits;
+	int max_bits;
 	max_bits = 0;
 	max_idx = a->idx;
 	while (a)
@@ -30,7 +47,7 @@ int	get_max_bits(t_node *a)
 	return (max_bits);
 }
 
-void	radix_sort(t_node **a, t_node **b)
+void	radix_sort(t_node **a, t_node **b, t_data *data)
 {
 	int		size;
 	int		max_bits;
@@ -49,12 +66,12 @@ void	radix_sort(t_node **a, t_node **b)
 		{
 			tmp = *a;
 			if (((tmp->idx >> i) & 1) == 1)
-				ra(a);
+				ra(a, data);
 			else
-				pb(a, b);
+				pb(a, b, data);
 		}
 		while (*b)
-			pa(a, b);
+			pa(a, b, data);
 		i++;
 	}
 }

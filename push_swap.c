@@ -22,8 +22,7 @@ void	adaptive(t_node **a, t_data *data)
 	if (disorder >= 0.2 && disorder < 0.5)
 		medium_alg(a, data);
 	else
-		//complex_alg(a, data);
-		medium_alg(a, data);
+		complex_alg(a, data);
 }
 
 void	push_swap(t_node **stack_a, t_data *data)
@@ -38,12 +37,10 @@ void	push_swap(t_node **stack_a, t_data *data)
 	}
 	if (!ft_strncmp(data->strategy, "simple", 6))
 		simple_alg(stack_a, data);
-	/*
 	if (!ft_strncmp(data->strategy, "medium", 6))
-		medium_alg(stack_a, stack_b, data);
+		medium_alg(stack_a, data);
 	if (!ft_strncmp(data->strategy, "complex", 7))
-		complex_alg(stack_a, stack_b, bench, data);
-	*/
+		complex_alg(stack_a, data);
 	if (!ft_strncmp(data->strategy, "adaptive", 8))
 		adaptive(stack_a, data);
 	if (data->bench)
