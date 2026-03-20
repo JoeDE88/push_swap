@@ -6,7 +6,7 @@
 /*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:52:39 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/16 17:06:06 by gblas-he         ###   ########.fr       */
+/*   Updated: 2026/03/19 12:07:49 by gblas-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,13 +148,15 @@ void		apply_index(t_node *a, int *arr, int size);
 void		index_list(t_node **a);
 
 //algoritmos
-void		index_list(t_node **a);
-void		chunks_sort(t_node **a, t_node **b, t_data *data);
-int			find_max_pos(t_node *b);
-void		push_chunks(t_node **a, t_node **b, int chunks_size, t_data *data);
-void		push_back(t_node **a, t_node **b, t_data *data);
-void		adaptive(t_node **a, t_data *data);
-void		sort_three(t_node **stack, t_data *data);
-void		selection_sort(t_node **a, t_node **b, t_data *data);
+void	chunks_sort(t_node **a, t_node **b);
+void	selection_sort(t_node **a, t_node **b);
+void	radix_sort(t_node **a, t_node **b);
+int		find_max_pos(t_node *b);
+void	push_chunks(t_node **a, t_node **b, int chunks_size);
+void	push_back(t_node **a, t_node **b);
+void	chunks_sort(t_node **a, t_node **b);
+void	adaptive(t_node **a);
+void	sort_three(t_node **stack);
+int		get_max_bits(t_node *a);
 
 #endif
