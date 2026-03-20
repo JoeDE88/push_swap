@@ -34,14 +34,40 @@ t_bench	*init_bench(void)
 	return (bench_ptr);
 }
 
-void	print_bench(t_bench *bench, double *disorder, char *strategy)
+void	print_bench(t_data *data, double *disorder)
 {
 	ft_printf("[bench] disorder: %f%%\n", *disorder);
-	ft_printf("[bench] strategy: %s / 0(n√n)\n", strategy);
-	ft_printf("[bench] total_ops: %d\n", bench->total_ops);
-	ft_printf("[bench] sa: %d sb: %d ss: %d", bench->sa, bench->sb, bench->ss);
-	ft_printf(" pa:	%d pb: %d\n", bench->pa, bench->pb);
-	ft_printf("[bench] ra: %d rb: %d rr: %d", bench->ra, bench->rb, bench->rr);
-	ft_printf(" rra: %d rrb: %d rrr: %d\n", bench->rra, bench->rrb, bench->rrr);
-	free(bench);
+	ft_printf("[bench] strategy: %s / ", data->strategy);
+	ft_printf("%s\n", compute_complexity(data, disorder));
+	ft_printf("[bench] total_ops: %d\n", data->bm->total_ops);
+	ft_printf("[bench] sa: %d sb: %d", data->bm->sa, data->bm->sb);
+	ft_printf(" ss: %d", data->bm->ss);
+	ft_printf(" pa:	%d pb: %d\n", data->bm->pa, data->bm->pb);
+	ft_printf("[bench] ra: %d rb: %d", data->bm->ra, data->bm->rb);
+	ft_printf(" rr: %d rra: %d", data->bm->rr, data->bm->rra);
+	ft_printf(" rrb: %d rrr: %d\n", data->bm->rrb, data->bm->rrr);
+	free(data->bm);
+}
+
+char	*compute_complexity(t_data *data, double *disorder)
+{
+	int	dis;
+
+	dis = *disorder * 100;
+	if (!ft_strncmp(data->strategy, "adaptive", 8))
+	{
+		if (dis < 20)
+			return ("O(n2)");
+		if (dis >= 20 && dis < 50)
+			return ("O(n√n)");
+		if (dis >= 50)
+			return ("O(nlogn)");
+	}
+	if (!ft_strncmp(data->strategy, "simple", 6))
+		return ("O(n2)");
+	if (!ft_strncmp(data->strategy, "medium", 6))
+		return ("O(n√n)");
+	if (!ft_strncmp(data->strategy, "complex", 7))
+		return ("O(nlogn)");
+	return (NULL);
 }

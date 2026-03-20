@@ -12,37 +12,48 @@
 
 #include "push_swap.h"
 
-void	simple_alg(t_node **a, int bench, t_bench *bench_ptr)
+void	simple_alg(t_node **a, t_data *data)
 {
 	t_node	*stack_b;
-	t_node	*next;
 	int		nums;
 
 	stack_b = NULL;
-	next = (*a)->next;
 	nums = lst_size(*a);
-	if (nums == 2 && (*a)->value > next->value)
-		sa(a, bench, bench_ptr);
+	if (nums == 2 && (*a)->value > (*a)->next->value)
+		sa(a, data);
 	else if (nums == 3)
-		sort_three(a, bench, bench_ptr);
+		sort_three(a, data);
 	else
-		selection_sort(a, &stack_b, bench, bench_ptr);
+		selection_sort(a, &stack_b, data);
 	if (stack_b)
 		free_lst(&stack_b);
 }
 
-void	sort_three(t_node **stack, int bench, t_bench *bench_ptr)
+void	sort_three(t_node **stack, t_data *data)
 {
 	t_node	*next;
 
 	next = (*stack)->next;
 	if ((*stack)->value > next->value && next->value < next->next->value)
-		ra(stack, bench, bench_ptr);
+	{
+		if ((*stack)->value > next->next->value)
+			ra(stack, data);
+		else
+			sa(stack, data);
+	}
 	if ((*stack)->value > next->value && next->value > next->next->value)
 	{
-		ra(stack, bench, bench_ptr);
-		sa(stack, bench, bench_ptr);
+		ra(stack, data);
+		sa(stack, data);
 	}
 	if ((*stack)->value < next->value && next->value > next->next->value)
-		rra(stack, bench, bench_ptr);
+	{
+		if ((*stack)->value > next->next->value)
+			rra(stack, data);
+		else
+		{
+			rra(stack, data);
+			sa(stack, data);
+		}
+	}
 }

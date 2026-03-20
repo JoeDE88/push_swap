@@ -72,7 +72,7 @@ int	ft_strncmp(char *s1, char *s2, int n)
 
 void	ft_putstr(char *s, int fd)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i])

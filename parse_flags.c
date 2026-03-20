@@ -1,38 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_args2.c                                      :+:      :+:    :+:   */
+/*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdiaz-ec <jdiaz-ec@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 17:37:40 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/03/16 17:37:42 by jdiaz-ec         ###   ########.fr       */
+/*   Updated: 2026/03/17 16:46:53 by jdiaz-ec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_algdata	*parse_args(t_algdata **data, int ac, char **av)
-{
-	void	*nums;
-	int		flags;
-	int		bench;
-	int		len;
-	char	*strategy;
-
-	bench = 0;
-	len = 0;
-	flags = count_flags(ac, av);
-	parse_flags(flags, av, &bench, &strategy);
-	nums = fill_nums_arr(ac - 1 - flags, flags, av + 1, &len);
-	if (ac == 2)
-		*data = fill_alg_data(bench, strategy, nums, 0, len);
-	else
-		*data = fill_alg_data(bench, strategy, nums, 1, len);
-	if (*data == NULL)
-		print_err();
-	return (*data);
-}
 
 void	parse_flags(int flags, char **av, int *bench, char **strategy)
 {

@@ -39,3 +39,10 @@ void	free_lst(t_node **lst)
 	}
 	*lst = NULL;
 }
+
+void	free_data(t_data **data)
+{
+	if (!(*data)->bench)
+		free((*data)->bm);
+	free(*data);
+}
