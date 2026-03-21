@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = alg_data.c algorithm_complex.c bench_utils.c check_errors.c \
+SRC = alg_data.c complex_alg.c bench_utils.c check_errors.c \
 		chunks_sort.c free_functions.c ft_ftoa.c ft_itoa.c ft_printf.c \
 		list_functions.c medium_alg.c operations_rotate.c operations.c \
 		parse_args.c parse_flags.c print_letters.c print_nums.c push_swap.c \
