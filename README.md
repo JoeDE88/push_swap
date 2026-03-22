@@ -12,7 +12,13 @@
 
 ## &emsp;The project is divided in two different parts:
 ### &emsp;· Parsing the input data, which can receive from 0 to 2 flags and an undefined number of integers.
-### &emsp;· Sorting the integers based on the numbers of integers to be sorted, the disorder or by forcing the strategy selected in the input.
+### &emsp;· Sorting the integers using three different algorithms, based on the numbers of integers to be sorted, the disorder or by forcing the strategy selected in the input.
+
+## About the algorithms:
+
+### SELECTION SORT (--simple)
+### Time complexity: &emsp;&emsp;O(N²)
+### The O(N²) time complexity means that the running time of an algorithm grows quadratically with the size of the input.
 
 ## INSTRUCTIONS
 ### To compile the program:

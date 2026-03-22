@@ -42,6 +42,8 @@ int	get_max_bits(t_node *a)
 			max_idx = a->idx;
 		a = a->next;
 	}
+	if (max_idx == 0)
+        return (1);
 	while (max_idx >> max_bits != 0)
 		max_bits++;
 	return (max_bits);
@@ -57,7 +59,6 @@ void	radix_sort(t_node **a, t_node **b, t_data *data)
 
 	size = lst_size(*a);
 	max_bits = get_max_bits(*a);
-	tmp = *a;
 	i = 0;
 	while (i < max_bits)
 	{
