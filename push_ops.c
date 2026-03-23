@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-// Toma el primer elemento del 1º stack y lo coloca el primero en el 2º stack
 void	push(t_node **dest, t_node **src)
 {
 	t_node	*tmp;
