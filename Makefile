@@ -29,10 +29,6 @@ CPPFLAGS = -I.
 
 RM = rm -f
 
-ARNAME = ar rcs $(NAME)
-
-RANNAME = ranlib $(NAME)
-
 all: $(NAME)
 
 $(NAME) : $(OBJS)
