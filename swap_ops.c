@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   swap_ops.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gblas-he <gblas-he@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdiaz-ec <jdiaz-ec@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/28 19:58:57 by gblas-he          #+#    #+#             */
-/*   Updated: 2026/03/17 18:14:38 by gblas-he         ###   ########.fr       */
+/*   Created: 2026/03/23 13:40:59 by jdiaz-ec          #+#    #+#             */
+/*   Updated: 2026/03/23 13:41:00 by jdiaz-ec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Intercambia los dos primeros elementos del stack
 void	swap(t_node **lst)
 {
 	t_node	*tmp;
@@ -49,44 +48,6 @@ void	sb(t_node **b, t_data *data)
 	}
 }
 
-// Toma el primer elemento del 1º stack y lo coloca el primero en el 2º stack
-void	push(t_node **dest, t_node **src)
-{
-	t_node	*tmp;
-
-	if (!*src)
-		return ;
-	tmp = *src;
-	*src = (*src)->next;
-	tmp->next = *dest;
-	*dest = tmp;
-}
-
-void	pa(t_node **a, t_node **b, t_data *data)
-{
-	push(a, b);
-	if (!data->bench)
-		ft_putstr("pa\n", 1);
-	else
-	{
-		data->bm->pa += 1;
-		data->bm->total_ops += 1;
-	}
-}
-
-void	pb(t_node **a, t_node **b, t_data *data)
-{
-	push(b, a);
-	if (!data->bench)
-		ft_putstr("pb\n", 1);
-	else
-	{
-		data->bm->pb += 1;
-		data->bm->total_ops += 1;
-	}
-}
-
-// Intercambia los dos primeros elementos de ambos stacks a la vez
 void	ss(t_node **a, t_node **b, t_data *data)
 {
 	swap(a);

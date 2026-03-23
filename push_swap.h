@@ -148,14 +148,14 @@ void		apply_index(t_node *a, int *arr, int size);
 void		index_list(t_node **a);
 
 //algoritmos
-void	chunks_sort(t_node **a, t_node **b, t_data *data);
-void	selection_sort(t_node **a, t_node **b, t_data *data);
-void	radix_sort(t_node **a, t_node **b, t_data *data);
-int		find_max_pos(t_node *b);
-void	push_chunks(t_node **a, t_node **b, int chunks_size, t_data *data);
-void	push_back(t_node **a, t_node **b, t_data *data);
-void	adaptive(t_node **a, t_data *data);
-void	sort_three(t_node **stack, t_data *data);
-int		get_max_bits(t_node *a);
+void		chunks_sort(t_node **a, t_node **b, t_data *data);
+void		selection_sort(t_node **a, t_node **b, t_data *data);
+void		radix_sort(t_node **a, t_node **b, t_data *data);
+int			find_max_pos(t_node *b);
+void		push_chunks(t_node **a, t_node **b, int chunks_size, t_data *data);
+void		push_back(t_node **a, t_node **b, t_data *data);
+void		adaptive(t_node **a, t_data *data);
+void		sort_three(t_node **stack, t_data *data);
+int			get_max_bits(t_node *a);
 
 #endif

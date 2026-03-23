@@ -32,8 +32,8 @@ void	complex_alg(t_node **a, t_data *data)
 int	get_max_bits(t_node *a)
 {
 	int	max_idx;
+	int	max_bits;
 
-	int max_bits;
 	max_bits = 0;
 	max_idx = a->idx;
 	while (a)
@@ -43,7 +43,7 @@ int	get_max_bits(t_node *a)
 		a = a->next;
 	}
 	if (max_idx == 0)
-        return (1);
+		return (1);
 	while (max_idx >> max_bits != 0)
 		max_bits++;
 	return (max_bits);
