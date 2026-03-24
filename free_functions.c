@@ -42,7 +42,6 @@ void	free_lst(t_node **lst)
 
 void	free_data(t_data **data)
 {
-	if (!(*data)->bench)
-		free((*data)->bm);
+	free((*data)->bm);
 	free(*data);
 }
