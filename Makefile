@@ -25,7 +25,7 @@ CC = cc
 
 CCFLAGS = -Wall -Wextra -Werror
 
-CPPFLAGS = -I.
+LIBFLAG = -I.
 
 RM = rm -f
 
@@ -35,7 +35,7 @@ $(NAME) : $(OBJS)
 	$(CC) $(CCFLAGS) -o $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CPPFLAGS) $(CCFLAGS) -o $@ -c $<
+	$(CC) $(LIBFLAG) $(CCFLAGS) -o $@ -c $<
 
 .PHONY: clean
 

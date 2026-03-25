@@ -51,12 +51,12 @@ int	ft_atoi(char *s)
 		}
 		n *= 10;
 		n += (s[i] - 48);
+		if (n > INT_MAX || n < INT_MIN)
+			print_err();
 		i++;
 	}
 	if (negative)
 		n *= -1;
-	if (n > INT_MAX || n < INT_MIN)
-		print_err();
 	return (n);
 }
 

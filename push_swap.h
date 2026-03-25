@@ -52,10 +52,12 @@ typedef struct s_algdata
 	t_bench	*bm;
 }	t_data;
 
+char		*select_strategy(char *s);
+void		parse_flags(int flags, char **av, int *bench, char **strategy);
+int			count_flags(int ac, char **av);
+void		loop_flags(int flags, char **av, int *bench, char **strategy);
 void		parse_args(t_data **data, int ac, char **av);
 t_data		*fill_alg_data(void *nums_array, int type, int len);
-void		parse_flags(int flags, char **av, int *bench, char **strategy);
-void		loop_flags(int flags, char **av, int *bench, char **strategy);
 void		*fill_nums_arr(int ac, int flags, char **av, int *len);
 int			*nums_array(char **av, int ac);
 void		fill_stack_from_arr(t_node **lst, t_data *data);
@@ -64,32 +66,20 @@ void		fill_from_int_array(t_node **lst, t_data *data);
 t_bench		*init_bench(void);
 void		print_bench(t_data *data, double *disorder);
 char		*compute_complexity(t_data *data, double *disorder);
-
-// ft_printf
 void		ft_printf(const char *format, ...);
 void		convert(va_list args, char specifier);
 void		ft_printchar(char c);
 void		ft_printstr(char *s);
 void		ft_printint(int n);
 void		ft_printdouble(double n);
-
-// parse args
-char		*select_strategy(char *s);
-int			count_flags(int ac, char **av);
-
-// safe split
 int			fill_arr(char **arr, char *str, char c);
 int			count_args(char *s);
 int			safe_malloc(char **arr, int pos, size_t len);
 char		**ft_split(char *str, char c, int *len);
-
-// err
 void		print_err(void);
 void		check_args(char **av, int ac);
 void		check_str(char *str);
 void		check_repeated_or_unique(t_node **lst);
-
-// utils
 size_t		ft_strlcpy(char *dst, char *src, size_t size);
 int			is_plus_or_min(int c);
 int			ft_isdigit(int c);
@@ -102,28 +92,15 @@ size_t		ft_strlen(char *s);
 int			count_digits(long n);
 char		*ft_malloc(int n);
 void		fill_from_double(char *str, int digits, int int_part, int rem_part);
+int			fill_int_part(char *str, int int_part, int digits);
+int			fill_rem_part(char *str, int rem_part, int digits);
 char		*ft_strdup(char *str);
-
-// list
 void		lst_addback(t_node **lst, t_node *new_node);
 t_node		*lst_new(int num);
 int			lst_size(t_node *lst);
-
-// free
 void		free_str_arr(char **arr, size_t len);
 void		free_lst(t_node **lst);
-void		free_data(t_data **data);
-
-// push swap
 void		push_swap(t_node **stack_a, t_data *data);
-double		compute_disorder(t_node **stack);
-
-// algorithms
-void		simple_alg(t_node **a, t_data *data);
-void		medium_alg(t_node **stack_a, t_data *data);
-void		complex_alg(t_node **stack_a, t_data *data);
-
-// operations
 void		swap(t_node **lst);
 void		sa(t_node **a, t_data *data);
 void		sb(t_node **b, t_data *data);
@@ -139,15 +116,14 @@ void		rev_rotate(t_node **lst);
 void		rra(t_node **a, t_data *data);
 void		rrb(t_node **b, t_data *data);
 void		rrr(t_node **a, t_node **b, t_data *data);
-
-// utils algoritmos
 double		compute_disorder(t_node **stack);
 void		q_swap(int *a, int *b);
 void		quicksort(int *arr, int left, int right);
 void		apply_index(t_node *a, int *arr, int size);
 void		index_list(t_node **a);
-
-//algoritmos
+void		simple_alg(t_node **a, t_data *data);
+void		medium_alg(t_node **stack_a, t_data *data);
+void		complex_alg(t_node **stack_a, t_data *data);
 void		chunks_sort(t_node **a, t_node **b, t_data *data);
 void		selection_sort(t_node **a, t_node **b, t_data *data);
 void		radix_sort(t_node **a, t_node **b, t_data *data);

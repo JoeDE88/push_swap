@@ -32,6 +32,8 @@ void	push_swap(t_node **stack_a, t_data *data)
 	disorder = compute_disorder(stack_a);
 	if (!disorder)
 	{
+		if (data->bench)
+			print_bench(data, &disorder);
 		free_lst(stack_a);
 		return ;
 	}
@@ -64,7 +66,7 @@ int	main(int ac, char *av[])
 		index_list(&stack_a);
 		push_swap(&stack_a, data);
 		free_lst(&stack_a);
-		free_data(&data);
+		free(data);
 	}
 	return (0);
 }
