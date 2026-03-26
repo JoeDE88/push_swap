@@ -131,7 +131,8 @@ int			find_max_pos(t_node *b);
 void		push_chunks(t_node **a, t_node **b, int chunks_size, t_data *data);
 void		push_back(t_node **a, t_node **b, t_data *data);
 void		adaptive(t_node **a, t_data *data);
-void		sort_three(t_node **stack, t_data *data);
+void		sort_three(t_node **a, t_data *data);
+void		sort_five(t_node **a,t_node **b, t_data *data);
 int			get_max_bits(t_node *a);
 
 #endif

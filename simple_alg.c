@@ -14,46 +14,47 @@
 
 void	simple_alg(t_node **a, t_data *data)
 {
-	t_node	*stack_b;
+	t_node	*b;
 	int		nums;
 
-	stack_b = NULL;
+	b = NULL;
 	nums = lst_size(*a);
 	if (nums == 2 && (*a)->value > (*a)->next->value)
 		sa(a, data);
 	else if (nums == 3)
 		sort_three(a, data);
 	else
-		selection_sort(a, &stack_b, data);
-	if (stack_b)
-		free_lst(&stack_b);
+		selection_sort(a, &b, data);
+	if (b)
+		free_lst(&b);
 }
 
-void	sort_three(t_node **stack, t_data *data)
+void	sort_three(t_node **a, t_data *data)
 {
 	t_node	*next;
 
-	next = (*stack)->next;
-	if ((*stack)->value > next->value && next->value < next->next->value)
+	next = (*a)->next;
+	if ((*a)->value > next->value && next->value < next->next->value)
 	{
-		if ((*stack)->value > next->next->value)
-			ra(stack, data);
+		if ((*a)->value > next->next->value)
+			ra(a, data);
 		else
-			sa(stack, data);
+			sa(a, data);
 	}
-	if ((*stack)->value > next->value && next->value > next->next->value)
+	if ((*a)->value > next->value && next->value > next->next->value)
 	{
-		ra(stack, data);
-		sa(stack, data);
+		ra(a, data);
+		sa(a, data);
 	}
-	if ((*stack)->value < next->value && next->value > next->next->value)
+	if ((*a)->value < next->value && next->value > next->next->value)
 	{
-		if ((*stack)->value > next->next->value)
-			rra(stack, data);
+		if ((*a)->value > next->next->value)
+			rra(a, data);
 		else
 		{
-			rra(stack, data);
-			sa(stack, data);
+			rra(a, data);
+			sa(a, data);
 		}
 	}
 }
+

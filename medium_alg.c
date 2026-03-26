@@ -14,17 +14,17 @@
 
 void	medium_alg(t_node **a, t_data *data)
 {
-	t_node	*stack_b;
+	t_node	*b;
 	int		nums;
 
-	stack_b = NULL;
+	b = NULL;
 	nums = lst_size(*a);
 	if (nums == 2 && (*a)->value > (*a)->next->value)
 		sa(a, data);
 	else if (nums == 3)
 		sort_three(a, data);
 	else
-		chunks_sort(a, &stack_b, data);
-	if (stack_b)
-		free_lst(&stack_b);
+		chunks_sort(a, &b, data);
+	if (b)
+		free_lst(&b);
 }
