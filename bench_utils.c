@@ -58,9 +58,9 @@ char	*compute_complexity(t_data *data, double *disorder)
 	{
 		if (dis < 20)
 			return ("O(n2)");
-		if (dis >= 20 && dis < 50)
+		if (dis >= 20 && dis < 60)
 			return ("O(n√n)");
-		if (dis >= 50)
+		else
 			return ("O(nlogn)");
 	}
 	if (!ft_strncmp(data->strategy, "simple", 6))
