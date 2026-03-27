@@ -10,9 +10,12 @@
 ### &emsp;· To study and learn about algorithmic complexity.
 ### &emsp;· To choose the most adapt sort algorithms depending on the algorithm complexity.
 
-## &emsp;The project is divided in two different parts:
-### &emsp;· Parsing the input data, which can receive from 0 to 2 flags and an undefined number of integers.
-### &emsp;· Sorting the integers using three different algorithms, based on the numbers of integers to be sorted, the disorder or by forcing the strategy selected in the input.
+## &emsp;The project was divided in two parts:
+
+### &emsp;*jdiaz-ec*:&emsp;Library, Parsing and error managing
+### &emsp;· This part of the project included parsing the input data, which can receive from 0 to 2 flags and an undefined number of integers, while managing possible errors, such as wrong written flags, non numerical parameters or above INT MAX or below INT MIN.
+### &emsp;*gblas-he:*&emsp;Operations and algorithms
+### &emsp;· This part of the project included computing the total size of the stack, creating the operations, and sorting the integers using three different algorithms based on the numbers of integers to be sorted, the disorder or by forcing the strategy selected in the input. Also, the creation of the function that gives an index to all the elements of the stack.
 
 ## About the algorithms:
 
@@ -25,8 +28,8 @@
 ### Despite its time complexity of O(n²) - which makes it a slow algorithm - it can be considered one of the best quadratic algorithm to use for small datasets.
 ### &emsp;
 ### CHUNKS SORT (--medium)
-### Time complexity: &emsp;&emsp;O(n√n)
-### The O(n√n) time complexity indicates that the running time of an algorithm grows in proportion to `n` multiplied by the square root of `n`. It is slower than linear complexity `O(n)`, but faster than `O(n²)`, making it efficient for moderate input sizes, since nearly sorted chunks cost almost nothing.
+### Time complexity: &emsp;&emsp;`O(n√n)`
+### The O(n√n) time complexity indicates that the running time of an algorithm grows in proportion to `n` multiplied by the square root of `n`. It is slower than linear complexity `O(n)`, but faster than `O(n²)`, making it efficient for moderate input sizes, since nearly sorted chunks cost almost nothing. It consists of dividing the stack in chunks (e.g. if the total size is 100, we divided the pile into 5 chunks), and check if the index of element is in its correct chunk before pushing it to the pile B. 
 &emsp;
 ### RADIX SORT (--complex)
 ### Time complexity: &emsp;`O(n log n)`
