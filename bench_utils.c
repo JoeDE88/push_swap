@@ -37,8 +37,13 @@ t_bench	*init_bench(void)
 void	print_bench(t_data *data, double *disorder)
 {
 	ft_printf("[bench] disorder: %f%%\n", *disorder);
-	ft_printf("[bench] strategy: %s / ", data->strategy);
-	ft_printf("%s\n", compute_complexity(data, disorder));
+	if (*disorder)
+	{
+		ft_printf("[bench] strategy: %s / ", data->strategy);
+		ft_printf("%s\n", compute_complexity(data, disorder));
+	}
+	else
+		ft_printf("[bench] strategy: None\n");
 	ft_printf("[bench] total_ops: %d\n", data->bm->total_ops);
 	ft_printf("[bench] sa: %d sb: %d", data->bm->sa, data->bm->sb);
 	ft_printf(" ss: %d", data->bm->ss);
