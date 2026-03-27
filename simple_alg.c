@@ -57,4 +57,3 @@ void	sort_three(t_node **a, t_data *data)
 		}
 	}
 }
-
