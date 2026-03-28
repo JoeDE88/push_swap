@@ -37,7 +37,7 @@ $(NAME) : $(OBJS)
 %.o: %.c
 	$(CC) $(LIBFLAG) $(CCFLAGS) -o $@ -c $<
 
-.PHONY: clean
+.PHONY: clean all fclean
 
 clean:
 	$(RM) $(OBJS)
