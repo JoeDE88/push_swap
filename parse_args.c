@@ -29,10 +29,10 @@ void	parse_args(t_data **data, int ac, char **av)
 		*data = fill_alg_data(nums, 0, len);
 	else
 		*data = fill_alg_data(nums, 1, len);
-	(*data)->bench = bench;
-	(*data)->strategy = strategy;
 	if (*data == NULL)
 		print_err();
+	(*data)->bench = bench;
+	(*data)->strategy = strategy;
 	if ((*data)->bench)
 		(*data)->bm = init_bench();
 }

@@ -56,6 +56,7 @@ char		*select_strategy(char *s);
 void		parse_flags(int flags, char **av, int *bench, char **strategy);
 int			count_flags(int ac, char **av);
 void		loop_flags(int flags, char **av, int *bench, char **strategy);
+void		check_flag(int *flag, int *flags);
 void		parse_args(t_data **data, int ac, char **av);
 t_data		*fill_alg_data(void *nums_array, int type, int len);
 void		*fill_nums_arr(int ac, int flags, char **av, int *len);

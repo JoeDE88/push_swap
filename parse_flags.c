@@ -23,10 +23,10 @@ void	parse_flags(int flags, char **av, int *bench, char **strategy)
 		*strategy = "adaptive";
 	if (flags == 1)
 	{
-		if (!ft_strncmp("--bench", av[i], 8))
+		if (!ft_strncmp("--bench", av[i], 7))
 		{
-			*bench = 1;
 			*strategy = "adaptive";
+			*bench = 1;
 		}
 		else if (!ft_strncmp("--", av[i], 2))
 			*strategy = select_strategy(av[i]);
@@ -40,21 +40,25 @@ void	parse_flags(int flags, char **av, int *bench, char **strategy)
 void	loop_flags(int flags, char **av, int *bench, char **strategy)
 {
 	int	i;
+	int	bflag;
+	int	sflag;
 
 	i = 1;
+	bflag = 0;
+	sflag = 0;
 	while (flags > 0)
 	{
 		if (!ft_strncmp("--bench", av[i], 7))
 		{
-			*bench = 1;
-			flags--;
+			check_flag(&bflag, &flags);
 			i++;
+			*bench = 1;
 		}
-		if (!ft_strncmp("--", av[i], 2))
+		else if (!ft_strncmp("--", av[i], 2))
 		{
+			check_flag(&sflag, &flags);
 			*strategy = select_strategy(av[i]);
 			i++;
-			flags--;
 		}
 	}
 }
@@ -97,4 +101,15 @@ int	count_flags(int ac, char **av)
 		i++;
 	}
 	return (flags);
+}
+
+void	check_flag(int *flag, int *flags)
+{
+	if (*flag)
+		print_err();
+	else
+	{
+		*flag = 1;
+		*flags -= 1;
+	}
 }
