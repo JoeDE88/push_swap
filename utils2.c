@@ -26,6 +26,13 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
+int	ft_isalpha(int c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (1);
+	return (0);
+}
+
 size_t	ft_strlen(char *s)
 {
 	size_t	i;

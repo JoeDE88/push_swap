@@ -86,10 +86,14 @@ int	count_flags(int ac, char **av)
 	flags = 0;
 	while (i < ac - 1)
 	{
-		if (av[i][0] == '-' && av[i][1] != '-')
+		if (av[i][0] == '-' && ft_isdigit(av[i][1]))
+			break ;
+		else if (av[i][0] == '-' && ft_isalpha(av[i][1]))
 			print_err();
-		else
+		else if (av[i][0] == '-' && av[i][1] == '-')
 			flags++;
+		else if (av[i][0] == '-' && av[i][1] == '\0')
+			print_err();
 		i++;
 	}
 	return (flags);

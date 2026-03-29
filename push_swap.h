@@ -83,6 +83,7 @@ void		check_repeated_or_unique(t_node **lst);
 size_t		ft_strlcpy(char *dst, char *src, size_t size);
 int			is_plus_or_min(int c);
 int			ft_isdigit(int c);
+int			ft_isalpha(int c);
 int			ft_atoi(char *s);
 int			ft_strncmp(char *s1, char *s2, int n);
 void		ft_putstr(char *s, int fd);
