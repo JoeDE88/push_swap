@@ -67,13 +67,14 @@ int	main(int ac, char *av[])
 		return (0);
 	parse_args(&data, ac, av);
 	fill_stack_from_arr(&stack_a, data);
-	check_repeated_or_unique(&stack_a);
+	check_repeated_or_unique(&stack_a, data);
 	if (stack_a)
 	{
 		index_list(&stack_a);
 		push_swap(&stack_a, data);
 		free_lst(&stack_a);
-		free(data);
 	}
+	if (data)
+		free(data);
 	return (0);
 }
