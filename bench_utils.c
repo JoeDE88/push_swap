@@ -63,7 +63,7 @@ char	*compute_complexity(t_data *data, double *disorder)
 	{
 		if (dis < 20)
 			return ("O(n2)");
-		if (dis >= 20 && dis < 60)
+		if (dis >= 20 && dis < 50)
 			return ("O(n√n)");
 		else
 			return ("O(nlogn)");
