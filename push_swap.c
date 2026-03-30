@@ -48,11 +48,11 @@ void	push_swap(t_node **stack_a, t_data *data)
 	}
 	if (!ft_strncmp(data->strategy, "simple", 6))
 		simple_alg(stack_a, data);
-	if (!ft_strncmp(data->strategy, "medium", 6))
+	else if (!ft_strncmp(data->strategy, "medium", 6))
 		medium_alg(stack_a, data);
-	if (!ft_strncmp(data->strategy, "complex", 7))
+	else if (!ft_strncmp(data->strategy, "complex", 7))
 		complex_alg(stack_a, data);
-	if (!ft_strncmp(data->strategy, "adaptive", 8))
+	else if (!ft_strncmp(data->strategy, "adaptive", 8))
 		adaptive(stack_a, data);
 	if (data->bench)
 		print_bench(data, &disorder);
@@ -76,10 +76,7 @@ int	main(int ac, char *av[])
 		push_swap(&stack_a, data);
 		free_lst(&stack_a);
 	}
-	if (data)
-	{
-		free(data->bm);
-		free(data);
-	}
+	free(data->bm);
+	free(data);
 	return (0);
 }

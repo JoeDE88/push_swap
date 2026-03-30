@@ -36,8 +36,7 @@ void	parse_args(t_data **data, int ac, char **av)
 		print_err();
 	(*data)->bench = bench;
 	(*data)->strategy = strategy;
-	if ((*data)->bench)
-		(*data)->bm = init_bench();
+	(*data)->bm = init_bench();
 }
 
 void	*fill_nums_arr(int ac, int flags, char **av, int *len)

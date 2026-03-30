@@ -62,7 +62,7 @@ char	*compute_complexity(t_data *data, double *disorder)
 	{
 		if (dis < 20)
 			return ("O(n2)");
-		if (dis >= 20 && dis < 50)
+		else if (dis >= 20 && dis < 50)
 			return ("O(n√n)");
 		else
 		{
@@ -73,11 +73,11 @@ char	*compute_complexity(t_data *data, double *disorder)
 			return ("O(nlogn)");
 		}
 	}
-	if (!ft_strncmp(data->strategy, "simple", 6))
+	else if (!ft_strncmp(data->strategy, "simple", 6))
 		return ("O(n2)");
-	if (!ft_strncmp(data->strategy, "medium", 6))
+	else if (!ft_strncmp(data->strategy, "medium", 6))
 		return ("O(n√n)");
-	if (!ft_strncmp(data->strategy, "complex", 7))
+	else if (!ft_strncmp(data->strategy, "complex", 7))
 		return ("O(nlogn)");
 	return (NULL);
 }

@@ -27,21 +27,15 @@ void	push(t_node **dest, t_node **src)
 void	pa(t_node **a, t_node **b, t_data *data)
 {
 	push(a, b);
-	if (data->bench)
-	{
-		data->bm->pa += 1;
-		data->bm->total_ops += 1;
-	}
+	data->bm->pa += 1;
+	data->bm->total_ops += 1;
 	ft_putstr("pa\n", 1);
 }
 
 void	pb(t_node **a, t_node **b, t_data *data)
 {
 	push(b, a);
-	if (data->bench)
-	{
-		data->bm->pb += 1;
-		data->bm->total_ops += 1;
-	}
+	data->bm->pb += 1;
+	data->bm->total_ops += 1;
 	ft_putstr("pb\n", 1);
 }

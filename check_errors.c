@@ -59,8 +59,8 @@ void	check_repeated_or_unique(t_node **lst, t_data *data)
 			if (j_node->value == i_node->value)
 			{
 				free_lst(lst);
-				if (data)
-					free(data);
+				free(data->bm);
+				free(data);
 				print_err();
 			}
 			j_node = j_node->next;

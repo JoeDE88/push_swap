@@ -25,16 +25,16 @@ void	parse_flags(int f_count, char **av, int *bench, char **strategy)
 	{
 		if (f_count > 0 && !ft_strncmp("--bench", av[i], 7))
 		{
+			*bench = 1;
 			check_flag(&b_flag, &f_count);
 			i++;
-			*bench = 1;
 			if (!f_count && !s_flag)
 				*strategy = "adaptive";
 		}
 		if (f_count > 0 && !ft_strncmp("--", av[i], 2))
 		{
-			check_flag(&s_flag, &f_count);
 			*strategy = select_strategy(av[i]);
+			check_flag(&s_flag, &f_count);
 			i++;
 		}
 	}
@@ -47,11 +47,11 @@ char	*select_strategy(char *s)
 	i = 2;
 	if (!ft_strncmp(s + i, "simple", 7))
 		return (s + 2);
-	if (!ft_strncmp(s + i, "medium", 7))
+	else if (!ft_strncmp(s + i, "medium", 7))
 		return (s + 2);
-	if (!ft_strncmp(s + i, "complex", 8))
+	else if (!ft_strncmp(s + i, "complex", 8))
 		return (s + 2);
-	if (!ft_strncmp(s + i, "adaptive", 9))
+	else if (!ft_strncmp(s + i, "adaptive", 9))
 		return (s + 2);
 	else
 		print_err();
