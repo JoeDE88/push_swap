@@ -51,7 +51,6 @@ void	print_bench(t_data *data, double *disorder)
 	ft_printf("[bench] ra: %d rb: %d", data->bm->ra, data->bm->rb);
 	ft_printf(" rr: %d rra: %d", data->bm->rr, data->bm->rra);
 	ft_printf(" rrb: %d rrr: %d\n", data->bm->rrb, data->bm->rrr);
-	free(data->bm);
 }
 
 char	*compute_complexity(t_data *data, double *disorder)

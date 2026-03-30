@@ -77,6 +77,9 @@ int	main(int ac, char *av[])
 		free_lst(&stack_a);
 	}
 	if (data)
+	{
+		free(data->bm);
 		free(data);
+	}
 	return (0);
 }
