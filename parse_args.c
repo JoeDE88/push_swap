@@ -23,7 +23,10 @@ void	parse_args(t_data **data, int ac, char **av)
 	bench = 0;
 	len = 0;
 	flags = count_flags(ac, av);
-	parse_flags(flags, av, &bench, &strategy);
+	if (!flags)
+		strategy = "adaptive";
+	else
+		parse_flags(flags, av, &bench, &strategy);
 	nums = fill_nums_arr(ac - 1 - flags, flags, av, &len);
 	if (ac - flags == 2)
 		*data = fill_alg_data(nums, 0, len);
