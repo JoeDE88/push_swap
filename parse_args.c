@@ -15,20 +15,20 @@
 void	parse_args(t_data **data, int ac, char **av)
 {
 	void	*nums;
-	int		flags;
+	int		flags_count;
 	int		bench;
 	int		len;
 	char	*strategy;
 
 	bench = 0;
 	len = 0;
-	flags = count_flags(ac, av);
-	if (!flags)
+	flags_count = count_flags(ac, av);
+	if (!flags_count)
 		strategy = "adaptive";
 	else
-		parse_flags(flags, av, &bench, &strategy);
-	nums = fill_nums_arr(ac - 1 - flags, flags, av, &len);
-	if (ac - flags == 2)
+		parse_flags(flags_count, av, &bench, &strategy);
+	nums = fill_nums_arr(ac - 1 - flags_count, flags_count, av, &len);
+	if (ac - flags_count == 2)
 		*data = fill_alg_data(nums, 0, len);
 	else
 		*data = fill_alg_data(nums, 1, len);

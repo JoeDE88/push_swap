@@ -12,28 +12,28 @@
 
 #include "push_swap.h"
 
-void	parse_flags(int flags, char **av, int *bench, char **strategy)
+void	parse_flags(int f_count, char **av, int *bench, char **strategy)
 {
 	int	i;
-	int	bflag;
-	int	sflag;
+	int	b_flag;
+	int	s_flag;
 
-	bflag = 0;
-	sflag = 0;
+	b_flag = 0;
+	s_flag = 0;
 	i = 1;
-	while (flags > 0)
+	while (f_count > 0)
 	{
-		if (flags > 0 && !ft_strncmp("--bench", av[i], 7))
+		if (f_count > 0 && !ft_strncmp("--bench", av[i], 7))
 		{
-			check_flag(&bflag, &flags);
+			check_flag(&b_flag, &f_count);
 			i++;
 			*bench = 1;
-			if (!flags && !sflag)
+			if (!f_count && !s_flag)
 				*strategy = "adaptive";
 		}
-		if (flags > 0 && !ft_strncmp("--", av[i], 2))
+		if (f_count > 0 && !ft_strncmp("--", av[i], 2))
 		{
-			check_flag(&sflag, &flags);
+			check_flag(&s_flag, &f_count);
 			*strategy = select_strategy(av[i]);
 			i++;
 		}
@@ -80,13 +80,13 @@ int	count_flags(int ac, char **av)
 	return (flags);
 }
 
-void	check_flag(int *flag, int *flags)
+void	check_flag(int *flag, int *f_count)
 {
 	if (*flag)
 		print_err();
 	else
 	{
 		*flag = 1;
-		*flags -= 1;
+		*f_count -= 1;
 	}
 }

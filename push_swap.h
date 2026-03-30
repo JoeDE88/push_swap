@@ -53,9 +53,9 @@ typedef struct s_algdata
 }	t_data;
 
 char		*select_strategy(char *s);
-void		parse_flags(int flags, char **av, int *bench, char **strategy);
+void		parse_flags(int f_count, char **av, int *bench, char **strategy);
 int			count_flags(int ac, char **av);
-void		check_flag(int *flag, int *flags);
+void		check_flag(int *flag, int *f_count);
 void		parse_args(t_data **data, int ac, char **av);
 t_data		*fill_alg_data(void *nums_array, int type, int len);
 void		*fill_nums_arr(int ac, int flags, char **av, int *len);
