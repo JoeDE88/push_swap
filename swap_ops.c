@@ -27,36 +27,33 @@ void	swap(t_node **lst)
 void	sa(t_node **a, t_data *data)
 {
 	swap(a);
-	if (!data->bench)
-		ft_putstr("sa\n", 1);
-	else
+	if (data->bench)
 	{
 		data->bm->sa += 1;
 		data->bm->total_ops += 1;
 	}
+	ft_putstr("sa\n", 1);
 }
 
 void	sb(t_node **b, t_data *data)
 {
 	swap(b);
-	if (!data->bench)
-		ft_putstr("sb\n", 1);
-	else
+	if (data->bench)
 	{
 		data->bm->sb += 1;
 		data->bm->total_ops += 1;
 	}
+	ft_putstr("sb\n", 1);
 }
 
 void	ss(t_node **a, t_node **b, t_data *data)
 {
 	swap(a);
 	swap(b);
-	if (!data->bench)
-		ft_putstr("ss\n", 1);
-	else
+	if (data->bench)
 	{
 		data->bm->ss += 1;
 		data->bm->total_ops += 1;
 	}
+	ft_putstr("ss\n", 1);
 }

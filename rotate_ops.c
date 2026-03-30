@@ -31,36 +31,33 @@ void	rotate(t_node **lst)
 void	ra(t_node **a, t_data *data)
 {
 	rotate(a);
-	if (!data->bench)
-		ft_putstr("ra\n", 1);
-	else
+	if (data->bench)
 	{
 		data->bm->ra += 1;
 		data->bm->total_ops += 1;
 	}
+	ft_putstr("ra\n", 1);
 }
 
 void	rb(t_node **b, t_data *data)
 {
 	rotate(b);
-	if (!data->bench)
-		ft_putstr("rb\n", 1);
-	else
+	if (data->bench)
 	{
 		data->bm->rb += 1;
 		data->bm->total_ops += 1;
 	}
+	ft_putstr("rb\n", 1);
 }
 
 void	rr(t_node **a, t_node **b, t_data *data)
 {
 	rotate(a);
 	rotate(b);
-	if (!data->bench)
-		ft_putstr("rr\n", 1);
-	else
+	if (data->bench)
 	{
 		data->bm->rr += 1;
 		data->bm->total_ops += 1;
 	}
+	ft_putstr("rr\n", 1);
 }
