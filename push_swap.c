@@ -21,6 +21,10 @@ void	adaptive(t_node **a, t_data *data)
 	disorder = compute_disorder(a);
 	if (size >= 5)
 		simple_alg(a, data);
+	else if (size < 5 && size <= 100)
+		medium_alg(a, data);
+	else if (size > 100)
+		complex_alg(a, data);
 	else
 	{
 		if (disorder < 0.2)
