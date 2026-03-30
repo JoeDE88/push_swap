@@ -47,8 +47,8 @@ typedef struct s_algdata
 	int		bench;
 	char	*strategy;
 	void	*arr;
-	size_t	size;
 	int		arr_type;
+	size_t	size;
 	t_bench	*bm;
 }	t_data;
 
