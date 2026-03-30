@@ -19,19 +19,17 @@ void	adaptive(t_node **a, t_data *data)
 
 	size = lst_size(*a);
 	disorder = compute_disorder(a);
-	if (size >= 5)
+	if (disorder < 0.2)
 		simple_alg(a, data);
-	else if (size < 5 && size <= 100)
+	else if (disorder >= 0.2 && disorder < 0.5)
 		medium_alg(a, data);
-	else if (size > 100)
-		complex_alg(a, data);
 	else
 	{
-		if (disorder < 0.2)
+		if (size <= 10)
 			simple_alg(a, data);
-		else if (disorder >= 0.2 && disorder < 0.5)
+		else if (size > 10 && size <= 100)
 			medium_alg(a, data);
-		else
+		else if (size > 100 && size < 1000)
 			complex_alg(a, data);
 	}
 }
