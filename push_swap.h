@@ -44,12 +44,13 @@ typedef struct s_bench
 
 typedef struct s_algdata
 {
+	t_bench	*bm;
+	size_t	size;
+	double	disorder;
 	int		bench;
+	int		arr_type;
 	char	*strategy;
 	void	*arr;
-	int		arr_type;
-	size_t	size;
-	t_bench	*bm;
 }	t_data;
 
 char		*select_strategy(char *s);
@@ -64,8 +65,8 @@ void		fill_stack_from_arr(t_node **lst, t_data *data);
 void		fill_from_string_array(t_node **lst, t_data *data);
 void		fill_from_int_array(t_node **lst, t_data *data);
 t_bench		*init_bench(void);
-void		print_bench(t_data *data, double *disorder);
-char		*compute_complexity(t_data *data, double *disorder);
+void		print_bench(t_data *data);
+char		*compute_complexity(t_data *data);
 void		ft_printf(const char *format, ...);
 void		convert(va_list args, char specifier);
 void		ft_printchar(char c);

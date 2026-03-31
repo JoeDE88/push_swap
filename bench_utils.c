@@ -34,13 +34,13 @@ t_bench	*init_bench(void)
 	return (bench_ptr);
 }
 
-void	print_bench(t_data *data, double *disorder)
+void	print_bench(t_data *data)
 {
-	ft_printf("[bench] disorder: %f%%\n", *disorder);
-	if (*disorder)
+	ft_printf("[bench] disorder: %f%%\n", data->disorder);
+	if (data->disorder)
 	{
 		ft_printf("[bench] strategy: %s / ", data->strategy);
-		ft_printf("%s\n", compute_complexity(data, disorder));
+		ft_printf("%s\n", compute_complexity(data));
 	}
 	else
 		ft_printf("[bench] strategy: None\n");
@@ -53,11 +53,11 @@ void	print_bench(t_data *data, double *disorder)
 	ft_printf(" rrb: %d rrr: %d\n", data->bm->rrb, data->bm->rrr);
 }
 
-char	*compute_complexity(t_data *data, double *disorder)
+char	*compute_complexity(t_data *data)
 {
 	int	dis;
 
-	dis = *disorder * 100;
+	dis = data->disorder * 100;
 	if (!ft_strncmp(data->strategy, "adaptive", 8))
 	{
 		if (dis < 20)
