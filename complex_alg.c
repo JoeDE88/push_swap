@@ -63,7 +63,7 @@ void	radix_sort(t_node **a, t_node **b, t_data *data)
 	while (i < max_bits)
 	{
 		j = 0;
-		while (j++ < size)
+		while (j++ < size && !isordered(a))
 		{
 			tmp = *a;
 			if (((tmp->idx >> i) & 1) == 1)

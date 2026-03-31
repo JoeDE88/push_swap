@@ -34,6 +34,8 @@ double	compute_disorder(t_node **stack)
 		}
 		i_node = i_node->next;
 	}
+	if (total_pairs == 0)
+		return (0);
 	return (mistakes / total_pairs);
 }
 

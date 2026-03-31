@@ -42,17 +42,17 @@ void	selection_sort(t_node **a, t_node **b, t_data *data)
 	int		min_pos;
 	int		size;
 
-	while (*a)
+	while (*a && !isordered(a))
 	{
 		min = s_min_node(*a, &min_pos, &size);
 		if (min_pos <= size / 2)
 		{
-			while ((*a)->value != min->value)
+			while ((*a)->value != min->value && !isordered(a))
 				ra(a, data);
 		}
 		else
 		{
-			while ((*a)->value != min->value)
+			while ((*a)->value != min->value && !isordered(a))
 				rra(a, data);
 		}
 		pb(a, b, data);

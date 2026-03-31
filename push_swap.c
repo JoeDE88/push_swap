@@ -34,12 +34,27 @@ void	adaptive(t_node **a, t_data *data)
 	}
 }
 
+int	isordered(t_node **stack_a)
+{
+	t_node	*ptr1;
+
+	ptr1 = *stack_a;
+	while (ptr1->next != NULL)
+	{
+		if (ptr1->value < ptr1->next->value)
+			ptr1 = ptr1->next;
+		else
+			return (0);
+	}
+	return (1);
+}
+
 void	push_swap(t_node **stack_a, t_data *data)
 {
 	double	disorder;
 
 	disorder = compute_disorder(stack_a);
-	if (!disorder)
+	if (isordered(stack_a))
 	{
 		if (data->bench)
 			print_bench(data, &disorder);
