@@ -54,6 +54,9 @@ make re       # Recompile everything
 ```bash
 ./push_swap 47 16 63 18 29 -5 12
 ```
+### &emsp; You can also add the following flags:
+### &emsp; · One flag between: `--simple` `--medium` `--complex` or `--adpative`. This type of flag forces the program to execute the desired algorithm.
+### &emsp; · `--bench`. This flags outputs on `stderror` a resume of the alorithms properties.
 ### &emsp;  To run the program AND pipe the output into the checker to see if the program correctly sorted the numbers:
 ```bash
 ./push_swap 47 16 63 18 29 -5 12 | ./checker_linux 47 16 63 18 29 -5 12
